@@ -23,22 +23,22 @@ const items = [
         icon: Home,
     },
     {
-        title: "Inbox",
+        title: "About",
         url: "#",
         icon: Inbox,
     },
     {
-        title: "Calendar",
+        title: "Projects",
         url: "#",
         icon: Calendar,
     },
     {
-        title: "Search",
+        title: "Achievements",
         url: "#",
         icon: Search,
     },
     {
-        title: "Settings",
+        title: "Contacts",
         url: "#",
         icon: Settings,
     },
