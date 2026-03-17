@@ -45,7 +45,7 @@ const ThemeToggle = () => {
     return (
         <div className="flex items-center justify-center">
             {/* Desktop */}
-            <div className="relative hidden items-center gap-0 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 dark:border-neutral-700 dark:bg-neutral-800 lg:flex">
+            <div className="relative hidden items-center rounded-full border-[1.5px] border-border bg-muted p-1 lg:flex">
                 <motion.div
                     className={`absolute bottom-1 top-1 w-8 rounded-full ${getSliderClass()}`}
                     animate={{ x: slideX }}
@@ -68,7 +68,7 @@ const ThemeToggle = () => {
 
             {/* Mobile — cycle through all 3 themes */}
             <button
-                className="flex items-center gap-2 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 transition duration-200 hover:scale-110 dark:border-neutral-700 dark:bg-neutral-800 lg:hidden"
+                className="flex items-center gap-2 rounded-full border-[1.5px] border-border bg-muted p-1 transition duration-200 hover:scale-110 lg:hidden"
                 onClick={() => {
                     const next = themes[(currentIndex + 1) % themes.length];
                     setTheme(next.value);

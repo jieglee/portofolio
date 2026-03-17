@@ -41,8 +41,6 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                         rounded="rounded-full"
                     />
                 </motion.div>
-                {/* Online indicator */}
-                <span className="absolute bottom-1 right-1 h-3 w-3 rounded-full border-2 border-background bg-green-400" />  {/* ⬅️ border-background */}
             </div>
 
             {/* Name + handle */}
@@ -58,17 +56,14 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                     </Tooltip>
                 </div>
 
-                <span className="hidden text-xs text-muted-foreground lg:block">  {/* ⬅️ text-muted-foreground */}
+                <span className="hidden text-xs text-muted-foreground lg:block">  
                     @whoszie._
                 </span>
             </div>
 
-            {/* Divider — desktop only */}
-            <div className="my-4 hidden h-px w-full bg-border lg:block" />  {/* ⬅️ bg-border */}
-
             {/* Toggles */}
             <div className={cn(
-                "hidden items-center justify-center gap-2 lg:flex",
+                "hidden items-center justify-center gap-2 lg:flex lg:mt-6",
                 expandMenu && "mt-2"
             )}>
                 <IntlToggle />
