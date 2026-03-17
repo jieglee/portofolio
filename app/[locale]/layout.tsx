@@ -8,7 +8,7 @@ import Layouts from "@/common/components/layouts";
 import "../globals.css";
 
 export const metadata: Metadata = {
-  title: "Jeffrey Studios",
+  title: "Anindita Amantaruna",
   description: "Frontend Developer",
 };
 

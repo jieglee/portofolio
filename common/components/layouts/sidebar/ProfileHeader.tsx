@@ -24,19 +24,23 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
         >
             {/* Avatar + status dot */}
             <div className="relative">
-                <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    <Image
-                        src="/images/Profile.jpg"
-                        width={expandMenu ? 72 : imageSize}
-                        height={expandMenu ? 72 : imageSize}
-                        alt="Jeffrey Studios"
-                        className="ring-2 ring-neutral-200 dark:ring-neutral-700 lg:hover:ring-neutral-400 lg:dark:hover:ring-neutral-500"
-                        rounded="rounded-full"
-                    />
-                </motion.div>
+<motion.div
+    whileHover={{ scale: 1.08 }}
+    transition={{ duration: 0.2 }}
+    style={{
+        width: expandMenu ? 72 : imageSize,
+        height: expandMenu ? 72 : imageSize,
+    }}
+    className="rounded-full overflow-hidden ring-2 ring-neutral-200 dark:ring-neutral-700 lg:hover:ring-neutral-400 lg:dark:hover:ring-neutral-500"
+>
+    <Image
+        src="/images/runa gemoy.jpeg"
+        fill
+        alt="Anindita Amantaruna"
+        className="object-cover"
+        rounded="rounded-full"  
+    />
+</motion.div>
                 {/* Online indicator */}
                 <span className="absolute bottom-1 right-1 h-3 w-3 rounded-full border-2 border-white bg-green-400 dark:border-neutral-900" />
             </div>
@@ -46,7 +50,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 <div className="flex items-center gap-1.5">
                     <Link href="/" passHref>
                         <h2 className="text-base font-semibold text-neutral-900 transition-colors hover:text-neutral-600 dark:text-neutral-100 dark:hover:text-neutral-300 lg:text-lg">
-                            Jeffrey Studios
+                            Anindita Amantaruna
                         </h2>
                     </Link>
                     <Tooltip title="Verified">
@@ -55,7 +59,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 </div>
 
                 <span className="hidden text-xs text-neutral-400 dark:text-neutral-600 lg:block">
-                    @jeffreystudios
+                    @whoszie._
                 </span>
 
                 {/* Role badge */}
