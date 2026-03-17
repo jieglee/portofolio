@@ -24,32 +24,32 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
         >
             {/* Avatar + status dot */}
             <div className="relative">
-<motion.div
-    whileHover={{ scale: 1.08 }}
-    transition={{ duration: 0.2 }}
-    style={{
-        width: expandMenu ? 72 : imageSize,
-        height: expandMenu ? 72 : imageSize,
-    }}
-    className="rounded-full overflow-hidden ring-2 ring-neutral-200 dark:ring-neutral-700 lg:hover:ring-neutral-400 lg:dark:hover:ring-neutral-500"
->
-    <Image
-        src="/images/runa gemoy.jpeg"
-        fill
-        alt="Anindita Amantaruna"
-        className="object-cover"
-        rounded="rounded-full"  
-    />
-</motion.div>
+                <motion.div
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.2 }}
+                    style={{
+                        width: expandMenu ? 72 : imageSize,
+                        height: expandMenu ? 72 : imageSize,
+                    }}
+                    className="rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"  // ⬅️ pakai ring-border & ring-primary
+                >
+                    <Image
+                        src="/images/runa gemoy.jpeg"
+                        fill
+                        alt="Anindita Amantaruna"
+                        className="object-cover"
+                        rounded="rounded-full"
+                    />
+                </motion.div>
                 {/* Online indicator */}
-                <span className="absolute bottom-1 right-1 h-3 w-3 rounded-full border-2 border-white bg-green-400 dark:border-neutral-900" />
+                <span className="absolute bottom-1 right-1 h-3 w-3 rounded-full border-2 border-background bg-green-400" />  {/* ⬅️ border-background */}
             </div>
 
             {/* Name + handle */}
             <div className="flex flex-col items-center gap-0.5 lg:mt-4">
                 <div className="flex items-center gap-1.5">
                     <Link href="/" passHref>
-                        <h2 className="text-base font-semibold text-neutral-900 transition-colors hover:text-neutral-600 dark:text-neutral-100 dark:hover:text-neutral-300 lg:text-lg">
+                        <h2 className="text-base font-semibold text-foreground transition-colors hover:text-foreground/70 lg:text-lg">  {/* ⬅️ text-foreground */}
                             Anindita Amantaruna
                         </h2>
                     </Link>
@@ -58,20 +58,13 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                     </Tooltip>
                 </div>
 
-                <span className="hidden text-xs text-neutral-400 dark:text-neutral-600 lg:block">
+                <span className="hidden text-xs text-muted-foreground lg:block">  {/* ⬅️ text-muted-foreground */}
                     @whoszie._
                 </span>
-
-                {/* Role badge */}
-                {/* <div className="mt-2 hidden lg:block">
-          <span className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
-            Frontend Developer
-          </span>
-        </div> */}
             </div>
 
             {/* Divider — desktop only */}
-            <div className="my-4 hidden h-px w-full bg-neutral-200 dark:bg-neutral-800 lg:block" />
+            <div className="my-4 hidden h-px w-full bg-border lg:block" />  {/* ⬅️ bg-border */}
 
             {/* Toggles */}
             <div className={cn(

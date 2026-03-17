@@ -6,6 +6,13 @@ import {
     MdDarkMode as DarkModeIcon,
     MdLightMode as LightModeIcon,
 } from "react-icons/md";
+import { PiHeartFill as HeartIcon } from "react-icons/pi";
+
+const themes = [
+    { value: "light", icon: <LightModeIcon size={17} /> },
+    { value: "dark", icon: <DarkModeIcon size={17} /> },
+    { value: "pink", icon: <HeartIcon size={15} /> },
+];
 
 const ThemeToggle = () => {
     const { resolvedTheme, setTheme } = useTheme();
@@ -13,70 +20,71 @@ const ThemeToggle = () => {
 
     useEffect(() => setMounted(true), []);
 
-    // Placeholder biar layout gak shift saat SSR
     if (!mounted) {
         return (
-            <div className="h-10 w-22 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800" />
+            <div className="h-10 w-32 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800" />
         );
     }
 
-    const isLightMode = resolvedTheme === "light";
+    const currentIndex = themes.findIndex((t) => t.value === resolvedTheme) ?? 0;
+    const slideX = currentIndex * 32;
+
+    const getSliderClass = () => {
+        if (resolvedTheme === "pink") return "bg-pink-400";
+        if (resolvedTheme === "light") return "bg-neutral-300";
+        return "bg-neutral-700";
+    };
+
+    const getIconColor = (index: number) => {
+        if (currentIndex !== index) return "text-neutral-500";
+        if (resolvedTheme === "pink") return "text-white";
+        if (resolvedTheme === "light") return "text-neutral-700";
+        return "text-white";
+    };
 
     return (
         <div className="flex items-center justify-center">
-            {/* Desktop — sliding toggle */}
-            <div className="relative hidden items-center gap-2 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 dark:border-neutral-700 dark:bg-neutral-800 lg:flex">
+            {/* Desktop */}
+            <div className="relative hidden items-center gap-0 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 dark:border-neutral-700 dark:bg-neutral-800 lg:flex">
                 <motion.div
-                    className="absolute bottom-1 top-1 w-8 rounded-full bg-neutral-300 dark:bg-neutral-700"
-                    animate={{ x: isLightMode ? 0 : 40 }}
+                    className={`absolute bottom-1 top-1 w-8 rounded-full ${getSliderClass()}`}
+                    animate={{ x: slideX }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
-                <motion.button
-                    className="relative z-10 flex h-8 w-8 items-center justify-center transition duration-200"
-                    onClick={() => setTheme("light")}
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <motion.div
-                        className={`
-    transition-colors duration-200
-    ${isLightMode
-                                ? "text-white"
-                                : "text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"}
-  `}
+                {themes.map((theme, index) => (
+                    <motion.button
+                        key={theme.value}
+                        className="relative z-10 flex h-8 w-8 items-center justify-center"
+                        onClick={() => setTheme(theme.value)}
+                        whileHover={{ scale: 1.15 }}
+                        whileTap={{ scale: 0.9 }}
                     >
-                        <LightModeIcon size={17} />
-                    </motion.div>
-                </motion.button>
-                <motion.button
-                    className="relative z-10 flex h-8 w-8 items-center justify-center transition duration-200"
-                    onClick={() => setTheme("dark")}
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <motion.div
-                        className={`
-    transition-colors duration-200
-    ${!isLightMode
-                                ? "text-white"
-                                : "text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"}
-  `}
-                    >
-                        <DarkModeIcon size={17} />
-                    </motion.div>
-                </motion.button>
+                        <span className={`transition-colors duration-200 ${getIconColor(index)}`}>
+                            {theme.icon}
+                        </span>
+                    </motion.button>
+                ))}
             </div>
 
-            {/* Mobile — single toggle button */}
+            {/* Mobile — cycle through all 3 themes */}
             <button
                 className="flex items-center gap-2 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 transition duration-200 hover:scale-110 dark:border-neutral-700 dark:bg-neutral-800 lg:hidden"
-                onClick={() => setTheme(isLightMode ? "dark" : "light")}
+                onClick={() => {
+                    const next = themes[(currentIndex + 1) % themes.length];
+                    setTheme(next.value);
+                }}
             >
                 <motion.div
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-300 text-neutral-900 dark:bg-neutral-700 dark:text-neutral-50"
+                    className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                        resolvedTheme === "pink"
+                            ? "bg-pink-400 text-white"
+                            : resolvedTheme === "light"
+                            ? "bg-neutral-300 text-neutral-900"
+                            : "bg-neutral-700 text-neutral-50"
+                    }`}
                 >
-                    {isLightMode ? <DarkModeIcon size={17} /> : <LightModeIcon size={17} />}
+                    {themes[(currentIndex + 1) % themes.length].icon}
                 </motion.div>
             </button>
         </div>
