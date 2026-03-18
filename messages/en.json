@@ -14,5 +14,14 @@
     "copyright": "COPYRIGHT © 2026",
     "name": "Anindita Amantaruna",
     "rights": "All rights reserved."
+  },
+  "Home": {
+    "greeting": "Hi, I'm Anindita Amantaruna 👋",
+    "location": "Based in West Java, Indonesia 🇮🇩",
+    "status": "Available for work",
+    "bio1": "A passionate Frontend Developer dedicated to building beautiful and functional digital experiences. I specialize in developing modern web and mobile applications using a clean, minimal aesthetic.",
+    "bio2": "My focus is on crafting interfaces that are not only visually appealing but also intuitive and accessible. I combine technical skills with an eye for design to ensure every project feels polished and purposeful.",
+    "skillsTitle": "Skills",
+    "skillsSubtitle": "My professional skills."
   }
 }

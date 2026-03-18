@@ -14,5 +14,14 @@
     "copyright": "HAK CIPTA © 2026",
     "name": "Anindita Amantaruna",
     "rights": "Semua hak dilindungi."
+  },
+  "Home": {
+    "greeting": "Hai, Saya Anindita Amantaruna 👋",
+    "location": "Tinggal di Jawa Barat, Indonesia 🇮🇩",
+    "status": "Tersedia untuk bekerja",
+    "bio1": "Seorang Frontend Developer yang bersemangat dalam membangun pengalaman digital yang indah dan fungsional. Saya spesialisasi dalam mengembangkan aplikasi web dan mobile modern dengan estetika yang bersih dan minimal.",
+    "bio2": "Fokus saya adalah merancang antarmuka yang tidak hanya menarik secara visual tetapi juga intuitif dan mudah diakses. Saya menggabungkan keahlian teknis dengan kepekaan desain untuk memastikan setiap proyek terasa sempurna.",
+    "skillsTitle": "Keahlian",
+    "skillsSubtitle": "Keahlian profesional saya."
   }
 }
