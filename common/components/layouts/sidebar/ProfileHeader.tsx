@@ -48,7 +48,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 <div className="flex items-center gap-1.5">
                     <Link href="/" passHref>
                         <h2 className="text-base font-semibold text-foreground transition-colors hover:text-foreground/70 lg:text-lg">  {/* ⬅️ text-foreground */}
-                            Anindita Amantaruna
+                            Runa
                         </h2>
                     </Link>
                     <Tooltip title="Verified">
