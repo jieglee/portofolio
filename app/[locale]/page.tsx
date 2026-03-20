@@ -17,8 +17,6 @@ export default async function Home() {
           <span className="text-muted-foreground">•</span>
           {t("location")}
         </span>
-        <span>•</span>
-        <span>{t("status")}</span>
       </div>
 
       {/* Divider */}
