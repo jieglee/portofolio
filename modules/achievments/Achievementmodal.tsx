@@ -50,9 +50,7 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                         onClick={onClose}
                     />
 
-                    {/* Centering wrapper */}
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-                        {/* Modal expand dari card pakai layoutId */}
                         <motion.div
                             layoutId={`card-${selected.id}`}
                             className="relative flex w-full max-w-2xl flex-col overflow-hidden border border-border bg-card shadow-2xl md:flex-row pointer-events-auto"
@@ -72,7 +70,6 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                     />
                                 </div>
 
-                                {/* Type badge */}
                                 <motion.span
                                     layoutId={`card-type-${selected.id}`}
                                     className="absolute left-3 top-3 rounded-full border border-white/10 bg-black/40 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-white backdrop-blur-sm"
@@ -80,7 +77,6 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                     {selected.type}
                                 </motion.span>
 
-                                {/* Issuer */}
                                 <div className="absolute bottom-3 left-3 right-3">
                                     <motion.span
                                         layoutId={`card-issuer-${selected.id}`}
@@ -91,7 +87,7 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                 </div>
                             </motion.div>
 
-                            {/* RIGHT: detail panel fade in setelah expand */}
+                            {/* RIGHT: detail panel */}
                             <motion.div
                                 className="flex flex-1 flex-col overflow-hidden"
                                 initial={{ opacity: 0 }}
@@ -171,27 +167,29 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                     </motion.div>
                                 </div>
 
-                                {/* Footer CTA */}
-                                <motion.div
-                                    className="border-t border-border p-4"
-                                    initial={{ opacity: 0, y: 8 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.22, type: "spring", stiffness: 260, damping: 22 }}
-                                >
-                                    <a
-                                        href={selected.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition hover:opacity-80"
+                                {/* Footer CTA — hanya muncul kalau ada link */}
+                                {selected.link && (
+                                    <motion.div
+                                        className="border-t border-border p-4"
+                                        initial={{ opacity: 0, y: 8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.22, type: "spring", stiffness: 260, damping: 22 }}
                                     >
-                                        View Certificate
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                            <polyline points="15 3 21 3 21 9" />
-                                            <line x1="10" y1="14" x2="21" y2="3" />
-                                        </svg>
-                                    </a>
-                                </motion.div>
+                                        <a
+                                            href={selected.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition hover:opacity-80"
+                                        >
+                                            View Certificate
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                                <polyline points="15 3 21 3 21 9" />
+                                                <line x1="10" y1="14" x2="21" y2="3" />
+                                            </svg>
+                                        </a>
+                                    </motion.div>
+                                )}
                             </motion.div>
                         </motion.div>
                     </div>

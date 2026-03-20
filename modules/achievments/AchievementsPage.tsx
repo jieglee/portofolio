@@ -12,7 +12,7 @@ export type Achievement = {
     issuer: string;
     date: string;
     credential: string;
-    link: string;
+    link?: string;
     type: string;
     category: string;
     image: string;
@@ -31,6 +31,17 @@ const achievements: Achievement[] = [
         category: "Web Development",
         image: "/images/sertifikat-dicoding-1.png",
         tags: ["Web", "Programming"],
+    },
+    {
+        id: 2,
+        title: "Software Engineering Level Test X",
+        issuer: "SMK Taruna Bhakti",
+        date: "Juni 2025",
+        credential: "",
+        type: "Certificate",
+        category: "Software Engineering",
+        image: "/images/sertifikat-uji-level-x.jpeg",
+        tags: ["RPL", "Software Engineering"],
     },
 ];
 
@@ -121,7 +132,6 @@ export default function AchievementsPage() {
                     )}
                 </div>
 
-                {/* Modal — cukup selected, ga perlu modalVisible */}
                 <AchievementModal selected={selected} onClose={closeModal} />
             </div>
         </MotionConfig>
