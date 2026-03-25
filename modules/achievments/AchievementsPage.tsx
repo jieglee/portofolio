@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { MotionConfig } from "framer-motion";
+import { MotionConfig, motion } from "framer-motion";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
 import AchievementCard from "../achievments/Achievementcard";
 import AchievementModal from "../achievments/Achievementmodal";
@@ -45,6 +45,26 @@ const achievements: Achievement[] = [
     },
 ];
 
+const pageContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.13, delayChildren: 0.05 } },
+};
+
+const pageItem = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 22 } },
+};
+
+const gridContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
+
+const cardItem = {
+    hidden: { opacity: 0, y: 24, scale: 0.97 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 260, damping: 22 } },
+};
+
 export default function AchievementsPage() {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
@@ -71,19 +91,27 @@ export default function AchievementsPage() {
 
     return (
         <MotionConfig transition={{ type: "spring", stiffness: 280, damping: 26 }}>
-            <div className="px-6 py-10 lg:px-12">
-                <h1 className="text-2xl font-bold text-foreground lg:text-3xl">
-                    Achievements
-                </h1>
-                <p className="mt-1 text-sm text-muted-foreground">
-                    A collection of certificates and badges I have earned throughout my
-                    professional and academic journey.
-                </p>
+            <motion.div
+                className="px-6 py-10 lg:px-12"
+                variants={pageContainer}
+                initial="hidden"
+                animate="visible"
+            >
+                {/* Header */}
+                <motion.div variants={pageItem}>
+                    <h1 className="text-2xl font-bold text-foreground lg:text-3xl">
+                        Achievements
+                    </h1>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                        A collection of certificates and badges I have earned throughout my
+                        professional and academic journey.
+                    </p>
+                </motion.div>
 
-                <div className="my-6 border-t border-dashed border-border" />
+                <motion.div variants={pageItem} className="my-6 border-t border-dashed border-border" />
 
                 {/* Search */}
-                <div className="relative w-64">
+                <motion.div variants={pageItem} className="relative w-64">
                     <svg
                         className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                         xmlns="http://www.w3.org/2000/svg"
@@ -104,36 +132,39 @@ export default function AchievementsPage() {
                         onChange={(e) => setSearch(e.target.value)}
                         className="w-full rounded-full border border-border bg-muted py-2 pl-9 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                     />
-                </div>
+                </motion.div>
 
-                <p className="mt-4 text-sm text-muted-foreground">
+                <motion.p variants={pageItem} className="mt-4 text-sm text-muted-foreground">
                     Total: {filtered.length}
-                </p>
+                </motion.p>
 
                 {/* Grid */}
-                <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {filtered.map((item) =>
-                        isDark ? (
-                            <SpotlightCard
-                                key={item.id}
-                                className="!p-0 !rounded-2xl !bg-neutral-900 !border-neutral-800"
-                                spotlightColor="rgba(255, 255, 255, 0.15)"
-                            >
-                                <AchievementCard item={item} onShowDetail={openModal} />
-                            </SpotlightCard>
-                        ) : (
-                            <div
-                                key={item.id}
-                                className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-md"
-                            >
-                                <AchievementCard item={item} onShowDetail={openModal} />
-                            </div>
-                        )
-                    )}
-                </div>
+                <motion.div
+                    className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                    variants={gridContainer}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    {filtered.map((item) => (
+                        <motion.div key={item.id} variants={cardItem}>
+                            {isDark ? (
+                                <SpotlightCard
+                                    className="!p-0 !rounded-2xl !bg-neutral-900 !border-neutral-800"
+                                    spotlightColor="rgba(255, 255, 255, 0.15)"
+                                >
+                                    <AchievementCard item={item} onShowDetail={openModal} />
+                                </SpotlightCard>
+                            ) : (
+                                <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-md">
+                                    <AchievementCard item={item} onShowDetail={openModal} />
+                                </div>
+                            )}
+                        </motion.div>
+                    ))}
+                </motion.div>
 
                 <AchievementModal selected={selected} onClose={closeModal} />
-            </div>
+            </motion.div>
         </MotionConfig>
     );
 }
