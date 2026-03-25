@@ -1,14 +1,14 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Introduction from "./Introduction";
 import Education from "./Education";
 
-const container = {
+const container: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.13, delayChildren: 0.05 } },
 };
 
-const item = {
+const item: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 22 } },
 };

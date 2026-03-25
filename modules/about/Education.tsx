@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
@@ -37,14 +37,14 @@ const educationList = [
     },
 ];
 
-const container = {
+const container: Variants = {
     hidden: {},
     visible: {
         transition: { staggerChildren: 0.12, delayChildren: 0.05 },
     },
 };
 
-const cardVariant = {
+const cardVariant: Variants = {
     hidden: { opacity: 0, y: 16, scale: 0.97 },
     visible: {
         opacity: 1,
@@ -57,14 +57,12 @@ const cardVariant = {
 function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
     return (
         <>
-            {/* Top accent bar */}
             <div
                 className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-xl transition-all duration-300 ${
                     edu.current ? "bg-foreground" : "bg-border"
                 }`}
             />
 
-            {/* Hover glow overlay */}
             <motion.div
                 className="pointer-events-none absolute inset-0 rounded-xl"
                 initial={{ opacity: 0 }}
@@ -76,7 +74,6 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
                 }}
             />
 
-            {/* Logo + year */}
             <div className="flex items-start justify-between gap-2 mt-1">
                 <motion.div
                     className="h-9 w-9 flex-shrink-0 rounded-lg border border-border bg-muted flex items-center justify-center overflow-hidden text-xs font-medium text-muted-foreground"
@@ -110,7 +107,6 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
                 </span>
             </div>
 
-            {/* Info */}
             <div className="flex flex-col gap-0.5">
                 <p className="text-sm font-medium text-foreground leading-tight">
                     {edu.school}
@@ -121,7 +117,6 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
                 )}
             </div>
 
-            {/* Footer */}
             <div className="mt-auto flex items-center justify-between">
                 <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
                     <svg
@@ -160,7 +155,6 @@ export default function Education() {
 
     return (
         <section>
-            {/* Section label */}
             <div className="mb-5 flex items-center gap-3">
                 <span className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground whitespace-nowrap">
                     Education
@@ -168,7 +162,6 @@ export default function Education() {
                 <div className="h-px flex-1 bg-border" />
             </div>
 
-            {/* Grid */}
             <motion.div
                 className="grid grid-cols-1 gap-2.5 sm:grid-cols-3"
                 variants={container}

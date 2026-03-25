@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { MotionConfig, motion } from "framer-motion";
+import { MotionConfig, motion, Variants } from "framer-motion";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
 import AchievementCard from "../achievments/Achievementcard";
 import AchievementModal from "../achievments/Achievementmodal";
@@ -45,22 +45,22 @@ const achievements: Achievement[] = [
     },
 ];
 
-const pageContainer = {
+const pageContainer: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.13, delayChildren: 0.05 } },
 };
 
-const pageItem = {
+const pageItem: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 22 } },
 };
 
-const gridContainer = {
+const gridContainer: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
-const cardItem = {
+const cardItem: Variants = {
     hidden: { opacity: 0, y: 24, scale: 0.97 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 260, damping: 22 } },
 };
@@ -97,7 +97,6 @@ export default function AchievementsPage() {
                 initial="hidden"
                 animate="visible"
             >
-                {/* Header */}
                 <motion.div variants={pageItem}>
                     <h1 className="text-2xl font-bold text-foreground lg:text-3xl">
                         Achievements
@@ -110,7 +109,6 @@ export default function AchievementsPage() {
 
                 <motion.div variants={pageItem} className="my-6 border-t border-dashed border-border" />
 
-                {/* Search */}
                 <motion.div variants={pageItem} className="relative w-64">
                     <svg
                         className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
@@ -138,7 +136,6 @@ export default function AchievementsPage() {
                     Total: {filtered.length}
                 </motion.p>
 
-                {/* Grid */}
                 <motion.div
                     className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
                     variants={gridContainer}

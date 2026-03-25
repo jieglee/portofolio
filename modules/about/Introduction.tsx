@@ -1,12 +1,12 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
-const container = {
+const container: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 };
 
-const item = {
+const item: Variants = {
     hidden: { opacity: 0, y: 16 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 22 } },
 };
@@ -14,7 +14,6 @@ const item = {
 export default function Introduction() {
     return (
         <section>
-            {/* Section label */}
             <div className="mb-6 flex items-center gap-3">
                 <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Introduction
@@ -28,8 +27,6 @@ export default function Introduction() {
                 initial="hidden"
                 animate="visible"
             >
-
-                {/* Text */}
                 <div className="flex flex-col gap-4">
                     <motion.div variants={item}>
                         <h2 className="text-xl font-bold text-foreground">
