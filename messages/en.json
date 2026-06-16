@@ -1,5 +1,5 @@
 {
-  "Navigation": {
+"Navigation": {
     "Home": "Home",
     "About": "About",
     "Projects": "Projects",
@@ -7,9 +7,10 @@
     "Dashboard": "Dashboard",
     "Contact": "Contact",
     "Contents": "Contents",
+    "Creations": "Creations",
     "Chat Room": "Chat Room",
     "Smart Talk": "Smart Talk"
-  },
+}, 
   "Footer": {
     "copyright": "COPYRIGHT © 2026",
     "name": "Anindita Amantaruna",
