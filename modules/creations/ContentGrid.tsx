@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Eye, Heart, ExternalLink, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,6 +23,7 @@ function parseNum(val: string): number {
 }
 
 export default function ContentGrid({ items, platform, loading = false }: ContentGridProps) {
+    const t = useTranslations("Creations");
     const [sort, setSort] = useState<SortOption>(null);
 
     const sorted = sort
@@ -45,17 +47,17 @@ export default function ContentGrid({ items, platform, loading = false }: Conten
                     {loading ? (
                         <span className="inline-block w-24 h-4 rounded bg-muted animate-pulse" />
                     ) : (
-                        <>Showing <span className="text-foreground font-medium">{items.length}</span> posts</>
+                        <>{t("showing", { count: items.length })}</>
                     )}
                 </p>
 
                 <div className="flex items-center gap-1 rounded-lg border border-border bg-muted/30 p-0.5">
                     {([
-                        { key: "views" as const, label: "Most Views" },
-                        { key: "likes" as const, label: "Most Likes" },
-                        { key: "comments" as const, label: "Most Comments" },
-                        { key: "newest" as const, label: "Newest" },
-                        { key: "oldest" as const, label: "Oldest" },
+                        { key: "views" as const, label: t("sort_views") },
+                        { key: "likes" as const, label: t("sort_likes") },
+                        { key: "comments" as const, label: t("sort_comments") },
+                        { key: "newest" as const, label: t("sort_newest") },
+                        { key: "oldest" as const, label: t("sort_oldest") },
                     ]).map((opt) => (
                         <button
                             key={opt.key}

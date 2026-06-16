@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     type Platform,
@@ -14,6 +15,7 @@ import StatsCard from "./StatsCard";
 import ContentGrid from "./ContentGrid";
 
 export default function CreationsPage() {
+    const t = useTranslations("Creations");
     const [platform, setPlatform] = useState<Platform>("tiktok");
 
     // TikTok live data state
@@ -105,9 +107,9 @@ export default function CreationsPage() {
         <div className="w-full flex flex-col gap-6 py-6 px-4 sm:px-6">
             {/* Header */}
             <div className="flex flex-col gap-1">
-                <h1 className="text-2xl font-semibold text-foreground tracking-tight">Creations</h1>
+                <h1 className="text-2xl font-semibold text-foreground tracking-tight">{t("title")}</h1>
                 <p className="text-sm text-muted-foreground">
-                    A collection of my coding content and creative works.
+                    {t("subtitle")}
                 </p>
             </div>
 
@@ -116,25 +118,6 @@ export default function CreationsPage() {
             {/* Platform Tabs */}
             <PlatformTabs active={platform} onChange={setPlatform} />
 
-            {/* Live indicator */}
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                {loading ? (
-                    <>
-                        <span className="size-2 rounded-full bg-yellow-400 animate-pulse" />
-                        <span>Loading live data...</span>
-                    </>
-                ) : platformError ? (
-                    <>
-                        <span className="size-2 rounded-full bg-red-400" />
-                        <span>Using cached data</span>
-                    </>
-                ) : (platform === "tiktok" && tiktokVideos) || (platform === "instagram" && igPosts) ? (
-                    <>
-                        <span className="size-2 rounded-full bg-green-400" />
-                        <span>Live from {platform === "tiktok" ? "TikTok" : "Instagram"}</span>
-                    </>
-                ) : null}
-            </div>
 
             {/* Stats Card */}
             <AnimatePresence mode="wait">

@@ -24,5 +24,23 @@
     "bio2": "Fokus saya adalah merancang antarmuka yang tidak hanya menarik secara visual tetapi juga intuitif dan mudah diakses. Saya menggabungkan keahlian teknis dengan kepekaan desain untuk memastikan setiap proyek terasa sempurna.",
     "skillsTitle": "Keahlian",
     "skillsSubtitle": "Keahlian profesional saya."
+  },
+  "Creations": {
+    "title": "Kreasi",
+    "subtitle": "Kumpulan konten coding dan karya kreatif saya.",
+    "sort_views": "Terbanyak Dilihat",
+    "sort_likes": "Terbanyak Disukai",
+    "sort_comments": "Terbanyak Dikomentari",
+    "sort_newest": "Terbaru",
+    "sort_oldest": "Terlama",
+    "showing": "Menampilkan {count} postingan",
+    "stat_followers": "Pengikut",
+    "stat_following": "Mengikuti",
+    "stat_likes": "Suka",
+    "stat_views": "Total Tayangan",
+    "stat_comments": "Total Komentar",
+    "stat_shares": "Total Bagikan",
+    "btn_tiktok": "Buka TikTok",
+    "btn_instagram": "Buka Instagram"
   }
 }

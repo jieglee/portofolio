@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { type Platform, type SocialStats } from "@/common/constants/creations";
@@ -10,31 +11,29 @@ interface StatsCardProps {
     stats: SocialStats;
 }
 
-const statItems = (stats: SocialStats) => [
-    { label: "Followers", value: stats.followers },
-    { label: "Following", value: stats.following },
-    { label: "Likes", value: stats.likes },
-    { label: "Total Views", value: stats.totalViews },
-    { label: "Total Comments", value: stats.totalComments },
-    { label: "Total Shares", value: stats.totalShares },
-];
-
-const platformConfig: Record<Platform, { label: string; color: string; bg: string }> = {
+const platformConfig: Record<Platform, { color: string; bg: string }> = {
     tiktok: {
-        label: "Open TikTok",
         color: "#ffffff",
         bg: "#010101",
     },
     instagram: {
-        label: "Open Instagram",
         color: "#ffffff",
         bg: "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
     },
 };
 
 export default function StatsCard({ platform, stats }: StatsCardProps) {
+    const t = useTranslations("Creations");
     const config = platformConfig[platform];
-    const items = statItems(stats);
+
+    const items = [
+        { label: t("stat_followers"), value: stats.followers },
+        { label: t("stat_following"), value: stats.following },
+        { label: t("stat_likes"), value: stats.likes },
+        { label: t("stat_views"), value: stats.totalViews },
+        { label: t("stat_comments"), value: stats.totalComments },
+        { label: t("stat_shares"), value: stats.totalShares },
+    ];
 
     return (
         <motion.div
@@ -86,7 +85,7 @@ export default function StatsCard({ platform, stats }: StatsCardProps) {
                     }}
                 >
                     <ExternalLink className="w-3.5 h-3.5" />
-                    {config.label}
+                    {platform === "tiktok" ? t("btn_tiktok") : t("btn_instagram")}
                 </a>
             </div>
 

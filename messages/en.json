@@ -24,5 +24,23 @@
     "bio2": "My focus is on crafting interfaces that are not only visually appealing but also intuitive and accessible. I combine technical skills with an eye for design to ensure every project feels polished and purposeful.",
     "skillsTitle": "Skills",
     "skillsSubtitle": "My professional skills."
+  },
+  "Creations": {
+    "title": "Creations",
+    "subtitle": "A collection of my coding content and creative works.",
+    "sort_views": "Most Views",
+    "sort_likes": "Most Likes",
+    "sort_comments": "Most Comments",
+    "sort_newest": "Newest",
+    "sort_oldest": "Oldest",
+    "showing": "Showing {count} posts",
+    "stat_followers": "Followers",
+    "stat_following": "Following",
+    "stat_likes": "Likes",
+    "stat_views": "Total Views",
+    "stat_comments": "Total Comments",
+    "stat_shares": "Total Shares",
+    "btn_tiktok": "Open TikTok",
+    "btn_instagram": "Open Instagram"
   }
 }
