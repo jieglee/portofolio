@@ -47,13 +47,19 @@ export default function StatsCard({ platform, stats }: StatsCardProps) {
             {/* Profile row */}
             <div className="flex items-start gap-4">
                 <div className="relative shrink-0">
-                    <Image
-                        src={stats.avatar}
-                        alt={stats.displayName}
-                        width={64}
-                        height={64}
-                        className="rounded-full object-cover w-16 h-16"
-                    />
+                    {stats.avatar ? (
+                        <Image
+                            src={stats.avatar}
+                            alt={stats.displayName}
+                            width={64}
+                            height={64}
+                            className="rounded-full object-cover w-16 h-16"
+                        />
+                    ) : (
+                        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-lg font-semibold">
+                            {stats.displayName?.charAt(0)?.toUpperCase() || "?"}
+                        </div>
+                    )}
                 </div>
 
                 <div className="flex-1 min-w-0">

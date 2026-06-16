@@ -35,8 +35,10 @@ export default function CreationsPage() {
                 if (data.videos?.length) setTiktokVideos(data.videos);
                 if (data.stats) {
                     setTiktokStats({
-                        ...SOCIAL_STATS.tiktok, // fallback fields (totalViews, totalComments, dll)
-                        ...data.stats,
+                        ...SOCIAL_STATS.tiktok,
+                        ...Object.fromEntries(
+                            Object.entries(data.stats).filter(([, v]) => v !== "" && v !== null && v !== undefined)
+                        ),
                     });
                 }
             } catch (e: any) {
