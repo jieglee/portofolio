@@ -11,6 +11,7 @@ type SortOption = "views" | "likes" | "date";
 interface ContentGridProps {
     items: ContentItem[];
     platform: Platform;
+    loading?: boolean;
 }
 
 function parseNum(val: string): number {
@@ -20,7 +21,7 @@ function parseNum(val: string): number {
     return parseFloat(clean) || 0;
 }
 
-export default function ContentGrid({ items, platform }: ContentGridProps) {
+export default function ContentGrid({ items, platform, loading = false }: ContentGridProps) {
     const [sort, setSort] = useState<SortOption>("views");
 
     const sorted = [...items].sort((a, b) => {
@@ -36,7 +37,11 @@ export default function ContentGrid({ items, platform }: ContentGridProps) {
             {/* Toolbar */}
             <div className="flex items-center justify-between">
                 <p className="text-sm text-muted-foreground">
-                    Showing <span className="text-foreground font-medium">{items.length}</span> posts
+                    {loading ? (
+                        <span className="inline-block w-24 h-4 rounded bg-muted animate-pulse" />
+                    ) : (
+                        <>Showing <span className="text-foreground font-medium">{items.length}</span> posts</>
+                    )}
                 </p>
 
                 <div className="flex items-center gap-1 rounded-lg border border-border bg-muted/30 p-0.5">
@@ -44,7 +49,8 @@ export default function ContentGrid({ items, platform }: ContentGridProps) {
                         <button
                             key={opt}
                             onClick={() => setSort(opt)}
-                            className="relative px-3 py-1.5 text-xs font-medium rounded-md transition-colors duration-150"
+                            disabled={loading}
+                            className="relative px-3 py-1.5 text-xs font-medium rounded-md transition-colors duration-150 disabled:opacity-40"
                             style={{
                                 color: sort === opt ? "var(--foreground)" : "var(--muted-foreground)",
                                 background: sort === opt ? "var(--background)" : "transparent",
@@ -59,22 +65,36 @@ export default function ContentGrid({ items, platform }: ContentGridProps) {
             {/* Grid */}
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={`${platform}-${sort}`}
+                    key={`${platform}-${sort}-${loading}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className={`grid gap-3 ${isVertical
+                    className={`grid gap-3 ${
+                        isVertical
                             ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
                             : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-3"
-                        }`}
+                    }`}
                 >
-                    {sorted.map((item, i) => (
-                        <ContentCard key={item.id} item={item} index={i} isVertical={isVertical} />
-                    ))}
+                    {loading
+                        ? Array.from({ length: 8 }).map((_, i) => (
+                              <SkeletonCard key={i} isVertical={isVertical} />
+                          ))
+                        : sorted.map((item, i) => (
+                              <ContentCard key={item.id} item={item} index={i} isVertical={isVertical} />
+                          ))}
                 </motion.div>
             </AnimatePresence>
         </div>
+    );
+}
+
+function SkeletonCard({ isVertical }: { isVertical: boolean }) {
+    return (
+        <div
+            className="rounded-xl overflow-hidden border border-border bg-muted/20 animate-pulse"
+            style={{ aspectRatio: isVertical ? "9/16" : "1/1" }}
+        />
     );
 }
 
@@ -124,7 +144,7 @@ function ContentCard({
             <motion.div
                 animate={{ opacity: hovered ? 1 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-3 gap-2"
+                className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-3 gap-2"
             >
                 <p className="text-white text-xs font-medium leading-snug line-clamp-2">{item.title}</p>
                 <div className="flex items-center gap-3">

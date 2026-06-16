@@ -26,19 +26,20 @@ export interface ContentItem {
     date: string;
 }
 
+// Static fallback data — akan di-replace live data dari API kalau berhasil
 export const SOCIAL_STATS: Record<Platform, SocialStats> = {
     tiktok: {
-        username: "satriaabaharii",
-        displayName: "Satria Bahari",
-        followers: "2.8K",
-        following: "81",
-        likes: "106.4K",
-        totalViews: "1.6M",
-        totalComments: "1.4K",
-        totalShares: "7.9K",
-        totalPosts: "97",
-        bio: "💻 Software Engineer 🚀 Building scalable apps ✨ Sharing daily tech tips & tricks",
-        profileUrl: "https://www.tiktok.com/@satriaabaharii",
+        username: "whoszie._",
+        displayName: "whoszie",
+        followers: "—",
+        following: "—",
+        likes: "—",
+        totalViews: "—",
+        totalComments: "—",
+        totalShares: "—",
+        totalPosts: "—",
+        bio: "",
+        profileUrl: "https://www.tiktok.com/@whoszie._",
         avatar: "/images/runa gemoy.jpeg",
     },
     instagram: {
@@ -57,67 +58,18 @@ export const SOCIAL_STATS: Record<Platform, SocialStats> = {
     },
 };
 
+// Static fallback content items (TikTok akan di-replace live, Instagram tetap static)
 export const CONTENT_ITEMS: ContentItem[] = [
-    // TikTok
+    // TikTok fallback
     {
         id: "tt1",
         platform: "tiktok",
-        thumbnail: "https://placehold.co/300x400/1a1a2e/ffffff?text=One+Day",
-        title: "One day build: Full Stack App dalam 24 jam",
-        views: "245K",
-        likes: "18.2K",
-        url: "https://www.tiktok.com/@satriaabaharii",
-        date: "2024-11-01",
-    },
-    {
-        id: "tt2",
-        platform: "tiktok",
-        thumbnail: "https://placehold.co/300x400/16213e/ffffff?text=VS+Code",
-        title: "Extension terbaik di VS Code yang wajib lo install",
-        views: "189K",
-        likes: "14.7K",
-        url: "https://www.tiktok.com/@satriaabaharii",
-        date: "2024-10-15",
-    },
-    {
-        id: "tt3",
-        platform: "tiktok",
-        thumbnail: "https://placehold.co/300x400/0f3460/ffffff?text=Localhost",
-        title: "Share localhost ke siapapun cuma pakai fitur bawaan VS Code",
-        views: "312K",
-        likes: "22.1K",
-        url: "https://www.tiktok.com/@satriaabaharii",
-        date: "2024-10-02",
-    },
-    {
-        id: "tt4",
-        platform: "tiktok",
-        thumbnail: "https://placehold.co/300x400/533483/ffffff?text=Next.js",
-        title: "Bikin portofolio Next.js yang bikin HRD terkesan",
-        views: "98K",
-        likes: "8.9K",
-        url: "https://www.tiktok.com/@satriaabaharii",
-        date: "2024-09-20",
-    },
-    {
-        id: "tt5",
-        platform: "tiktok",
-        thumbnail: "https://placehold.co/300x400/2d132c/ffffff?text=React",
-        title: "5 React hooks yang jarang diketahui developer junior",
-        views: "176K",
-        likes: "13.4K",
-        url: "https://www.tiktok.com/@satriaabaharii",
-        date: "2024-09-05",
-    },
-    {
-        id: "tt6",
-        platform: "tiktok",
-        thumbnail: "https://placehold.co/300x400/1b1b2f/ffffff?text=Git",
-        title: "Git tips yang bikin workflow lo 10x lebih cepat",
-        views: "134K",
-        likes: "10.2K",
-        url: "https://www.tiktok.com/@satriaabaharii",
-        date: "2024-08-18",
+        thumbnail: "https://placehold.co/300x400/1a1a2e/ffffff?text=TikTok",
+        title: "Loading TikTok videos...",
+        views: "—",
+        likes: "—",
+        url: "https://www.tiktok.com/@whoszie._",
+        date: "",
     },
     // Instagram
     {
@@ -180,4 +132,4 @@ export const CONTENT_ITEMS: ContentItem[] = [
         url: "https://www.instagram.com/satriabahari_",
         date: "2024-08-25",
     },
-];  
+];
