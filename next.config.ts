@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "*.tiktokcdn-eu.com",
       },
+      {
+        protocol: "https",
+        hostname: "*.tiktokcdn-us.com",
+      },
     ],
   },
 };

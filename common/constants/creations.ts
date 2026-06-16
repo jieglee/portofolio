@@ -30,7 +30,7 @@ export interface ContentItem {
 export const SOCIAL_STATS: Record<Platform, SocialStats> = {
     tiktok: {
         username: "whoszie._",
-        displayName: "whoszie",
+        displayName: "ji",
         followers: "—",
         following: "—",
         likes: "—",

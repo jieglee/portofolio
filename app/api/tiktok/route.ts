@@ -43,8 +43,19 @@ export async function GET() {
 
         const statsData = statsRes.ok ? await statsRes.json() : null;
 
-        // 3. Parse video list
+        // 3. Parse video list and compute aggregate stats from raw data
         const videoList = userData?.data?.videos ?? [];
+
+        const rawVideos = videoList.map((v: any) => ({
+            play_count: v.play_count ?? 0,
+            digg_count: v.digg_count ?? 0,
+            comment_count: v.comment_count ?? 0,
+            share_count: v.share_count ?? 0,
+        }));
+
+        const totalViews = rawVideos.reduce((s: number, v: any) => s + v.play_count, 0);
+        const totalComments = rawVideos.reduce((s: number, v: any) => s + v.comment_count, 0);
+        const totalShares = rawVideos.reduce((s: number, v: any) => s + v.share_count, 0);
 
         const videos = videoList.map((v: any) => ({
             id: v.video_id ?? v.id ?? String(Math.random()),
@@ -59,27 +70,23 @@ export async function GET() {
                 : "",
         }));
 
-        // 4. Parse user stats
-        const info = statsData?.data?.user ?? statsData?.data ?? null;
-        const stats = info
+        // 4. Parse user stats — actual path: data.user + data.stats
+        const userInfo = statsData?.data?.user ?? null;
+        const userStats = statsData?.data?.stats ?? null;
+        const stats = userInfo
             ? {
                   username: TIKTOK_USERNAME,
-                  displayName: info.nickname ?? info.user?.nickname ?? TIKTOK_USERNAME,
-                  followers: formatNumber(
-                      info.follower_count ?? info.stats?.followerCount ?? 0
-                  ),
-                  following: formatNumber(
-                      info.following_count ?? info.stats?.followingCount ?? 0
-                  ),
-                  likes: formatNumber(
-                      info.total_favorited ?? info.stats?.heartCount ?? 0
-                  ),
-                  totalPosts: formatNumber(
-                      info.video_count ?? info.stats?.videoCount ?? videos.length
-                  ),
-                  bio: info.signature ?? info.user?.signature ?? "",
+                  displayName: userInfo.nickname ?? TIKTOK_USERNAME,
+                  followers: formatNumber(userStats?.followerCount ?? 0),
+                  following: formatNumber(userStats?.followingCount ?? 0),
+                  likes: formatNumber(userStats?.heartCount ?? 0),
+                  totalViews: formatNumber(totalViews),
+                  totalComments: formatNumber(totalComments),
+                  totalShares: formatNumber(totalShares),
+                  totalPosts: formatNumber(userStats?.videoCount ?? videos.length),
+                  bio: userInfo.signature ?? "",
                   profileUrl: `https://www.tiktok.com/@${TIKTOK_USERNAME}`,
-                  avatar: info.avatar_larger ?? info.avatar_medium ?? info.user?.avatarLarger ?? "",
+                  avatar: userInfo.avatarLarger ?? userInfo.avatarMedium ?? "",
               }
             : null;
 

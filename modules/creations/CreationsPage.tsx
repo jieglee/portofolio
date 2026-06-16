@@ -78,28 +78,6 @@ export default function CreationsPage() {
             {/* Platform Tabs */}
             <PlatformTabs active={platform} onChange={setPlatform} />
 
-            {/* Live indicator buat TikTok */}
-            {platform === "tiktok" && (
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    {loading ? (
-                        <>
-                            <span className="size-2 rounded-full bg-yellow-400 animate-pulse" />
-                            <span>Loading live data...</span>
-                        </>
-                    ) : error ? (
-                        <>
-                            <span className="size-2 rounded-full bg-red-400" />
-                            <span>Using cached data</span>
-                        </>
-                    ) : tiktokVideos ? (
-                        <>
-                            <span className="size-2 rounded-full bg-green-400" />
-                            <span>Live from TikTok</span>
-                        </>
-                    ) : null}
-                </div>
-            )}
-
             {/* Stats Card */}
             <AnimatePresence mode="wait">
                 <StatsCard key={`stats-${platform}`} platform={platform} stats={stats} />
