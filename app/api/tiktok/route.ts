@@ -64,6 +64,7 @@ export async function GET() {
             title: v.title ?? v.desc ?? "TikTok video",
             views: formatNumber(v.play_count ?? v.statistics?.play_count ?? 0),
             likes: formatNumber(v.digg_count ?? v.statistics?.digg_count ?? 0),
+            comments: formatNumber(v.comment_count ?? 0),
             url: `https://www.tiktok.com/@${TIKTOK_USERNAME}/video/${v.video_id ?? v.id}`,
             date: v.create_time
                 ? new Date(v.create_time * 1000).toISOString().split("T")[0]

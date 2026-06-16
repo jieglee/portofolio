@@ -6,7 +6,7 @@ import { Eye, Heart, ExternalLink, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { type ContentItem, type Platform } from "@/common/constants/creations";
 
-type SortOption = "views" | "likes" | "date";
+type SortOption = "views" | "likes" | "comments" | "newest" | "oldest" | null;
 
 interface ContentGridProps {
     items: ContentItem[];
@@ -22,13 +22,18 @@ function parseNum(val: string): number {
 }
 
 export default function ContentGrid({ items, platform, loading = false }: ContentGridProps) {
-    const [sort, setSort] = useState<SortOption>("views");
+    const [sort, setSort] = useState<SortOption>(null);
 
-    const sorted = [...items].sort((a, b) => {
-        if (sort === "views") return parseNum(b.views) - parseNum(a.views);
-        if (sort === "likes") return parseNum(b.likes) - parseNum(a.likes);
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+    const sorted = sort
+        ? [...items].sort((a, b) => {
+              if (sort === "views") return parseNum(b.views) - parseNum(a.views);
+              if (sort === "likes") return parseNum(b.likes) - parseNum(a.likes);
+              if (sort === "comments") return parseNum(b.comments ?? "0") - parseNum(a.comments ?? "0");
+              if (sort === "newest") return new Date(b.date).getTime() - new Date(a.date).getTime();
+              if (sort === "oldest") return new Date(a.date).getTime() - new Date(b.date).getTime();
+              return 0;
+          })
+        : items;
 
     const isVertical = platform === "tiktok";
 
@@ -45,18 +50,24 @@ export default function ContentGrid({ items, platform, loading = false }: Conten
                 </p>
 
                 <div className="flex items-center gap-1 rounded-lg border border-border bg-muted/30 p-0.5">
-                    {(["views", "likes", "date"] as SortOption[]).map((opt) => (
+                    {([
+                        { key: "views" as const, label: "Most Views" },
+                        { key: "likes" as const, label: "Most Likes" },
+                        { key: "comments" as const, label: "Most Comments" },
+                        { key: "newest" as const, label: "Newest" },
+                        { key: "oldest" as const, label: "Oldest" },
+                    ]).map((opt) => (
                         <button
-                            key={opt}
-                            onClick={() => setSort(opt)}
+                            key={opt.key}
+                            onClick={() => setSort(sort === opt.key ? null : opt.key)}
                             disabled={loading}
                             className="relative px-3 py-1.5 text-xs font-medium rounded-md transition-colors duration-150 disabled:opacity-40"
                             style={{
-                                color: sort === opt ? "var(--foreground)" : "var(--muted-foreground)",
-                                background: sort === opt ? "var(--background)" : "transparent",
+                                color: sort === opt.key ? "var(--foreground)" : "var(--muted-foreground)",
+                                background: sort === opt.key ? "var(--background)" : "transparent",
                             }}
                         >
-                            {opt === "views" ? "Most Views" : opt === "likes" ? "Most Likes" : "Latest"}
+                            {opt.label}
                         </button>
                     ))}
                 </div>
