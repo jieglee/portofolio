@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
+import { useTranslations } from "next-intl";
 import {
     type GithubContributionDay,
     type GithubStats,
@@ -12,9 +13,9 @@ import {
     LEVEL_COLORS,
 } from "@/common/constants/github";
 
-const MONTH_LABELS = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+const MONTH_KEYS = [
+    "jan", "feb", "mar", "apr", "may", "jun",
+    "jul", "aug", "sep", "oct", "nov", "dec",
 ];
 
 function HeartCell({
@@ -43,6 +44,7 @@ function HeartCell({
 }
 
 export default function GithubContributions() {
+    const t = useTranslations("Dashboard.Github");
     const [days, setDays] = useState<GithubContributionDay[]>([]);
     const [stats, setStats] = useState<GithubStats | null>(null);
     const [loading, setLoading] = useState(true);
@@ -76,7 +78,7 @@ export default function GithubContributions() {
         if (!firstValidDay) return;
         const month = new Date(firstValidDay.date).getMonth();
         if (month !== lastMonth) {
-            monthLabels.push({ label: MONTH_LABELS[month], weekIndex: wi });
+            monthLabels.push({ label: t(`months.${MONTH_KEYS[month]}`), weekIndex: wi });
             lastMonth = month;
         }
     });
@@ -89,11 +91,11 @@ export default function GithubContributions() {
                     <div className="flex items-center gap-2">
                         <Github className="w-5 h-5 text-foreground" />
                         <h3 className="font-semibold text-foreground text-base">
-                            GitHub Contributions
+                            {t("title")}
                         </h3>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                        My GitHub activity over the past year.
+                        {t("subtitle")}
                     </p>
                 </div>
                 <a
@@ -108,17 +110,17 @@ export default function GithubContributions() {
 
             {error ? (
                 <p className="text-sm text-muted-foreground py-8 text-center">
-                    Couldn&apos;t load GitHub data right now.
+                    {t("error")}
                 </p>
             ) : (
                 <>
                     {/* Stat cards */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {[
-                            { label: "Total", value: stats?.total },
-                            { label: "This Week", value: stats?.thisWeek },
-                            { label: "Best", value: stats?.best },
-                            { label: "Average", value: stats?.average, suffix: " / days" },
+                            { label: t("total"), value: stats?.total },
+                            { label: t("thisWeek"), value: stats?.thisWeek },
+                            { label: t("best"), value: stats?.best },
+                            { label: t("average"), value: stats?.average, suffix: ` / ${t("days")}` },
                         ].map((item) => (
                             <div
                                 key={item.label}
@@ -184,7 +186,7 @@ export default function GithubContributions() {
                                                     transition={{ duration: 0.2, delay: (wi * 7 + di) * 0.0015 }}
                                                     title={
                                                         day.date
-                                                            ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${day.date}`
+                                                            ? t("tooltip", { count: day.count, date: day.date })
                                                             : undefined
                                                     }
                                                 >
@@ -204,11 +206,11 @@ export default function GithubContributions() {
 
                     {/* Legend */}
                     <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <span>Less</span>
+                        <span>{t("less")}</span>
                         {LEVEL_COLORS.map((color, i) => (
                             <HeartCell key={i} color={color} />
                         ))}
-                        <span>More</span>
+                        <span>{t("more")}</span>
                     </div>
                 </>
             )}

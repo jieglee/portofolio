@@ -25,6 +25,34 @@
     "skillsTitle": "Keahlian",
     "skillsSubtitle": "Keahlian profesional saya."
   },
+  {
+  "Dashboard": {
+    "Github": {
+      "title": "Kontribusi GitHub",
+      "subtitle": "Aktivitas GitHub saya selama setahun terakhir.",
+      "error": "Gagal memuat data GitHub saat ini.",
+      "total": "Total",
+      "thisWeek": "Minggu Ini",
+      "best": "Terbaik",
+      "average": "Rata-rata",
+      "days": "hari",
+      "less": "Sedikit",
+      "more": "Banyak",
+      "tooltip": "{count, plural, =0 {Tidak ada kontribusi} other {# kontribusi}} pada {date}",
+      "months": {
+        "jan": "Jan",
+        "feb": "Feb",
+        "mar": "Mar",
+        "apr": "Apr",
+        "may": "Mei",
+        "jun": "Jun",
+        "jul": "Jul",
+        "aug": "Agu",
+        "sep": "Sep",
+        "oct": "Okt",
+        "nov": "Nov",
+        "dec": "Des"
+      }, 
   "Creations": {
     "title": "Kreasi",
     "subtitle": "Kumpulan konten coding dan karya kreatif saya.",

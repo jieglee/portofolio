@@ -42,5 +42,33 @@
     "stat_shares": "Total Shares",
     "btn_tiktok": "Open TikTok",
     "btn_instagram": "Open Instagram"
-  }
-}
+  },
+
+  "Dashboard": {
+    "Github": {
+      "title": "GitHub Contributions",
+      "subtitle": "My GitHub activity over the past year.",
+      "error": "Couldn't load GitHub data right now.",
+      "total": "Total",
+      "thisWeek": "This Week",
+      "best": "Best",
+      "average": "Average",
+      "days": "days",
+      "less": "Less",
+      "more": "More",
+      "tooltip": "{count, plural, =0 {No contributions} one {# contribution} other {# contributions}} on {date}",
+      "months": {
+        "jan": "Jan",
+        "feb": "Feb",
+        "mar": "Mar",
+        "apr": "Apr",
+        "may": "May",
+        "jun": "Jun",
+        "jul": "Jul",
+        "aug": "Aug",
+        "sep": "Sep",
+        "oct": "Oct",
+        "nov": "Nov",
+        "dec": "Dec"
+      }
+    }
