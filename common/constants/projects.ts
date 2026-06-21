@@ -30,8 +30,8 @@ export const PROJECTS: ProjectItem[] = [
     title: "Personal Portfolio v1",
     description:
       "My first personal portfolio website built with vanilla HTML, CSS, and JavaScript — featuring a typed.js intro, skills showcase, and a project gallery.",
-    thumbnail: "https://placehold.co/800x450/1a0a2e/c084fc?text=Portfolio+v1",
-    featured: true,
+    thumbnail: "/images/projects/personal-portfolio-v1.png", 
+    featured: false,
     techStack: ["html5", "css3", "javascript", "typedjs", "fontawesome"],
     sourceUrl: "https://github.com/jieglee/deploy-portofolio",
     demoUrl: "https://jieglee.github.io/deploy-portofolio/",
