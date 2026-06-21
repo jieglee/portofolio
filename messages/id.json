@@ -25,7 +25,6 @@
     "skillsTitle": "Keahlian",
     "skillsSubtitle": "Keahlian profesional saya."
   },
-  {
   "Dashboard": {
     "Github": {
       "title": "Kontribusi GitHub",
@@ -52,7 +51,8 @@
         "oct": "Okt",
         "nov": "Nov",
         "dec": "Des"
-      }, 
+      }
+    },
   "Creations": {
     "title": "Kreasi",
     "subtitle": "Kumpulan konten coding dan karya kreatif saya.",
@@ -71,4 +71,5 @@
     "btn_tiktok": "Buka TikTok",
     "btn_instagram": "Buka Instagram"
   }
+}
 }
