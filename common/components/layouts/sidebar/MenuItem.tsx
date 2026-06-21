@@ -17,7 +17,6 @@ const MenuItem = ({
     icon,
     onClick,
     className = "",
-    isHover,
     children,
     isExclusive,
 }: MenuItemProps) => {

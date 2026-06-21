@@ -11,7 +11,6 @@ import ThemeToggle from "./ThemeToogle";
 import IntlToggle from "./IntToogle";
 
 const Profile = () => {
-    const [width, setWidth] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
 
     const { isOpen, toggleMenu } = useMenu();
@@ -19,11 +18,10 @@ const Profile = () => {
     const imageSize = isMobile ? 40 : 100;
 
     useEffect(() => {
-        setWidth(window.innerWidth);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsMobile(window.innerWidth < 769);
 
         const handleResize = () => {
-            setWidth(window.innerWidth);
             setIsMobile(window.innerWidth < 769);
         };
 

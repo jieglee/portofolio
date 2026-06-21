@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Pin } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { type ProjectItem } from "@/common/constants/projects";
+import { TECH_MAP } from "@/common/constants/tech-icons";
 
 interface ProjectCardProps {
   project: ProjectItem;
@@ -50,15 +51,20 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Tech stack icons */}
         <div className="flex items-center gap-2 flex-wrap mt-1">
-          {project.techStack.map((tech) => (
-            <div
-              key={tech.name}
-              title={tech.name}
-              className="w-7 h-7 rounded-md bg-muted/60 border border-border flex items-center justify-center text-xs"
-            >
-              {tech.icon}
-            </div>
-          ))}
+          {project.techStack.map((key) => {
+            const tech = TECH_MAP[key];
+            const { Icon } = tech;
+            return (
+              <div
+                key={key}
+                title={tech.label}
+                className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                style={{ background: tech.bg }}
+              >
+                <Icon size={16} color={tech.color} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </motion.div>

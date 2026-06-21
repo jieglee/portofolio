@@ -1,5 +1,20 @@
 import { NextResponse } from "next/server";
 
+interface TikTokVideo {
+    video_id?: string;
+    id?: string;
+    origin_cover?: string;
+    cover?: string;
+    title?: string;
+    desc?: string;
+    play_count?: number;
+    digg_count?: number;
+    comment_count?: number;
+    share_count?: number;
+    create_time?: number;
+    statistics?: { play_count?: number; digg_count?: number };
+}
+
 const TIKTOK_USERNAME = "whoszie._";
 const RAPIDAPI_HOST = "tiktok-video-no-watermark2.p.rapidapi.com";
 
@@ -44,20 +59,27 @@ export async function GET() {
         const statsData = statsRes.ok ? await statsRes.json() : null;
 
         // 3. Parse video list and compute aggregate stats from raw data
-        const videoList = userData?.data?.videos ?? [];
+        const videoList = (userData?.data?.videos ?? []) as TikTokVideo[];
 
-        const rawVideos = videoList.map((v: any) => ({
+        interface RawVideo {
+            play_count: number;
+            digg_count: number;
+            comment_count: number;
+            share_count: number;
+        }
+
+        const rawVideos = videoList.map((v: TikTokVideo): RawVideo => ({
             play_count: v.play_count ?? 0,
             digg_count: v.digg_count ?? 0,
             comment_count: v.comment_count ?? 0,
             share_count: v.share_count ?? 0,
         }));
 
-        const totalViews = rawVideos.reduce((s: number, v: any) => s + v.play_count, 0);
-        const totalComments = rawVideos.reduce((s: number, v: any) => s + v.comment_count, 0);
-        const totalShares = rawVideos.reduce((s: number, v: any) => s + v.share_count, 0);
+        const totalViews = rawVideos.reduce((s: number, v: RawVideo) => s + v.play_count, 0);
+        const totalComments = rawVideos.reduce((s: number, v: RawVideo) => s + v.comment_count, 0);
+        const totalShares = rawVideos.reduce((s: number, v: RawVideo) => s + v.share_count, 0);
 
-        const videos = videoList.map((v: any) => ({
+        const videos = videoList.map((v: TikTokVideo) => ({
             id: v.video_id ?? v.id ?? String(Math.random()),
             platform: "tiktok" as const,
             thumbnail: v.origin_cover ?? v.cover ?? "",
@@ -92,9 +114,10 @@ export async function GET() {
             : null;
 
         return NextResponse.json({ videos, stats });
-    } catch (err: any) {
-        console.error("[TikTok API]", err.message);
-        return NextResponse.json({ error: err.message }, { status: 500 });
+    } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : "Unknown error";
+        console.error("[TikTok API]", msg);
+        return NextResponse.json({ error: msg }, { status: 500 });
     }
 }
 

@@ -1,5 +1,19 @@
 import { NextResponse } from "next/server";
 
+interface InstagramEdge {
+    node: {
+        id: string;
+        display_url?: string;
+        shortcode?: string;
+        taken_at_timestamp?: number;
+        edge_media_preview_like?: { count?: number };
+        edge_media_to_comment?: { count?: number };
+        edge_media_to_caption?: {
+            edges?: { node?: { text?: string } }[];
+        };
+    };
+}
+
 const INSTAGRAM_USERNAME = "whoszie._";
 const RAPIDAPI_HOST =
     process.env.INSTAGRAM_RAPIDAPI_HOST ?? "instagram-cheapest.p.rapidapi.com";
@@ -33,21 +47,32 @@ export async function GET() {
             throw new Error("Invalid API response");
         }
 
-        const user = body.data.user;
+        const user = body.data.user as {
+            full_name?: string;
+            biography?: string;
+            profile_pic_url_hd?: string;
+            profile_pic_url?: string;
+            edge_followed_by?: { count?: number };
+            edge_follow?: { count?: number };
+            edge_owner_to_timeline_media?: {
+                count?: number;
+                edges?: InstagramEdge[];
+            };
+        };
 
         // Extract posts from edge_owner_to_timeline_media
-        const rawEdges = user.edge_owner_to_timeline_media?.edges ?? [];
+        const rawEdges: InstagramEdge[] = user.edge_owner_to_timeline_media?.edges ?? [];
 
         const totalLikes = rawEdges.reduce(
-            (s: number, e: any) => s + (e.node.edge_media_preview_like?.count ?? 0),
+            (s: number, e) => s + (e.node.edge_media_preview_like?.count ?? 0),
             0
         );
         const totalComments = rawEdges.reduce(
-            (s: number, e: any) => s + (e.node.edge_media_to_comment?.count ?? 0),
+            (s: number, e) => s + (e.node.edge_media_to_comment?.count ?? 0),
             0
         );
 
-        const posts = rawEdges.map((e: any) => {
+        const posts = rawEdges.map((e) => {
             const n = e.node;
             const caption =
                 n.edge_media_to_caption?.edges?.[0]?.node?.text ?? "";
@@ -82,9 +107,10 @@ export async function GET() {
         };
 
         return NextResponse.json({ posts, stats });
-    } catch (err: any) {
-        console.error("[Instagram API]", err.message);
-        return NextResponse.json({ error: err.message }, { status: 500 });
+    } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : "Unknown error";
+        console.error("[Instagram API]", msg);
+        return NextResponse.json({ error: msg }, { status: 500 });
     }
 }
 

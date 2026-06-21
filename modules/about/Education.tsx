@@ -1,7 +1,6 @@
 "use client";
 import { motion, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
 
 const educationList = [
@@ -149,9 +148,7 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
 
 export default function Education() {
     const { resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => { setMounted(true); }, []);
-    const isDark = mounted && resolvedTheme === "dark";
+    const isDark = resolvedTheme === "dark";
 
     return (
         <section>

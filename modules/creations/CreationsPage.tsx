@@ -22,18 +22,16 @@ export default function CreationsPage() {
     const [tiktokVideos, setTiktokVideos] = useState<ContentItem[] | null>(null);
     const [tiktokStats, setTiktokStats] = useState<SocialStats | null>(null);
     const [tiktokLoading, setTiktokLoading] = useState(false);
-    const [tiktokError, setTiktokError] = useState<string | null>(null);
 
     // Instagram live data state
     const [igPosts, setIgPosts] = useState<ContentItem[] | null>(null);
     const [igStats, setIgStats] = useState<SocialStats | null>(null);
     const [igLoading, setIgLoading] = useState(false);
-    const [igError, setIgError] = useState<string | null>(null);
+
 
     useEffect(() => {
         const fetchTikTok = async () => {
             setTiktokLoading(true);
-            setTiktokError(null);
             try {
                 const res = await fetch("/api/tiktok");
                 if (!res.ok) throw new Error("Gagal fetch TikTok data");
@@ -48,9 +46,9 @@ export default function CreationsPage() {
                         ),
                     });
                 }
-            } catch (e: any) {
-                console.warn("[CreationsPage] TikTok fetch failed, using static data:", e.message);
-                setTiktokError(e.message);
+            } catch (e: unknown) {
+                const msg = e instanceof Error ? e.message : "Unknown error";
+                console.warn("[CreationsPage] TikTok fetch failed, using static data:", msg);
             } finally {
                 setTiktokLoading(false);
             }
@@ -58,7 +56,6 @@ export default function CreationsPage() {
 
         const fetchInstagram = async () => {
             setIgLoading(true);
-            setIgError(null);
             try {
                 const res = await fetch("/api/instagram");
                 if (!res.ok) throw new Error("Gagal fetch Instagram data");
@@ -73,9 +70,9 @@ export default function CreationsPage() {
                         ),
                     });
                 }
-            } catch (e: any) {
-                console.warn("[CreationsPage] Instagram fetch failed, using static data:", e.message);
-                setIgError(e.message);
+            } catch (e: unknown) {
+                const msg = e instanceof Error ? e.message : "Unknown error";
+                console.warn("[CreationsPage] Instagram fetch failed, using static data:", msg);
             } finally {
                 setIgLoading(false);
             }
@@ -101,7 +98,6 @@ export default function CreationsPage() {
               : CONTENT_ITEMS.filter((c) => c.platform === platform);
 
     const loading = platform === "tiktok" ? tiktokLoading : igLoading;
-    const platformError = platform === "tiktok" ? tiktokError : igError;
 
     return (
         <div className="w-full flex flex-col gap-6 py-6 px-4 sm:px-6">

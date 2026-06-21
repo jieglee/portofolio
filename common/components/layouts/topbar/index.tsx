@@ -13,13 +13,28 @@ import { cn } from "@/lib/utils"
 
 import { GROUPS, SOCIAL_LINKS } from "@/common/constants/topbar"
 
+interface GroupItem {
+    title: string;
+    href: string;
+}
+
+interface NavGroupProps {
+    group: {
+        id: string;
+        icon: React.ReactNode;
+        items: GroupItem[];
+    };
+    pathname: string;
+    t: (key: string) => string;
+}
+
 const NavGroup = ({
     group,
     pathname,
     t,
-}: any) => {
+}: NavGroupProps) => {
     const [open, setOpen] = useState(false)
-    const isActive = group.items.some((item: any) => pathname === item.href)
+            const isActive = group.items.some((item: GroupItem) => pathname === item.href)
 
     return (
         <div
@@ -45,7 +60,7 @@ const NavGroup = ({
                         exit={{ opacity: 0, y: -6 }}
                         className="absolute left-1/2 top-full mt-2 w-40 -translate-x-1/2 rounded-xl border bg-white dark:bg-neutral-900 p-2 shadow-lg"
                     >
-                        {group.items.map((item: any) => (
+                        {group.items.map((item: GroupItem) => (
                             <Link
                                 key={item.href}
                                 href={item.href}
