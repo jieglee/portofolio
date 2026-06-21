@@ -17,6 +17,31 @@ const MONTH_LABELS = [
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
 
+function HeartCell({
+    color,
+    size = 10,
+    className = "",
+}: {
+    color: string;
+    size?: number;
+    className?: string;
+}) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            width={size}
+            height={size}
+            className={className}
+            style={{ display: "block" }}
+        >
+            <path
+                d="M12 21s-7.5-4.7-10.2-9.3C-0.1 8 1.4 4 5.4 3.1 7.9 2.5 10.3 3.7 12 6c1.7-2.3 4.1-3.5 6.6-2.9 4 0.9 5.5 4.9 3.6 8.6C19.5 16.3 12 21 12 21z"
+                fill={color}
+            />
+        </svg>
+    );
+}
+
 export default function GithubContributions() {
     const [days, setDays] = useState<GithubContributionDay[]>([]);
     const [stats, setStats] = useState<GithubStats | null>(null);
@@ -123,9 +148,10 @@ export default function GithubContributions() {
                                 {Array.from({ length: 52 }).map((_, i) => (
                                     <div key={i} className="flex flex-col gap-1">
                                         {Array.from({ length: 7 }).map((_, j) => (
-                                            <div
+                                            <HeartCell
                                                 key={j}
-                                                className="w-2.5 h-2.5 rounded-sm bg-muted animate-pulse"
+                                                color="var(--muted)"
+                                                className="animate-pulse"
                                             />
                                         ))}
                                     </div>
@@ -153,22 +179,21 @@ export default function GithubContributions() {
                                             {week.map((day, di) => (
                                                 <motion.div
                                                     key={`${wi}-${di}`}
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: 1 }}
+                                                    initial={{ opacity: 0, scale: 0.5 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
                                                     transition={{ duration: 0.2, delay: (wi * 7 + di) * 0.0015 }}
                                                     title={
                                                         day.date
                                                             ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${day.date}`
                                                             : undefined
                                                     }
-                                                    className="w-2.5 h-2.5 rounded-sm"
-                                                    style={{
-                                                        background:
-                                                            day.count < 0
-                                                                ? "transparent"
-                                                                : LEVEL_COLORS[day.level],
-                                                    }}
-                                                />
+                                                >
+                                                    <HeartCell
+                                                        color={
+                                                            day.count < 0 ? "transparent" : LEVEL_COLORS[day.level]
+                                                        }
+                                                    />
+                                                </motion.div>
                                             ))}
                                         </div>
                                     ))}
@@ -181,11 +206,7 @@ export default function GithubContributions() {
                     <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                         <span>Less</span>
                         {LEVEL_COLORS.map((color, i) => (
-                            <div
-                                key={i}
-                                className="w-2.5 h-2.5 rounded-sm"
-                                style={{ background: color }}
-                            />
+                            <HeartCell key={i} color={color} />
                         ))}
                         <span>More</span>
                     </div>
