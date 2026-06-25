@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import { notFound } from "next/navigation";
 import { PROJECTS } from "@/common/constants/projects";
+import { routing } from "@/i18n/routing";
+import { setRequestLocale } from "next-intl/server";
 import ProjectDetailPage from "@/modules/projects/ProjectDetailPage";
 
 interface PageProps {
@@ -12,13 +14,17 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({
-    slug: p.slug,
-  }));
+  return routing.locales.flatMap((locale) =>
+    PROJECTS.map((p) => ({
+      slug: p.slug,
+      locale,
+    }))
+  );
 }
 
 export default async function Page({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
 
   const project = PROJECTS.find((p) => p.slug === slug);
 
