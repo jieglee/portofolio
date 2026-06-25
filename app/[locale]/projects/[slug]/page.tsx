@@ -33,8 +33,7 @@ export default async function Page({ params }: PageProps) {
       process.cwd(),
       "content",
       "projects",
-      slug,
-      "index.md"
+      `${slug}.md`
     );
 
     if (fs.existsSync(filePath)) {
