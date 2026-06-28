@@ -36,4 +36,14 @@ export const PROJECTS: ProjectItem[] = [
     sourceUrl: "https://github.com/jieglee/deploy-portofolio",
     demoUrl: "https://jieglee.github.io/deploy-portofolio/",
   },
+{
+    slug: "mytix-landingpage",
+    title: "MyTix — Cinema Ticket Landing Page",
+    description:
+        "A modern dark-themed cinema ticket booking landing page concept. Built with HTML and Tailwind CSS, featuring a movie showcase, ads carousel, partner logos, and responsive navbar.",
+    thumbnail: "/images/projects/mytix-landingpage.png",
+    techStack: ["html5", "tailwind", "javascript"],
+    sourceUrl: "https://github.com/jieglee/mytix-landingpage",
+    demoUrl: "https://mytix-landingpage.vercel.app/",
+},
 ];
