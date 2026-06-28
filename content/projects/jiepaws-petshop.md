@@ -1,6 +1,6 @@
 # 🐾 JiePaws — Pet Shop E-Commerce
 
-A fully functional pet shop e-commerce web app built with React + Vite and Tailwind CSS. Created as a school project (Grade 10, Semester 2) for the Software Engineering concentration at SMK Taruna Bhakti.
+A fully functional pet shop e-commerce web app built with React + Vite and Tailwind CSS. Created as a school project (Grade X, Semester 2) for the Software Engineering concentration at SMK Taruna Bhakti.
 
 ## 💡 Project Concept
 
