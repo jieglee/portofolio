@@ -5,6 +5,7 @@ import { MotionConfig, motion, Variants } from "framer-motion";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
 import AchievementCard from "../achievments/Achievementcard";
 import AchievementModal from "../achievments/Achievementmodal";
+import { achievements, type Achievement } from "@/common/constants/achievements";
 
 export type Achievement = {
     id: number;
@@ -19,31 +20,6 @@ export type Achievement = {
     tags: string[];
 };
 
-const achievements: Achievement[] = [
-    {
-        id: 1,
-        title: "Belajar Dasar Pemrograman Web",
-        issuer: "Dicoding",
-        date: "November 2024",
-        credential: "2VX3R7DL3ZYQ",
-        link: "https://www.dicoding.com/certificates/2VX3R7DL3ZYQ",
-        type: "Certificate",
-        category: "Web Development",
-        image: "/images/sertifikat-dicoding-1.png",
-        tags: ["Web", "Programming"],
-    },
-    {
-        id: 2,
-        title: "Software Engineering Level Test X",
-        issuer: "SMK Taruna Bhakti",
-        date: "Juni 2025",
-        credential: "",
-        type: "Certificate",
-        category: "Software Engineering",
-        image: "/images/sertifikat-uji-level-x.jpeg",
-        tags: ["RPL", "Software Engineering"],
-    },
-];
 
 // Sort by date descending (terbaru duluan)
 function parseDate(dateStr: string): number {
