@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { MotionConfig, motion, Variants } from "framer-motion";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
@@ -48,10 +48,13 @@ const cardItem: Variants = {
 
 export default function AchievementsPage() {
     const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
     const [search, setSearch] = useState("");
     const [selected, setSelected] = useState<Achievement | null>(null);
 
-    const isDark = resolvedTheme === "dark";
+    useEffect(() => { setMounted(true); }, []);
+
+    const isDark = mounted && resolvedTheme === "dark";
 
     const filtered = sortedAchievements.filter(
         (a) =>
