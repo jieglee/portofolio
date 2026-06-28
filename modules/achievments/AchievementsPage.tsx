@@ -45,6 +45,24 @@ const achievements: Achievement[] = [
     },
 ];
 
+// Sort by date descending (terbaru duluan)
+function parseDate(dateStr: string): number {
+    const months: Record<string, number> = {
+        januari: 0, februari: 1, maret: 2, april: 3, mei: 4, juni: 5,
+        juli: 6, agustus: 7, september: 8, oktober: 9, november: 10, desember: 11,
+        january: 0, february: 1, march: 2, april2: 3, may: 4, june: 5,
+        july: 6, august: 7, september2: 8, october: 9, november2: 10, december: 11,
+    };
+    const parts = dateStr.toLowerCase().split(" ");
+    const month = months[parts[0]] ?? 0;
+    const year = parseInt(parts[1]) || 0;
+    return year * 100 + month;
+}
+
+const sortedAchievements = [...achievements].sort(
+    (a, b) => parseDate(b.date) - parseDate(a.date)
+);
+
 const pageContainer: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.13, delayChildren: 0.05 } },
@@ -72,7 +90,7 @@ export default function AchievementsPage() {
 
     const isDark = resolvedTheme === "dark";
 
-    const filtered = achievements.filter(
+    const filtered = sortedAchievements.filter(
         (a) =>
             a.title.toLowerCase().includes(search.toLowerCase()) ||
             a.issuer.toLowerCase().includes(search.toLowerCase()) ||
