@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
 import Introduction from "./Introduction";
 import Education from "./Education";
@@ -14,6 +15,7 @@ const item: Variants = {
 };
 
 export default function AboutPage() {
+    const t = useTranslations("About");
     return (
         <motion.div
             className="px-6 py-10 lg:px-12"
@@ -22,9 +24,9 @@ export default function AboutPage() {
             animate="visible"
         >
             <motion.div variants={item}>
-                <h1 className="text-2xl font-bold text-foreground lg:text-3xl">About</h1>
+                <h1 className="text-2xl font-bold text-foreground lg:text-3xl">{t("title")}</h1>
                 <p className="mt-1 text-sm text-muted-foreground">
-                    A little bit about me and my educational background.
+                    {t("subtitle")}
                 </p>
             </motion.div>
 

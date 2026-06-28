@@ -11,7 +11,8 @@ export type TechKey =
   | "javascript"
   | "react"
   | "fontawesome"
-  | "typedjs";
+  | "typedjs"
+  | "illustrator";
 
 export interface ProjectItem {
   slug: string;
@@ -25,6 +26,17 @@ export interface ProjectItem {
 }
 
 export const PROJECTS: ProjectItem[] = [
+
+  {
+    slug: "dicoding-biodata-songkang",
+    title: "Song Kang — Biodata Website",
+    description:
+        "A simple biographical website about Korean actor Song Kang, built with pure HTML and CSS as part of the Dicoding 'Belajar Dasar Pemrograman Web' course.",
+    thumbnail: "https://placehold.co/800x450/00008B/7dd3fc?text=SONGKANG",
+    techStack: ["html5", "css3"],
+    sourceUrl: "https://github.com/jieglee/dicoding-biodata-songkang",
+    demoUrl: "https://dicoding-biodata-songkang.vercel.app/",
+},
   {
     slug: "personal-portfolio-v1",
     title: "Personal Portfolio v1",
@@ -45,5 +57,15 @@ export const PROJECTS: ProjectItem[] = [
     techStack: ["html5", "tailwind", "javascript"],
     sourceUrl: "https://github.com/jieglee/mytix-landingpage",
     demoUrl: "https://mytix-landingpage.vercel.app/",
+},
+{
+    slug: "hatsune-miku-cinnamoroll",
+    title: "Hatsune Miku × Cinnamoroll",
+    description:
+        "A digital illustration of Hatsune Miku reimagined in Cinnamoroll's cute chibi style, created using Adobe Illustrator.",
+    thumbnail: "/images/projects/Hatsune-Miku-Cinamoroll.jpg",
+    techStack: ["illustrator"],
+    sourceUrl: "",
+    demoUrl: "",
 },
 ];

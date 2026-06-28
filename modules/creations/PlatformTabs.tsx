@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { type Platform } from "@/common/constants/creations";
 
@@ -22,12 +23,13 @@ const InstagramIcon = () => (
     </svg>
 );
 
-const tabs: { id: Platform; label: string; icon: React.ReactNode }[] = [
-    { id: "tiktok", label: "TikTok", icon: <TikTokIcon /> },
-    { id: "instagram", label: "Instagram", icon: <InstagramIcon /> },
+const tabs: { id: Platform; labelKey: string; icon: React.ReactNode }[] = [
+    { id: "tiktok", labelKey: "tab_tiktok", icon: <TikTokIcon /> },
+    { id: "instagram", labelKey: "tab_instagram", icon: <InstagramIcon /> },
 ];
 
 export default function PlatformTabs({ active, onChange }: PlatformTabsProps) {
+    const t = useTranslations("Creations");
     return (
         <div className="relative flex rounded-xl border border-border bg-muted/30 p-1 gap-1">
             {tabs.map((tab) => (
@@ -48,7 +50,7 @@ export default function PlatformTabs({ active, onChange }: PlatformTabsProps) {
                     )}
                     <span className="relative z-10 flex items-center gap-2">
                         {tab.icon}
-                        {tab.label}
+                        {t(tab.labelKey)}
                     </span>
                 </button>
             ))}

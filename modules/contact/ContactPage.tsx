@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
 
 const pageContainer: Variants = {
@@ -25,9 +26,9 @@ const cardItem: Variants = {
 const socials = [
     {
         id: "gmail",
-        label: "Stay in Touch",
-        desc: "Reach out via email for inquiries or collaborations.",
-        btn: "Go to Gmail",
+        labelKey: "cardGmailTitle",
+        descKey: "cardGmailDesc",
+        btnKey: "cardGmailBtn",
         href: "mailto:your@gmail.com",
         span: "col-span-2",
         gradient: "from-red-600 via-red-500 to-rose-500",
@@ -39,9 +40,9 @@ const socials = [
     },
     {
         id: "instagram",
-        label: "Follow My Journey",
-        desc: "Follow my creative journey.",
-        btn: "Go to Instagram",
+        labelKey: "cardInstagramTitle",
+        descKey: "cardInstagramDesc",
+        btnKey: "cardInstagramBtn",
         href: "https://instagram.com/yourhandle",
         span: "col-span-1",
         gradient: "from-purple-600 via-pink-500 to-orange-400",
@@ -55,23 +56,23 @@ const socials = [
     },
     {
         id: "tiktok",
-        label: "Join the Fun",
-        desc: "Watch engaging and fun content.",
-        btn: "Go to Tiktok",
+        labelKey: "cardTiktokTitle",
+        descKey: "cardTiktokDesc",
+        btnKey: "cardTiktokBtn",
         href: "https://tiktok.com/@yourhandle",
         span: "col-span-1",
         gradient: "from-neutral-700 via-neutral-600 to-neutral-500",
         icon: (
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 opacity-90">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z" />
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />
             </svg>
         ),
     },
     {
         id: "github",
-        label: "Explore the Code",
-        desc: "Explore my open-source work.",
-        btn: "Go to Github",
+        labelKey: "cardGithubTitle",
+        descKey: "cardGithubDesc",
+        btnKey: "cardGithubBtn",
         href: "https://github.com/yourusername",
         span: "col-span-1",
         gradient: "from-slate-800 via-slate-700 to-slate-600",
@@ -84,6 +85,7 @@ const socials = [
 ];
 
 export default function ContactPage() {
+    const t = useTranslations("Contact");
     const [form, setForm] = useState({ name: "", email: "", message: "" });
     const [sent, setSent] = useState(false);
 
@@ -109,15 +111,15 @@ export default function ContactPage() {
         >
             {/* Header */}
             <motion.div variants={pageItem}>
-                <h1 className="text-2xl font-bold text-foreground lg:text-3xl">Contact</h1>
-                <p className="mt-1 text-sm text-muted-foreground">Let&apos;s get in touch.</p>
+                <h1 className="text-2xl font-bold text-foreground lg:text-3xl">{t("title")}</h1>
+                <p className="mt-1 text-sm text-muted-foreground">{t("subtitle")}</p>
             </motion.div>
 
             <motion.div variants={pageItem} className="my-6 border-t border-dashed border-border" />
 
             {/* Social label */}
             <motion.p variants={pageItem} className="mb-4 text-sm font-medium text-foreground">
-                Find me on social media
+                {t("socialLabel")}
             </motion.p>
 
             {/* Social grid */}
@@ -149,14 +151,14 @@ export default function ContactPage() {
 
                         {/* Text */}
                         <div className="relative z-10 flex flex-col gap-1 max-w-[70%]">
-                            <p className="text-sm font-semibold text-white leading-tight">{s.label}</p>
-                            <p className="text-[11px] text-white/70 leading-snug">{s.desc}</p>
+                            <p className="text-sm font-semibold text-white leading-tight">{t(s.labelKey)}</p>
+                            <p className="text-[11px] text-white/70 leading-snug">{t(s.descKey)}</p>
                         </div>
 
                         {/* Button */}
                         <div className="relative z-10 mt-3">
                             <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white backdrop-blur-sm transition-all duration-200 group-hover:bg-white/20">
-                                {s.btn}
+                                {t(s.btnKey)}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                                     <path d="M7 7h10v10M7 17 17 7" />
                                 </svg>
@@ -171,14 +173,14 @@ export default function ContactPage() {
 
             {/* Message form */}
             <motion.div variants={pageItem}>
-                <p className="mb-4 text-sm font-medium text-foreground">Or send me a message</p>
+                <p className="mb-4 text-sm font-medium text-foreground">{t("messageLabel")}</p>
 
                 <div className="flex flex-col gap-3">
                     <div className="grid grid-cols-2 gap-3">
                         <input
                             name="name"
                             type="text"
-                            placeholder="Name"
+                            placeholder={t("name")}
                             value={form.name}
                             onChange={handleChange}
                             className="rounded-xl border border-border bg-muted px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition"
@@ -186,7 +188,7 @@ export default function ContactPage() {
                         <input
                             name="email"
                             type="email"
-                            placeholder="Email"
+                            placeholder={t("email")}
                             value={form.email}
                             onChange={handleChange}
                             className="rounded-xl border border-border bg-muted px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition"
@@ -195,7 +197,7 @@ export default function ContactPage() {
 
                     <textarea
                         name="message"
-                        placeholder="Message"
+                        placeholder={t("message")}
                         rows={4}
                         value={form.message}
                         onChange={handleChange}
@@ -208,7 +210,7 @@ export default function ContactPage() {
                         whileTap={{ scale: 0.98 }}
                         className="w-full rounded-xl border border-border bg-muted py-2.5 text-sm font-medium text-foreground transition hover:bg-accent hover:text-accent-foreground"
                     >
-                        {sent ? "✓ Sent!" : "Send Email"}
+                        {sent ? t("sent") : t("send")}
                     </motion.button>
                 </div>
             </motion.div>

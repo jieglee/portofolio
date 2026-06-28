@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
 
 const container: Variants = {
@@ -12,11 +13,12 @@ const item: Variants = {
 };
 
 export default function Introduction() {
+    const t = useTranslations("About");
     return (
         <section>
             <div className="mb-6 flex items-center gap-3">
                 <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Introduction
+                    {t("introduction")}
                 </span>
                 <div className="h-px flex-1 bg-border" />
             </div>
@@ -33,20 +35,16 @@ export default function Introduction() {
                             Anindita Amantaruna Putri Roswanto
                         </h2>
                         <p className="mt-0.5 text-sm text-muted-foreground">
-                            Student · Depok, Indonesia
+                            {t("role")}
                         </p>
                     </motion.div>
 
                     <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
-                        Hi! I&apos;m Jiee — a passionate student at SMK Taruna Bhakti majoring in Software Engineering (RPL).
-                        I love building things for the web, from clean UI components to full-stack applications.
-                        Currently focused on leveling up my skills in Next.js, TypeScript, and React Native.
+                        {t("bio1")}
                     </motion.p>
 
                     <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
-                        When I&apos;m not coding, I enjoy exploring new tech stacks, working on side projects,
-                        and learning from the developer community. I believe in writing clean, maintainable code
-                        and creating experiences that feel intuitive and delightful.
+                        {t("bio2")}
                     </motion.p>
                 </div>
             </motion.div>

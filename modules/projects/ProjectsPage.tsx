@@ -1,18 +1,20 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { PROJECTS } from "@/common/constants/projects";
 import ProjectCard from "./ProjectCard";
 
 export default function ProjectsPage() {
+  const t = useTranslations("Projects");
   return (
     <div className="w-full flex flex-col gap-6 py-6 px-4 sm:px-6">
       {/* Header */}
       <div className="flex flex-col gap-1">
         <h1 className="text-2xl font-semibold text-foreground tracking-tight">
-          Projects
+          {t("title")}
         </h1>
         <p className="text-sm text-muted-foreground">
-          A showcase of personal and open-source projects I have built or contributed to.
+          {t("subtitle")}
         </p>
       </div>
 

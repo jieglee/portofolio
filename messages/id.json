@@ -10,7 +10,7 @@
     "Creations": "Kreasi",
     "Chat Room": "Ruang Obrolan",
     "Smart Talk": "Smart Talk"
-},
+  },
   "Footer": {
     "copyright": "HAK CIPTA © 2026",
     "name": "Anindita Amantaruna",
@@ -24,6 +24,88 @@
     "bio2": "Fokus saya adalah merancang antarmuka yang tidak hanya menarik secara visual tetapi juga intuitif dan mudah diakses. Saya menggabungkan keahlian teknis dengan kepekaan desain untuk memastikan setiap proyek terasa sempurna.",
     "skillsTitle": "Keahlian",
     "skillsSubtitle": "Keahlian profesional saya."
+  },
+  "About": {
+    "title": "Tentang",
+    "subtitle": "Sedikit cerita tentang saya dan latar belakang pendidikan.",
+    "introduction": "Pendahuluan",
+    "role": "Pelajar · Depok, Indonesia",
+    "bio1": "Hai! Saya Jiee — seorang Frontend Developer yang bersemangat dalam membangun pengalaman digital yang indah, fungsional, dan bermakna dengan kode yang bersih serta desain yang matang.",
+    "bio2": "Saat tidak sedang ngoding, saya suka mendengarkan musik, menonton film, mendesain, mengedit video, fotografi, dan mengeksplorasi kreativitas lain yang menjaga imajinasi dan inspirasi tetap hidup.",
+    "education": "Pendidikan",
+    "now": "Sekarang"
+  },
+  "Achievements": {
+    "title": "Pencapaian",
+    "subtitle": "Kumpulan sertifikat dan badge yang saya peroleh selama perjalanan profesional dan akademik.",
+    "search": "Cari...",
+    "total": "Total",
+    "showDetails": "Lihat Detail",
+    "credentialId": "ID Kredensial",
+    "issueDate": "Tanggal Terbit",
+    "type": "Tipe",
+    "category": "Kategori",
+    "viewCertificate": "Lihat Sertifikat"
+  },
+  "Creations": {
+    "title": "Kreasi",
+    "subtitle": "Kumpulan konten coding dan karya kreatif saya.",
+    "sort_views": "Terbanyak Dilihat",
+    "sort_likes": "Terbanyak Disukai",
+    "sort_comments": "Terbanyak Dikomentari",
+    "sort_newest": "Terbaru",
+    "sort_oldest": "Terlama",
+    "showing": "Menampilkan {count} postingan",
+    "stat_followers": "Pengikut",
+    "stat_following": "Mengikuti",
+    "stat_likes": "Suka",
+    "stat_views": "Total Tayangan",
+    "stat_comments": "Total Komentar",
+    "stat_shares": "Total Bagikan",
+    "btn_tiktok": "Buka TikTok",
+    "btn_instagram": "Buka Instagram",
+    "tab_tiktok": "TikTok",
+    "tab_instagram": "Instagram"
+  },
+  "Projects": {
+    "title": "Proyek",
+    "subtitle": "Kumpulan proyek pribadi dan open-source yang saya buat atau kontribusi.",
+    "featured": "Unggulan"
+  },
+  "ProjectDetail": {
+    "back": "Kembali",
+    "techStack": "Teknologi yang Digunakan :",
+    "sourceCode": "Kode Sumber",
+    "liveDemo": "Demo Langsung"
+  },
+  "Contact": {
+    "title": "Kontak",
+    "subtitle": "Mari terhubung.",
+    "socialLabel": "Temui saya di media sosial",
+    "messageLabel": "Atau kirim pesan",
+    "name": "Nama",
+    "email": "Email",
+    "message": "Pesan",
+    "send": "Kirim Email",
+    "sent": "✓ Terkirim!",
+    "cardGmailTitle": "Tetap Terhubung",
+    "cardGmailDesc": "Hubungi saya melalui email untuk pertanyaan atau kolaborasi.",
+    "cardGmailBtn": "Buka Gmail",
+    "cardInstagramTitle": "Ikuti Perjalanan Saya",
+    "cardInstagramDesc": "Ikuti perjalanan kreatif saya.",
+    "cardInstagramBtn": "Buka Instagram",
+    "cardTiktokTitle": "Ikuti Keseruan",
+    "cardTiktokDesc": "Tonton konten yang seru dan menarik.",
+    "cardTiktokBtn": "Buka TikTok",
+    "cardGithubTitle": "Jelajahi Kode",
+    "cardGithubDesc": "Jelajahi karya open-source saya.",
+    "cardGithubBtn": "Buka GitHub"
+  },
+  "Common": {
+    "verified": "Terverifikasi",
+    "switchTopbar": "Ganti ke topbar",
+    "switchTopbarLabel": "Ganti ke tata letak topbar",
+    "brand": "Jeffrey Studios"
   },
   "Dashboard": {
     "Github": {
@@ -53,23 +135,5 @@
         "dec": "Des"
       }
     }
-  },
-  "Creations": {
-    "title": "Kreasi",
-    "subtitle": "Kumpulan konten coding dan karya kreatif saya.",
-    "sort_views": "Terbanyak Dilihat",
-    "sort_likes": "Terbanyak Disukai",
-    "sort_comments": "Terbanyak Dikomentari",
-    "sort_newest": "Terbaru",
-    "sort_oldest": "Terlama",
-    "showing": "Menampilkan {count} postingan",
-    "stat_followers": "Pengikut",
-    "stat_following": "Mengikuti",
-    "stat_likes": "Suka",
-    "stat_views": "Total Tayangan",
-    "stat_comments": "Total Komentar",
-    "stat_shares": "Total Bagikan",
-    "btn_tiktok": "Buka TikTok",
-    "btn_instagram": "Buka Instagram"
   }
 }

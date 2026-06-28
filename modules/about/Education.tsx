@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
@@ -54,6 +55,7 @@ const cardVariant: Variants = {
 };
 
 function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
+    const t = useTranslations("About");
     return (
         <>
             <div
@@ -138,7 +140,7 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-50" />
                             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground" />
                         </span>
-                        Now
+                        {t("now")}
                     </span>
                 )}
             </div>
@@ -147,6 +149,7 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
 }
 
 export default function Education() {
+    const t = useTranslations("About");
     const { resolvedTheme } = useTheme();
     const isDark = resolvedTheme === "dark";
 
@@ -154,7 +157,7 @@ export default function Education() {
         <section>
             <div className="mb-5 flex items-center gap-3">
                 <span className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground whitespace-nowrap">
-                    Education
+                    {t("education")}
                 </span>
                 <div className="h-px flex-1 bg-border" />
             </div>

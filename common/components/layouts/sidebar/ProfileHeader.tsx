@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { MdVerified as VerifiedIcon } from "react-icons/md";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToogle";
@@ -15,6 +16,7 @@ interface ProfileHeaderProps {
 }
 
 const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
+    const t = useTranslations("Common");
     return (
         <div
             className={cn(
@@ -51,7 +53,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                             Runa
                         </h2>
                     </Link>
-                    <Tooltip title="Verified">
+                    <Tooltip title={t("verified")}>
                         <VerifiedIcon size={16} className="text-blue-400" />
                     </Tooltip>
                 </div>

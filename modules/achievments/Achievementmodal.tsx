@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { type Achievement } from "@/common/constants/achievements";
 
@@ -22,6 +23,7 @@ function DetailRow({ label, value, mono }: { label: string; value: string; mono?
 }
 
 export default function AchievementModal({ selected, onClose }: AchievementModalProps) {
+    const t = useTranslations("Achievements");
     useEffect(() => {
         const handler = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
@@ -132,10 +134,10 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                         }}
                                     >
                                         {[
-                                            { label: "Credential ID", value: selected.credential, mono: true },
-                                            { label: "Issue Date", value: selected.date },
-                                            { label: "Type", value: selected.type },
-                                            { label: "Category", value: selected.category },
+                                            { label: t("credentialId"), value: selected.credential, mono: true },
+                                            { label: t("issueDate"), value: selected.date },
+                                            { label: t("type"), value: selected.type },
+                                            { label: t("category"), value: selected.category },
                                         ].map((row) => (
                                             <motion.div
                                                 key={row.label}
@@ -181,7 +183,7 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                             rel="noopener noreferrer"
                                             className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition hover:opacity-80"
                                         >
-                                            View Certificate
+                                            {t("viewCertificate")}
                                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                                                 <polyline points="15 3 21 3 21 9" />

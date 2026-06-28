@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { MotionConfig, motion, Variants } from "framer-motion";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
@@ -47,6 +48,7 @@ const cardItem: Variants = {
 };
 
 export default function AchievementsPage() {
+    const t = useTranslations("Achievements");
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [search, setSearch] = useState("");
@@ -80,11 +82,10 @@ export default function AchievementsPage() {
             >
                 <motion.div variants={pageItem}>
                     <h1 className="text-2xl font-bold text-foreground lg:text-3xl">
-                        Achievements
+                        {t("title")}
                     </h1>
                     <p className="mt-1 text-sm text-muted-foreground">
-                        A collection of certificates and badges I have earned throughout my
-                        professional and academic journey.
+                        {t("subtitle")}
                     </p>
                 </motion.div>
 
@@ -106,7 +107,7 @@ export default function AchievementsPage() {
                     </svg>
                     <input
                         type="text"
-                        placeholder="Search..."
+                        placeholder={t("search")}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         className="w-full rounded-full border border-border bg-muted py-2 pl-9 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
@@ -114,7 +115,7 @@ export default function AchievementsPage() {
                 </motion.div>
 
                 <motion.p variants={pageItem} className="mt-4 text-sm text-muted-foreground">
-                    Total: {filtered.length}
+                    {t("total")}: {filtered.length}
                 </motion.p>
 
                 <motion.div

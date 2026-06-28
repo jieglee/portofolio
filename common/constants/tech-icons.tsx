@@ -14,6 +14,7 @@ import {
 import { FaFontAwesome } from "react-icons/fa6";
 import { type IconType } from "react-icons";
 import { type TechKey } from "@/common/constants/projects";
+import { DiIllustrator } from "react-icons/di";
 
 interface TechMeta {
   label: string;
@@ -101,4 +102,10 @@ export const TECH_MAP: Record<TechKey, TechMeta> = {
     color: "#000000",
     bg: "#F7DF1E",
   },
+  illustrator: {
+    label: "Adobe Illustrator",
+    Icon: DiIllustrator,
+    color: "#ffffff",
+    bg: "#FF9A00",
+},
 };

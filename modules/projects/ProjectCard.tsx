@@ -1,6 +1,7 @@
     "use client";
 
     import Image from "next/image";
+    import { useTranslations } from "next-intl";
     import { motion } from "framer-motion";
     import { Pin } from "lucide-react";
     import { useRouter } from "@/i18n/navigation";
@@ -14,6 +15,7 @@
 
     export default function ProjectCard({ project, index }: ProjectCardProps) {
     const router = useRouter();
+    const t = useTranslations("Projects");
 
     return (
         <motion.div
@@ -35,7 +37,7 @@
             {project.featured && (
             <div className="absolute top-3 right-3 flex items-center gap-1 bg-foreground text-background text-xs font-medium px-2.5 py-1 rounded-full">
                 <Pin className="w-3 h-3" />
-                Featured
+                {t("featured")}
             </div>
             )}
         </div>
