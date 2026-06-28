@@ -14,6 +14,8 @@ export type TechKey =
   | "typedjs"
   | "illustrator";
 
+  
+
 export interface ProjectItem {
   slug: string;
   title: string;
@@ -66,5 +68,15 @@ export const PROJECTS: ProjectItem[] = [
     techStack: ["html5", "css3"],
     sourceUrl: "https://github.com/jieglee/dicoding-biodata-songkang",
     demoUrl: "https://dicoding-biodata-songkang.vercel.app/",
+},
+{
+    slug: "jiepaws-petshop",
+    title: "JiePaws — Pet Shop E-Commerce",
+    description:
+        "A fully functional pet shop e-commerce app with cart, wishlist, checkout, and order history. Built with React + Vite and Tailwind CSS as a Grade 10 school project.",
+    thumbnail: "https://placehold.co/800x450/fff7ed/f97316?text=JiePaws+🐾",
+    techStack: ["react", "vite", "tailwind", "framer"],
+    sourceUrl: "https://github.com/jieglee/jiepaws-react-vite",
+    demoUrl: "https://jiepaws.vercel.app/",
 },
 ];

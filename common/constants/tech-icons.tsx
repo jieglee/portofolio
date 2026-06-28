@@ -15,6 +15,7 @@ import { FaFontAwesome } from "react-icons/fa6";
 import { type IconType } from "react-icons";
 import { type TechKey } from "@/common/constants/projects";
 import { DiIllustrator } from "react-icons/di";
+import { SiVite } from "react-icons/si";
 
 interface TechMeta {
   label: string;
@@ -107,5 +108,11 @@ export const TECH_MAP: Record<TechKey, TechMeta> = {
     Icon: DiIllustrator,
     color: "#ffffff",
     bg: "#FF9A00",
+},
+vite: {
+    label: "Vite",
+    Icon: SiVite,
+    color: "#ffffff",
+    bg: "#646CFF",
 },
 };
