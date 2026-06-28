@@ -78,11 +78,6 @@ This portfolio was also my **first deployed project** — hosted on GitHub Pages
 - Add real form validation on the client side
 - Expand the projects section with more recent works
 
-## 🌐 Live Preview
-
-🔗 [View Live Demo](https://jieglee.github.io/deploy-portofolio/)
-🔗 [View Source Code](https://github.com/jieglee/deploy-portofolio)
-
 ---
 
 > ⚠️ **Disclaimer:** This is version 1 of my portfolio — built at the very start of my web development journey. Some code may not follow modern best practices, but it represents a meaningful milestone in my growth as a developer.
