@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Achievement } from "./AchievementsPage";
+import { type Achievement } from "@/common/constants/achievements";
 
 interface AchievementModalProps {
     selected: Achievement | null;

@@ -7,19 +7,6 @@ import AchievementCard from "../achievments/Achievementcard";
 import AchievementModal from "../achievments/Achievementmodal";
 import { achievements, type Achievement } from "@/common/constants/achievements";
 
-export type Achievement = {
-    id: number;
-    title: string;
-    issuer: string;
-    date: string;
-    credential: string;
-    link?: string;
-    type: string;
-    category: string;
-    image: string;
-    tags: string[];
-};
-
 
 // Sort by date descending (terbaru duluan)
 function parseDate(dateStr: string): number {

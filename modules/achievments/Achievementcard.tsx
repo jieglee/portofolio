@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Achievement } from "./AchievementsPage";
+import { type Achievement } from "@/common/constants/achievements";
 
 interface AchievementCardProps {
     item: Achievement;
