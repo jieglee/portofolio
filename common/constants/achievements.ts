@@ -38,6 +38,17 @@ export const achievements: Achievement[] = [
     },
     {
         id: 3,
+        title: "Kunjungan Industri PT INTI & ITB",
+        issuer: "SMK Taruna Bhakti",
+        date: "Januari 2025",
+        credential: "",
+        type: "Certificate",
+        category: "Industry Visit",
+        image: "/images/achievments/sertifikat-kunjungan-industri.jpeg",
+        tags: ["Industry", "Networking"],
+    },
+    {
+        id: 4,
         title: "Belajar Dasar Pemrograman Web",
         issuer: "Dicoding",
         date: "November 2024",
