@@ -32,7 +32,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Song Kang — Biodata Website",
     description:
         "A simple biographical website about Korean actor Song Kang, built with pure HTML and CSS as part of the Dicoding 'Belajar Dasar Pemrograman Web' course.",
-    thumbnail: "https://placehold.co/800x450/00008B/7dd3fc?text=SONGKANG",
+    thumbnail: "/images/projects/dicoding-biodata-songkang.png",
     techStack: ["html5", "css3"],
     sourceUrl: "https://github.com/jieglee/dicoding-biodata-songkang",
     demoUrl: "https://dicoding-biodata-songkang.vercel.app/",
