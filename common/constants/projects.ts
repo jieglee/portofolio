@@ -26,16 +26,15 @@ export interface ProjectItem {
 }
 
 export const PROJECTS: ProjectItem[] = [
-
   {
-    slug: "dicoding-biodata-songkang",
-    title: "Song Kang — Biodata Website",
+    slug: "mytix-landingpage",
+    title: "MyTix — Cinema Ticket Landing Page",
     description:
-        "A simple biographical website about Korean actor Song Kang, built with pure HTML and CSS as part of the Dicoding 'Belajar Dasar Pemrograman Web' course.",
-    thumbnail: "/images/projects/dicoding-biodata-songkang.png",
-    techStack: ["html5", "css3"],
-    sourceUrl: "https://github.com/jieglee/dicoding-biodata-songkang",
-    demoUrl: "https://dicoding-biodata-songkang.vercel.app/",
+        "A modern dark-themed cinema ticket booking landing page concept. Built with HTML and Tailwind CSS, featuring a movie showcase, ads carousel, partner logos, and responsive navbar.",
+    thumbnail: "/images/projects/mytix-landingpage.png",
+    techStack: ["html5", "tailwind", "javascript"],
+    sourceUrl: "https://github.com/jieglee/mytix-landingpage",
+    demoUrl: "https://mytix-landingpage.vercel.app/",
 },
   {
     slug: "personal-portfolio-v1",
@@ -48,17 +47,7 @@ export const PROJECTS: ProjectItem[] = [
     sourceUrl: "https://github.com/jieglee/deploy-portofolio",
     demoUrl: "https://jieglee.github.io/deploy-portofolio/",
   },
-{
-    slug: "mytix-landingpage",
-    title: "MyTix — Cinema Ticket Landing Page",
-    description:
-        "A modern dark-themed cinema ticket booking landing page concept. Built with HTML and Tailwind CSS, featuring a movie showcase, ads carousel, partner logos, and responsive navbar.",
-    thumbnail: "/images/projects/mytix-landingpage.png",
-    techStack: ["html5", "tailwind", "javascript"],
-    sourceUrl: "https://github.com/jieglee/mytix-landingpage",
-    demoUrl: "https://mytix-landingpage.vercel.app/",
-},
-{
+  {
     slug: "hatsune-miku-cinnamoroll",
     title: "Hatsune Miku × Cinnamoroll",
     description:
@@ -67,5 +56,15 @@ export const PROJECTS: ProjectItem[] = [
     techStack: ["illustrator"],
     sourceUrl: "",
     demoUrl: "",
+},
+  {
+    slug: "dicoding-biodata-songkang",
+    title: "Song Kang — Biodata Website",
+    description:
+        "A simple biographical website about Korean actor Song Kang, built with pure HTML and CSS as part of the Dicoding 'Belajar Dasar Pemrograman Web' course.",
+    thumbnail: "/images/projects/dicoding-biodata-songkang.png",
+    techStack: ["html5", "css3"],
+    sourceUrl: "https://github.com/jieglee/dicoding-biodata-songkang",
+    demoUrl: "https://dicoding-biodata-songkang.vercel.app/",
 },
 ];
