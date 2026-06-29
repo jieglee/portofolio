@@ -196,13 +196,13 @@ export default function ProjectDetailPage({ project, content }: ProjectDetailPag
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border bg-muted"
+                className="group relative w-full aspect-video rounded-2xl overflow-hidden border border-border bg-muted"
             >
                 <Image
                     src={project.thumbnail}
                     alt={project.title}
                     fill
-                    className="object-contain"
+                    className="object-contain transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, 50vw"
                 />
             </motion.div>
