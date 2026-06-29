@@ -13,7 +13,8 @@ export type TechKey =
   | "fontawesome"
   | "typedjs"
   | "illustrator"
-  | "vite";
+  | "vite"
+  | "supabase";
 
   
 
@@ -34,7 +35,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Pemilihan Ketua OSIS — Web App",
     description:
         "A digital OSIS chairman election web app for SMK Taruna Bhakti. Group project for Program Analysis subject, featuring secure voting, candidate profiles, and live result charts.",
-    thumbnail: "https://placehold.co/800x450/eff6ff/2563eb?text=Pemilihan+OSIS",
+    thumbnail: "/images/projects/pemilihan-ketua-osis.jpeg",
     techStack: ["nextjs", "typescript", "tailwind", "framer"],
     sourceUrl: "https://github.com/Aghissulaiman/pemilihan-osis-web",
     demoUrl: "",
