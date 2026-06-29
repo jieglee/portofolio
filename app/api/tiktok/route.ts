@@ -27,8 +27,9 @@ export async function GET() {
 
     try {
         // 1. Fetch user info + video list
+        const limit = 30;
         const userRes = await fetch(
-            `https://${RAPIDAPI_HOST}/user/posts?unique_id=${encodeURIComponent(TIKTOK_USERNAME)}&count=12&cursor=0`,
+            `https://${RAPIDAPI_HOST}/user/posts?unique_id=${encodeURIComponent(TIKTOK_USERNAME)}&count=${limit}&cursor=0`,
             {
                 headers: {
                     "x-rapidapi-host": RAPIDAPI_HOST,
