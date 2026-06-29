@@ -30,6 +30,16 @@ export interface ProjectItem {
 
 export const PROJECTS: ProjectItem[] = [
   {
+    slug: "pemilihan-osis-web",
+    title: "Pemilihan Ketua OSIS — Web App",
+    description:
+        "A digital OSIS chairman election web app for SMK Taruna Bhakti. Group project for Program Analysis subject, featuring secure voting, candidate profiles, and live result charts.",
+    thumbnail: "https://placehold.co/800x450/eff6ff/2563eb?text=Pemilihan+OSIS",
+    techStack: ["nextjs", "typescript", "tailwind", "framer"],
+    sourceUrl: "https://github.com/Aghissulaiman/pemilihan-osis-web",
+    demoUrl: "",
+},
+  {
     slug: "jiepaws-petshop",
     title: "JiePaws — Pet Shop E-Commerce",
     description:

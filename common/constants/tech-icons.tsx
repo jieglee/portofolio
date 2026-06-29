@@ -16,6 +16,9 @@ import { type IconType } from "react-icons";
 import { type TechKey } from "@/common/constants/projects";
 import { DiIllustrator } from "react-icons/di";
 import { SiVite } from "react-icons/si";
+import { SiSupabase } from "react-icons/si";
+
+
 
 interface TechMeta {
   label: string;
@@ -25,6 +28,12 @@ interface TechMeta {
 }
 
 export const TECH_MAP: Record<TechKey, TechMeta> = {
+  supabase: {
+    label: "Supabase",
+    Icon: SiSupabase,
+    color: "#ffffff",
+    bg: "#3ECF8E",
+},
   nextjs: {
     label: "Next.js",
     Icon: SiNextdotjs,
