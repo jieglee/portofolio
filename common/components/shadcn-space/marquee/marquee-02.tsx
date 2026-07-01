@@ -6,25 +6,32 @@ type SkillItem = {
 };
 
 const skillsRow1: SkillItem[] = [
-    { icon: "https://cdn.simpleicons.org/react", name: "React" },
-    { icon: "https://cdn.simpleicons.org/nextdotjs/white", name: "Next.js" },
-    { icon: "https://cdn.simpleicons.org/typescript", name: "TypeScript" },
-    { icon: "https://cdn.simpleicons.org/tailwindcss", name: "Tailwind CSS" },
     { icon: "https://cdn.simpleicons.org/javascript", name: "JavaScript" },
-    { icon: "https://cdn.simpleicons.org/framer", name: "Framer Motion" },
-    { icon: "https://cdn.simpleicons.org/git", name: "Git" },
-    { icon: "https://cdn.simpleicons.org/github/white", name: "GitHub" },
+    { icon: "https://cdn.simpleicons.org/typescript", name: "TypeScript" },
+    { icon: "https://cdn.simpleicons.org/html5", name: "HTML" },
+    { icon: "https://cdn.simpleicons.org/css3", name: "CSS" },
+    { icon: "https://cdn.simpleicons.org/react", name: "React" },
+    { icon: "https://cdn.simpleicons.org/vite", name: "React Vite" },
+    { icon: "https://cdn.simpleicons.org/reactnative/white", name: "React Native" },
+    { icon: "https://cdn.simpleicons.org/expo/white", name: "Expo" },
+    { icon: "https://cdn.simpleicons.org/tailwindcss", name: "Tailwind CSS" },
+    { icon: "https://cdn.simpleicons.org/nodedotjs", name: "Node.js" },
+    { icon: "https://cdn.simpleicons.org/express/white", name: "Express" },
+    { icon: "https://cdn.simpleicons.org/mysql", name: "MySQL" },
 ];
 
 const skillsRow2: SkillItem[] = [
-    { icon: "https://cdn.simpleicons.org/nodedotjs", name: "Node.js" },
-    { icon: "https://cdn.simpleicons.org/mysql", name: "MySQL" },
-    { icon: "https://cdn.simpleicons.org/prisma/white", name: "Prisma" },
+    { icon: "https://cdn.simpleicons.org/postgresql", name: "PostgreSQL" },
     { icon: "https://cdn.simpleicons.org/supabase", name: "Supabase" },
-    { icon: "https://cdn.simpleicons.org/expo/white", name: "Expo" },
-    { icon: "https://cdn.simpleicons.org/reactnative/white", name: "React Native" },
-    { icon: "https://cdn.simpleicons.org/figma", name: "Figma" },
+    { icon: "https://cdn.simpleicons.org/sqlite", name: "SQLite" },
+    { icon: "https://cdn.simpleicons.org/github/white", name: "GitHub" },
+    { icon: "https://cdn.simpleicons.org/docker", name: "Docker" },
     { icon: "https://cdn.simpleicons.org/vercel/white", name: "Vercel" },
+    { icon: "https://cdn.simpleicons.org/postman", name: "Postman" },
+    { icon: "https://cdn.simpleicons.org/thunderclient/white", name: "Thunder Client" },
+    { icon: "https://cdn.simpleicons.org/visualstudiocode", name: "Visual Studio Code" },
+    { icon: "https://cdn.simpleicons.org/figma", name: "Figma" },
+    { icon: "https://cdn.simpleicons.org/adobeillustrator", name: "Adobe Illustrator" },
 ];
 
 const SkillCard = ({ icon, name }: SkillItem) => (
