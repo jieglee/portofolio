@@ -12,7 +12,7 @@ const skillsRow1: SkillItem[] = [
     { icon: "https://cdn.simpleicons.org/css3", name: "CSS" },
     { icon: "https://cdn.simpleicons.org/react", name: "React" },
     { icon: "https://cdn.simpleicons.org/vite", name: "React Vite" },
-    { icon: "https://cdn.simpleicons.org/reactnative/white", name: "React Native" },
+    { icon: "https://cdn.simpleicons.org/react", name: "React Native" },
     { icon: "https://cdn.simpleicons.org/expo/white", name: "Expo" },
     { icon: "https://cdn.simpleicons.org/tailwindcss", name: "Tailwind CSS" },
     { icon: "https://cdn.simpleicons.org/nodedotjs", name: "Node.js" },
@@ -28,10 +28,10 @@ const skillsRow2: SkillItem[] = [
     { icon: "https://cdn.simpleicons.org/docker", name: "Docker" },
     { icon: "https://cdn.simpleicons.org/vercel/white", name: "Vercel" },
     { icon: "https://cdn.simpleicons.org/postman", name: "Postman" },
-    { icon: "https://cdn.simpleicons.org/thunderclient/white", name: "Thunder Client" },
-    { icon: "https://cdn.simpleicons.org/visualstudiocode", name: "Visual Studio Code" },
+    { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M10.5 1.5L3 14h7l-1 8.5L18 11h-6l2-9.5z'/%3E%3C/svg%3E", name: "Thunder Client" },
+    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg", name: "Visual Studio Code" },
     { icon: "https://cdn.simpleicons.org/figma", name: "Figma" },
-    { icon: "https://cdn.simpleicons.org/adobeillustrator", name: "Adobe Illustrator" },
+    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg", name: "Adobe Illustrator" },
 ];
 
 const SkillCard = ({ icon, name }: SkillItem) => (
