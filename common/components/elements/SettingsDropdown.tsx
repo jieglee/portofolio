@@ -7,10 +7,12 @@ import { useTheme } from "next-themes";
 import { FiChevronDown } from "react-icons/fi";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { PiHeartFill } from "react-icons/pi";
+import US from "country-flag-icons/react/3x2/US";
+import ID from "country-flag-icons/react/3x2/ID";
 
 const locales = [
-    { value: "en", label: "English", flag: "🇺🇸" },
-    { value: "id", label: "Indonesia", flag: "🇮🇩" },
+    { value: "en", label: "English", Flag: US },
+    { value: "id", label: "Indonesia", Flag: ID },
 ];
 
 const themes = [
@@ -28,6 +30,7 @@ function Select<T extends string>({
     onSelect,
     renderIcon,
     hideTriggerLabel,
+    iconGap,
 }: {
     label: string;
     options: { value: T; label: string }[];
@@ -37,6 +40,7 @@ function Select<T extends string>({
     onSelect: (value: T) => void;
     renderIcon: (value: T) => React.ReactNode;
     hideTriggerLabel?: boolean;
+    iconGap?: string;
 }) {
     return (
         <div>
@@ -44,14 +48,14 @@ function Select<T extends string>({
             <div className="relative">
                 <button
                     onClick={onToggle}
-                    className="flex w-full items-center gap-2.5 px-4 py-3 text-sm transition-all duration-200 hover:bg-white/[0.03]"
+                    className={`flex w-full items-center ${iconGap ?? "gap-2.5"} px-4 py-3 text-sm transition-all duration-200 hover:bg-white/[0.03]`}
                     style={{
                         backgroundColor: "#1A1A1D",
                         border: "1px solid rgba(255,255,255,0.08)",
                         borderRadius: "18px",
                     }}
                 >
-                    <span>{renderIcon(selected)}</span>
+                    <span className="flex items-center">{renderIcon(selected)}</span>
                     {!hideTriggerLabel && (
                         <span className="flex-1 text-left text-white/90">
                             {options.find((o) => o.value === selected)?.label}
@@ -88,7 +92,7 @@ function Select<T extends string>({
                                     <button
                                         key={option.value}
                                         onClick={() => onSelect(option.value)}
-                                        className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm transition-all duration-150"
+                                        className={`flex w-full items-center ${iconGap ?? "gap-2.5"} px-4 py-2.5 text-sm transition-all duration-150`}
                                         style={{
                                             backgroundColor: active
                                                 ? "rgba(180, 160, 255, 0.15)"
@@ -102,7 +106,7 @@ function Select<T extends string>({
                                             if (!active) e.currentTarget.style.backgroundColor = "transparent";
                                         }}
                                     >
-                                        <span>{renderIcon(option.value)}</span>
+                                        <span className="flex items-center">{renderIcon(option.value)}</span>
                                         <span className="flex-1 text-left">{option.label}</span>
                                         {active && (
                                             <motion.span
@@ -184,9 +188,9 @@ const SettingsDropdown = () => {
                 }}
                 renderIcon={(v) => {
                     const l = locales.find((x) => x.value === v);
-                    return l ? l.flag : "🇺🇸";
+                    return l ? <l.Flag style={{ width: 22, height: 16 }} /> : <US style={{ width: 22, height: 16 }} />;
                 }}
-                hideTriggerLabel
+                iconGap="gap-3"
             />
         </div>
     );
