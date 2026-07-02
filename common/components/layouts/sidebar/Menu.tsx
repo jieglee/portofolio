@@ -8,9 +8,9 @@ interface MenuProps {
 
 const Menu = ({ title, list }: MenuProps) => {
     return (
-        <nav className="flex flex-col gap-y-1">
+        <nav className="flex flex-col gap-y-0.5">
             {title && (
-                <div className="mb-2 ml-2 mt-1 hidden text-sm text-foreground/60 lg:block">
+                <div className="mb-1 ml-2 mt-1 hidden text-xs text-foreground/60 lg:block">
                     {title}
                 </div>
             )}

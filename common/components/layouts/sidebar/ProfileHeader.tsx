@@ -30,10 +30,10 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                     whileHover={{ scale: 1.08 }}
                     transition={{ duration: 0.2 }}
                     style={{
-                        width: expandMenu ? 72 : imageSize,
-                        height: expandMenu ? 72 : imageSize,
+                        width: expandMenu ? 60 : imageSize,
+                        height: expandMenu ? 60 : imageSize,
                     }}
-                    className="rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"  // ⬅️ pakai ring-border & ring-primary
+                    className="rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"
                 >
                     <Image
                         src="/images/runa gemoy.jpeg"
@@ -58,16 +58,16 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                     </Tooltip>
                 </div>
 
-                <span className="hidden text-xs text-muted-foreground lg:block">  
+                <span className="hidden text-xs text-muted-foreground lg:block">
                     @whoszie._
                 </span>
             </div>
 
             {/* Toggles */}
             <div className={cn(
-                "hidden items-center justify-center gap-2 lg:flex lg:mt-6",
-                expandMenu && "mt-2"
-            )}>
+    "hidden items-center justify-center gap-1.5 lg:flex lg:mt-4",
+    expandMenu && "mt-2"
+)}>
                 <IntlToggle />
                 <ThemeToggle />
                 <LayoutToggleButton />
