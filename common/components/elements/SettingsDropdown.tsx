@@ -22,7 +22,6 @@ const themes = [
 ];
 
 function Select<T extends string>({
-    label,
     options,
     selected,
     isOpen,
@@ -32,7 +31,6 @@ function Select<T extends string>({
     hideTriggerLabel,
     iconGap,
 }: {
-    label: string;
     options: { value: T; label: string }[];
     selected: T;
     isOpen: boolean;
@@ -44,7 +42,6 @@ function Select<T extends string>({
 }) {
     return (
         <div>
-            <p className="mb-1.5 px-1 text-xs font-medium text-white/50">{label}</p>
             <div className="relative">
                 <button
                     onClick={onToggle}
@@ -159,7 +156,6 @@ const SettingsDropdown = () => {
     return (
         <div ref={ref} className="space-y-2.5 px-1 py-2">
             <Select
-                label="Theme"
                 options={themes}
                 selected={themeValue}
                 isOpen={openSelect === "theme"}
@@ -175,7 +171,6 @@ const SettingsDropdown = () => {
             />
 
             <Select
-                label="Language"
                 options={locales}
                 selected={langValue}
                 isOpen={openSelect === "language"}
