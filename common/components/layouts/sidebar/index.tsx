@@ -2,7 +2,7 @@ import React from "react";
 
 import { MENU_ITEMS } from "@/common/constants/menu";
 
-import Copyright from "../../elements/Copyright";
+import SettingsDropdown from "../../elements/SettingsDropdown";
 import Breakline from "../../elements/Breakline";
 import Profile from "./Profile";
 import Menu from "./Menu";
@@ -19,7 +19,7 @@ export default function Sidebar() {
                         <Menu list={filteredMenu} />
                     </div>
                     <Breakline />
-                    <Copyright />
+                    <SettingsDropdown />
                 </div>
             </div>
         </header>

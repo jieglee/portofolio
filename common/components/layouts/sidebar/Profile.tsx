@@ -7,8 +7,6 @@ import { useMenu } from "@/common/stores/menu";
 import MobileMenu from "./MobileMenu";
 import MobileMenuButton from "./MobileMenuButton";
 import ProfileHeader from "./ProfileHeader";
-import ThemeToggle from "./ThemeToogle";
-import IntlToggle from "./IntToogle";
 
 const Profile = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -61,10 +59,6 @@ const Profile = () => {
                             "h-32.5 flex-col-reverse items-end! justify-between pb-1",
                         )}
                     >
-                        <div className="flex gap-4">
-                            <IntlToggle />
-                            <ThemeToggle />
-                        </div>
                         <MobileMenuButton expandMenu={isOpen} setExpandMenu={toggleMenu} />
                     </div>
                 )}

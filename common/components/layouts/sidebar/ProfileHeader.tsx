@@ -3,8 +3,6 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { MdVerified as VerifiedIcon } from "react-icons/md";
 import { motion } from "framer-motion";
-import ThemeToggle from "./ThemeToogle";
-import IntlToggle from "./IntToogle";
 import Tooltip from "../../elements/Tooltip";
 import Image from "../../elements/Image";
 import { cn } from "@/lib/utils";
@@ -63,13 +61,8 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 </span>
             </div>
 
-            {/* Toggles */}
-            <div className={cn(
-    "hidden items-center justify-center gap-1.5 lg:flex lg:mt-4",
-    expandMenu && "mt-2"
-)}>
-                <IntlToggle />
-                <ThemeToggle />
+            {/* Layout Toggle */}
+            <div className="hidden lg:flex lg:mt-4">
                 <LayoutToggleButton />
             </div>
         </div>
