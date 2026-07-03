@@ -22,7 +22,7 @@ export default function Topbar() {
 
     return (
         <header className="sticky top-0 z-20 border-b bg-neutral-50/80 backdrop-blur dark:bg-neutral-900/80">
-            <div className="mx-auto flex max-w-7xl items-center px-6 py-2 gap-3">
+            <div className="mx-auto flex max-w-[90rem] items-center px-6 py-2 gap-3">
 
                 {/* Left: Name */}
                 <Link href="/" className="flex items-center gap-1.5">
