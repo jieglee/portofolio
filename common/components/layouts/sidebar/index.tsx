@@ -6,6 +6,7 @@ import SettingsDropdown from "../../elements/SettingsDropdown";
 import Breakline from "../../elements/Breakline";
 import Profile from "./Profile";
 import Menu from "./Menu";
+import LayoutToggleButton from "../LayoutToogleButton";
 
 export default function Sidebar() {
     const filteredMenu = MENU_ITEMS?.filter((item) => item?.isShow);
@@ -19,7 +20,10 @@ export default function Sidebar() {
                         <Menu list={filteredMenu} />
                     </div>
                     <Breakline />
-                    <SettingsDropdown />
+                    <div className="flex items-center justify-between">
+                        <SettingsDropdown />
+                        <LayoutToggleButton />
+                    </div>
                 </div>
             </div>
         </header>

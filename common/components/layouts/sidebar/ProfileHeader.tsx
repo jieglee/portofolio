@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import Tooltip from "../../elements/Tooltip";
 import Image from "../../elements/Image";
 import { cn } from "@/lib/utils";
-import LayoutToggleButton from "../LayoutToogleButton";
 
 interface ProfileHeaderProps {
     expandMenu: boolean;
@@ -61,10 +60,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 </span>
             </div>
 
-            {/* Layout Toggle */}
-            <div className="hidden lg:flex lg:mt-4">
-                <LayoutToggleButton />
-            </div>
+
         </div>
     );
 };

@@ -9,6 +9,7 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { PiHeartFill } from "react-icons/pi";
 import US from "country-flag-icons/react/3x2/US";
 import ID from "country-flag-icons/react/3x2/ID";
+import { cn } from "@/lib/utils";
 
 const locales = [
     { value: "en", label: "English", Flag: US },
@@ -16,9 +17,9 @@ const locales = [
 ];
 
 const themes = [
-    { value: "light", icon: <MdLightMode size={18} />, label: "Light Mode" },
-    { value: "dark", icon: <MdDarkMode size={18} />, label: "Dark Mode" },
-    { value: "pink", icon: <PiHeartFill size={16} />, label: "Pink Mode" },
+    { value: "light", icon: <MdLightMode size={18} />, label: "Light" },
+    { value: "dark", icon: <MdDarkMode size={18} />, label: "Dark" },
+    { value: "pink", icon: <PiHeartFill size={16} />, label: "Pink" },
 ];
 
 function Select<T extends string>({
@@ -45,23 +46,19 @@ function Select<T extends string>({
             <div className="relative">
                 <button
                     onClick={onToggle}
-                    className={`flex w-full items-center ${iconGap ?? "gap-2.5"} px-4 py-3 text-sm transition-all duration-200 hover:bg-white/[0.03]`}
-                    style={{
-                        backgroundColor: "#1A1A1D",
-                        border: "1px solid rgba(255,255,255,0.08)",
-                        borderRadius: "18px",
-                    }}
+                    className={cn(
+                        "flex w-full items-center border px-4 py-3 text-sm transition-all duration-200 rounded-xl bg-background text-foreground border-border hover:bg-accent/50",
+                        iconGap ?? "gap-2.5"
+                    )}
                 >
                     <span className="flex items-center">{renderIcon(selected)}</span>
                     {!hideTriggerLabel && (
-                        <span className="flex-1 text-left text-white/90">
-                            {options.find((o) => o.value === selected)?.label}
-                        </span>
+                        <span className="flex-1 text-left">{options.find((o) => o.value === selected)?.label}</span>
                     )}
                     <motion.span
                         animate={{ rotate: isOpen ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
-                        className="text-white/40"
+                        className="text-muted-foreground"
                     >
                         <FiChevronDown size={16} />
                     </motion.span>
@@ -74,14 +71,7 @@ function Select<T extends string>({
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 6 }}
                             transition={{ duration: 0.12, ease: "easeOut" }}
-                            className="absolute bottom-full left-0 right-0 z-50 overflow-hidden"
-                            style={{
-                                backgroundColor: "#1A1A1D",
-                                border: "1px solid rgba(255,255,255,0.08)",
-                                borderRadius: "18px",
-                                marginBottom: "6px",
-                                boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
-                            }}
+                            className="absolute bottom-full left-0 right-0 z-50 overflow-hidden rounded-xl border bg-background border-border shadow-lg mb-1.5"
                         >
                             {options.map((option) => {
                                 const active = option.value === selected;
@@ -89,19 +79,13 @@ function Select<T extends string>({
                                     <button
                                         key={option.value}
                                         onClick={() => onSelect(option.value)}
-                                        className={`flex w-full items-center ${iconGap ?? "gap-2.5"} px-4 py-2.5 text-sm transition-all duration-150`}
-                                        style={{
-                                            backgroundColor: active
-                                                ? "rgba(180, 160, 255, 0.15)"
-                                                : "transparent",
-                                            color: active ? "#fff" : "rgba(255,255,255,0.55)",
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            if (!active) e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            if (!active) e.currentTarget.style.backgroundColor = "transparent";
-                                        }}
+                                        className={cn(
+                                            "flex w-full items-center px-4 py-2.5 text-sm transition-all duration-150",
+                                            iconGap ?? "gap-2.5",
+                                            active
+                                                ? "bg-accent text-accent-foreground"
+                                                : "text-muted-foreground hover:bg-accent/50"
+                                        )}
                                     >
                                         <span className="flex items-center">{renderIcon(option.value)}</span>
                                         <span className="flex-1 text-left">{option.label}</span>
@@ -109,8 +93,7 @@ function Select<T extends string>({
                                             <motion.span
                                                 initial={{ scale: 0 }}
                                                 animate={{ scale: 1 }}
-                                                className="text-sm"
-                                                style={{ color: "#fff" }}
+                                                className="text-sm text-accent-foreground"
                                             >
                                                 ✓
                                             </motion.span>
