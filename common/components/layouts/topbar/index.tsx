@@ -7,79 +7,15 @@ import { useLayout } from "@/common/stores/layout"
 import { useTranslations } from "next-intl"
 import { motion, AnimatePresence } from "framer-motion"
 import { MdVerified as VerifiedIcon } from "react-icons/md"
-import { TbLayoutSidebar as SidebarIcon } from "react-icons/tb"
-import { BiGlobe } from "react-icons/bi"
+import { TbLayoutSidebar as SidebarIcon, TbMenu2 as MenuIcon } from "react-icons/tb"
 import { cn } from "@/lib/utils"
 
-import { GROUPS, SOCIAL_LINKS } from "@/common/constants/topbar"
-
-interface GroupItem {
-    title: string;
-    href: string;
-}
-
-interface NavGroupProps {
-    group: {
-        id: string;
-        icon: React.ReactNode;
-        items: GroupItem[];
-    };
-    pathname: string;
-    t: (key: string) => string;
-}
-
-const NavGroup = ({
-    group,
-    pathname,
-    t,
-}: NavGroupProps) => {
-    const [open, setOpen] = useState(false)
-            const isActive = group.items.some((item: GroupItem) => pathname === item.href)
-
-    return (
-        <div
-            className="relative"
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
-        >
-            <motion.button
-                whileHover={{ scale: 1.1 }}
-                className={cn(
-                    "p-2 rounded-lg",
-                    isActive ? "bg-neutral-200 dark:bg-neutral-800" : "hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                )}
-            >
-                {group.icon}
-            </motion.button>
-
-            <AnimatePresence>
-                {open && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6 }}
-                        className="absolute left-1/2 top-full mt-2 w-40 -translate-x-1/2 rounded-xl border bg-white dark:bg-neutral-900 p-2 shadow-lg"
-                    >
-                        {group.items.map((item: GroupItem) => (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className="block px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                            >
-                                {t(item.title)}
-                            </Link>
-                        ))}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    )
-}
+import { MAIN_ITEMS, MENU_DROPDOWN_ITEMS } from "@/common/constants/topbar"
 
 export default function Topbar() {
     const { toggleMode } = useLayout()
     const t = useTranslations("Navigation")
-    const [socialOpen, setSocialOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
 
     const segment = useSelectedLayoutSegment()
     const pathname = segment ? `/${segment}` : "/"
@@ -88,57 +24,78 @@ export default function Topbar() {
         <header className="sticky top-0 z-20 border-b bg-neutral-50/80 backdrop-blur dark:bg-neutral-900/80">
             <div className="mx-auto flex max-w-7xl items-center px-6 py-2 gap-3">
 
-                {/* Logo */}
-                <Link href="/" className="flex items-center gap-1">
-                    <span className="font-semibold">Jeffrey Studios</span>
-                    <VerifiedIcon size={13} className="text-blue-400" />
+                {/* Left: Name */}
+                <Link href="/" className="flex items-center gap-1.5">
+                    <span className="font-semibold">Runa</span>
+                    <VerifiedIcon size={14} className="text-blue-400" />
                 </Link>
 
                 <div className="h-4 w-px bg-neutral-300 dark:bg-neutral-700" />
 
-                {/* NAV */}
+                {/* Center: Main items */}
                 <nav className="flex flex-1 items-center gap-1">
-
-                    {GROUPS.map((group) => (
-                        <NavGroup key={group.id} group={group} pathname={pathname} t={t} />
-                    ))}
-
-                    {/* SOCIAL */}
-                    <div
-                        className="relative"
-                        onMouseEnter={() => setSocialOpen(true)}
-                        onMouseLeave={() => setSocialOpen(false)}
-                    >
-                        <BiGlobe size={18} />
-
-                        <AnimatePresence>
-                            {socialOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -6 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -6 }}
-                                    className="absolute left-1/2 top-full mt-2 w-40 -translate-x-1/2 rounded-xl border bg-white dark:bg-neutral-900 p-2 shadow-lg"
-                                >
-                                    {SOCIAL_LINKS.map((social) => (
-                                        <a
-                                            key={social.href}
-                                            href={social.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                                        >
-                                            {social.icon}
-                                            {social.label}
-                                        </a>
-                                    ))}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-
+                    {MAIN_ITEMS.map((item) => {
+                        const isActive = pathname === item.href
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn(
+                                    "px-3 py-1.5 rounded-lg text-sm transition-colors",
+                                    isActive
+                                        ? "bg-neutral-200 dark:bg-neutral-800 font-medium"
+                                        : "hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                                )}
+                            >
+                                {t(item.title)}
+                            </Link>
+                        )
+                    })}
                 </nav>
 
-                {/* RIGHT */}
+                {/* Right: Menu dropdown */}
+                <div
+                    className="relative"
+                    onMouseEnter={() => setMenuOpen(true)}
+                    onMouseLeave={() => setMenuOpen(false)}
+                >
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        className={cn(
+                            "p-2 rounded-lg flex items-center gap-1.5",
+                            menuOpen ? "bg-neutral-200 dark:bg-neutral-800" : "hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                        )}
+                    >
+                        <MenuIcon size={18} />
+                        <span className="text-sm">Menu</span>
+                    </motion.button>
+
+                    <AnimatePresence>
+                        {menuOpen && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -6 }}
+                                className="absolute right-0 top-full mt-2 w-44 rounded-xl border bg-white dark:bg-neutral-900 p-2 shadow-lg"
+                            >
+                                {MENU_DROPDOWN_ITEMS.map((item) => (
+                                    <Link
+                                        key={item.href}
+                                        href={item.href}
+                                        className={cn(
+                                            "block px-3 py-2 rounded-lg text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800",
+                                            pathname === item.href && "bg-neutral-200 dark:bg-neutral-800 font-medium"
+                                        )}
+                                    >
+                                        {t(item.title)}
+                                    </Link>
+                                ))}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                {/* Layout toggle */}
                 <button onClick={toggleMode} className="p-2">
                     <SidebarIcon size={18} />
                 </button>
