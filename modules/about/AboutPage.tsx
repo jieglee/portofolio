@@ -1,8 +1,12 @@
-"use client";
+﻿"use client";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
 import Introduction from "./Introduction";
 import Education from "./Education";
+import Resume from "./Resume";
+import Career from "./Career";
+import AboutTabs, { type AboutTab } from "./AboutTabs";
 
 const container: Variants = {
     hidden: {},
@@ -16,6 +20,8 @@ const item: Variants = {
 
 export default function AboutPage() {
     const t = useTranslations("About");
+    const [activeTab, setActiveTab] = useState<AboutTab>("introduction");
+
     return (
         <motion.div
             className="px-6 py-10 lg:px-12"
@@ -32,9 +38,15 @@ export default function AboutPage() {
 
             <motion.div variants={item} className="my-6 border-t border-dashed border-border" />
 
-            <motion.div variants={item} className="flex flex-col gap-12">
-                <Introduction />
-                <Education />
+            <motion.div variants={item} className="mb-8">
+                <AboutTabs active={activeTab} onChange={setActiveTab} />
+            </motion.div>
+
+            <motion.div variants={item} key={activeTab}>
+                {activeTab === "introduction" && <Introduction />}
+                {activeTab === "resume" && <Resume />}
+                {activeTab === "career" && <Career />}
+                {activeTab === "education" && <Education />}
             </motion.div>
         </motion.div>
     );
