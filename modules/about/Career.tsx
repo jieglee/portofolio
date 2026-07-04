@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
+import GridPattern from "@/common/components/elements/GridPattern";
 import { Briefcase } from "lucide-react";
 
 const careerList = [
@@ -158,6 +159,16 @@ export default function Career() {
                                 className="!p-5 !rounded-xl !bg-card !border-border"
                                 spotlightColor="rgba(255, 255, 255, 0.12)"
                             >
+                                <GridPattern
+                                    size={64}
+                                    offsetX={0}
+                                    offsetY={0}
+                                    className="pointer-events-none absolute -top-1/2 right-0 h-[200%] w-2/3 skew-y-12 stroke-white/10 stroke-[2] [mask-image:linear-gradient(-85deg,black,transparent)]"
+                                >
+                                    {[[2,5],[3,1],[4,3]].map(([row, col], i) => (
+                                        <GridPattern.Block key={i} row={row} column={col} className="fill-white/5 transition duration-500 hover:fill-white/10" />
+                                    ))}
+                                </GridPattern>
                                 <CareerCardInner
                                     item={item}
                                     index={index}
