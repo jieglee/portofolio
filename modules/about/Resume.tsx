@@ -5,13 +5,6 @@ export default function Resume() {
     const t = useTranslations("About");
     return (
         <section>
-            <div className="mb-6 flex items-center gap-3">
-                <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    {t("resume")}
-                </span>
-                <div className="h-px flex-1 bg-border" />
-            </div>
-
             <div className="flex flex-col gap-4">
                 <a
                     href="/documents/cv.pdf"

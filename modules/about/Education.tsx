@@ -161,13 +161,6 @@ export default function Education() {
 
     return (
         <section>
-            <div className="mb-5 flex items-center gap-3">
-                <span className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground whitespace-nowrap">
-                    {t("education")}
-                </span>
-                <div className="h-px flex-1 bg-border" />
-            </div>
-
             <motion.div
                 className="grid grid-cols-1 gap-2.5 sm:grid-cols-3"
                 variants={container}
