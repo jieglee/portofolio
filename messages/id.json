@@ -1,4 +1,4 @@
-﻿{
+{
   "Navigation": {
     "Home": "Beranda",
     "About": "Tentang",
@@ -29,6 +29,7 @@
   "About": {
     "title": "Tentang",
     "subtitle": "Sedikit cerita tentang saya dan latar belakang pendidikan.",
+    "introduction": "Pendahuluan",
     "role": "Pelajar · Depok, Indonesia",
     "bio1": "Halo! Saya <strong>Anindita Amanta Runa</strong>, atau lebih dikenal sebagai <strong>Jiegle</strong>, seorang <strong>Frontend Developer</strong>, <strong>UI/UX Designer</strong>, dan <strong>Beauty Content Creator</strong> yang senang menggabungkan kreativitas dengan teknologi untuk menciptakan pengalaman digital yang menarik dan bermakna.",
     "bio2": "Saya berfokus pada pengembangan antarmuka web modern menggunakan React, Next.js, TypeScript, dan Tailwind CSS, dengan perhatian tinggi terhadap detail, performa, serta pengalaman pengguna. Saya percaya bahwa desain yang baik bukan hanya terlihat indah, tetapi juga mampu menyelesaikan masalah dan memberikan pengalaman yang nyaman bagi setiap pengguna.",

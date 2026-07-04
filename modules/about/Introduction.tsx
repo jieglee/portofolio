@@ -31,11 +31,11 @@ export default function Introduction() {
                 animate="visible"
             >
                 <div className="flex flex-col gap-4">
-                    <motion.p
-                        variants={item}
-                        className="text-sm leading-relaxed text-muted-foreground max-w-xl"
-                        dangerouslySetInnerHTML={{ __html: t("bio1") }}
-                    />
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                        {t.rich("bio1", {
+                            strong: (chunks) => <strong>{chunks}</strong>,
+                        })}
+                    </motion.p>
                     <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
                         {t("bio2")}
                     </motion.p>
