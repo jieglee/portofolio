@@ -1,4 +1,4 @@
-{
+﻿{
   "Navigation": {
     "Home": "Beranda",
     "About": "Tentang",
@@ -48,7 +48,7 @@
     "cv": "CV"
   },
   "Achievements": {
-    "title": "Pencapaian",
+    "title": "Pencapaian / Achievements",
     "subtitle": "Kumpulan sertifikat dan badge yang saya peroleh selama perjalanan profesional dan akademik.",
     "search": "Cari...",
     "total": "Total",
@@ -57,7 +57,15 @@
     "issueDate": "Tanggal Terbit",
     "type": "Tipe",
     "category": "Kategori",
-    "viewCertificate": "Lihat Sertifikat"
+    "viewCertificate": "Lihat Sertifikat",
+    "items": {
+      "1": "Uji Level XI Rekayasa Perangkat Lunak",
+      "2": "Kelas Online Makeup Model Profesional & Portofolio Offline Batch 5",
+      "3": "Bendahara OSIS Periode 2024/2025",
+      "4": "Uji Level X Rekayasa Perangkat Lunak",
+      "5": "Kunjungan Industri PT INTI & ITB",
+        "6": "Belajar Dasar Pemrograman Web"
+      }
   },
   "Creations": {
     "title": "Kreasi",

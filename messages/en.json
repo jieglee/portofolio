@@ -1,4 +1,4 @@
-{
+﻿{
   "Navigation": {
     "Home": "Home",
     "About": "About",
@@ -48,7 +48,7 @@
     "cv": "CV"
   },
   "Achievements": {
-    "title": "Achievements",
+    "title": "Achievements / Pencapaian",
     "subtitle": "A collection of certificates and badges I have earned throughout my professional and academic journey.",
     "search": "Search...",
     "total": "Total",
@@ -57,7 +57,15 @@
     "issueDate": "Issue Date",
     "type": "Type",
     "category": "Category",
-    "viewCertificate": "View Certificate"
+    "viewCertificate": "View Certificate",
+    "items": {
+      "1": "Software Engineering Level Test XI",
+      "2": "Online Class Professional Model Makeup & Offline Portfolio Batch 5",
+      "3": "OSIS Treasurer Period 2024/2025",
+      "4": "Software Engineering Level Test X",
+      "5": "Industry Visit PT INTI & ITB",
+      "6": "Learn Basic Web Programming"
+    }
   },
   "Creations": {
     "title": "Creations",

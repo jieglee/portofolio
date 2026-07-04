@@ -67,7 +67,7 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                 <div className="flex h-full min-h-[220px] items-center justify-center bg-neutral-100 dark:bg-neutral-900 p-5 md:min-h-[380px]">
                                     <img
                                         src={selected.image}
-                                        alt={selected.title}
+                                        alt={t(`items.${selected.id}`)}
                                         className="h-full w-full rounded-xl object-contain drop-shadow-xl"
                                     />
                                 </div>
@@ -116,7 +116,7 @@ export default function AchievementModal({ selected, onClose }: AchievementModal
                                         layoutId={`card-title-${selected.id}`}
                                         className="pr-8 text-base font-bold leading-snug text-foreground"
                                     >
-                                        {selected.title}
+                                        {t(`items.${selected.id}`)}
                                     </motion.h2>
                                     <p className="mt-1 text-sm text-muted-foreground">{selected.issuer}</p>
                                 </div>

@@ -28,7 +28,7 @@ export default function AchievementCard({ item, onShowDetail }: AchievementCardP
             >
                 <img
                     src={item.image}
-                    alt={item.title}
+                    alt={t(`items.${item.id}`)}
                     className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-[0.4]"
                 />
 
@@ -68,7 +68,7 @@ export default function AchievementCard({ item, onShowDetail }: AchievementCardP
                     layoutId={`card-title-${item.id}`}
                     className="line-clamp-2 text-sm font-semibold leading-snug text-foreground"
                 >
-                    {item.title}
+                    {t(`items.${item.id}`)}
                 </motion.h3>
 
                 <div className="flex items-center justify-between gap-2">
