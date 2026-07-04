@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Github } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
@@ -43,6 +43,78 @@ function HeartCell({
     );
 }
 
+function formatDate(dateStr: string): string {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
+}
+
+interface TooltipData {
+    count: number;
+    date: string;
+    formattedDate: string;
+    rect: DOMRect;
+}
+
+function ContributionTooltip({ data }: { data: TooltipData | null }) {
+    const tooltipRef = useRef<HTMLDivElement>(null);
+    const [pos, setPos] = useState({ x: 0, y: 0, above: true });
+
+    useEffect(() => {
+        if (!data || !tooltipRef.current) return;
+        const t = tooltipRef.current;
+        const tRect = t.getBoundingClientRect();
+        const cRect = data.rect;
+
+        let above = true;
+        let x = cRect.left + cRect.width / 2 - tRect.width / 2;
+        let y = cRect.top - tRect.height - 8;
+
+        if (y < 4) {
+            above = false;
+            y = cRect.bottom + 8;
+        }
+        if (x < 4) x = 4;
+        if (x + tRect.width > window.innerWidth - 4) {
+            x = window.innerWidth - tRect.width - 4;
+        }
+
+        setPos({ x, y, above });
+    }, [data]);
+
+    return (
+        <AnimatePresence>
+            {data && (
+                <motion.div
+                    ref={tooltipRef}
+                    initial={{ opacity: 0, y: pos.above ? 4 : -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: pos.above ? 4 : -4 }}
+                    transition={{ duration: 0.2 }}
+                    className="fixed pointer-events-none z-50"
+                    style={{ left: pos.x, top: pos.y }}
+                >
+                    <div className="relative rounded-lg bg-[#2d2d2d] px-3 py-2 text-xs text-white shadow-lg whitespace-nowrap">
+                        {data.count}{" "}
+                        {data.count === 1 ? "contribution" : "contributions"} on{" "}
+                        {data.formattedDate}
+                        <div
+                            className={`absolute left-1/2 -translate-x-1/2 ${
+                                pos.above
+                                    ? "bottom-[-4px] border-t-[#2d2d2d] border-l-4 border-r-4 border-t-4 border-transparent"
+                                    : "top-[-4px] border-b-[#2d2d2d] border-b-4 border-l-4 border-r-4 border-transparent"
+                            }`}
+                        />
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+}
+
 export default function GithubContributions() {
     const t = useTranslations("Dashboard.Github");
     const [days, setDays] = useState<GithubContributionDay[]>([]);
@@ -67,6 +139,21 @@ export default function GithubContributions() {
         }
         fetchData();
     }, []);
+
+    const [tooltip, setTooltip] = useState<TooltipData | null>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    const showTooltip = useCallback((day: GithubContributionDay, rect: DOMRect) => {
+        if (!day.date) return;
+        setTooltip({
+            count: day.count,
+            date: day.date,
+            formattedDate: formatDate(day.date),
+            rect,
+        });
+    }, []);
+
+    const hideTooltip = useCallback(() => setTooltip(null), []);
 
     const weeks = groupByWeek(days);
 
@@ -175,7 +262,7 @@ export default function GithubContributions() {
                                 </div>
 
                                 {/* Grid */}
-                                <div className="flex gap-1">
+                                <div className="flex gap-1" ref={gridRef}>
                                     {weeks.map((week, wi) => (
                                         <div key={wi} className="flex flex-col gap-1">
                                             {week.map((day, di) => (
@@ -184,11 +271,18 @@ export default function GithubContributions() {
                                                     initial={{ opacity: 0, scale: 0.5 }}
                                                     animate={{ opacity: 1, scale: 1 }}
                                                     transition={{ duration: 0.2, delay: (wi * 7 + di) * 0.0015 }}
-                                                    title={
+                                                    tabIndex={day.date ? 0 : undefined}
+                                                    role={day.date ? "gridcell" : undefined}
+                                                    aria-label={
                                                         day.date
-                                                            ? t("tooltip", { count: day.count, date: day.date })
+                                                            ? `${day.count} ${day.count === 1 ? "contribution" : "contributions"} on ${formatDate(day.date)}`
                                                             : undefined
                                                     }
+                                                    onMouseEnter={(e) => showTooltip(day, e.currentTarget.getBoundingClientRect())}
+                                                    onMouseLeave={hideTooltip}
+                                                    onFocus={(e) => showTooltip(day, e.currentTarget.getBoundingClientRect())}
+                                                    onBlur={hideTooltip}
+                                                    className="outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-sm"
                                                 >
                                                     <HeartCell
                                                         color={
@@ -203,6 +297,8 @@ export default function GithubContributions() {
                             </div>
                         )}
                     </div>
+
+                    <ContributionTooltip data={tooltip} />
 
                     {/* Legend */}
                     <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
