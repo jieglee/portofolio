@@ -3,6 +3,8 @@
     import Image from "next/image";
     import { useTranslations } from "next-intl";
     import { motion } from "framer-motion";
+    import { useTheme } from "next-themes";
+    import SpotlightCard from "@/common/components/elements/SpotlightCard";
     import { Pin } from "lucide-react";
     import { useRouter } from "@/i18n/navigation";
     import { type ProjectItem } from "@/common/constants/projects";
@@ -16,6 +18,8 @@
     export default function ProjectCard({ project, index }: ProjectCardProps) {
     const router = useRouter();
     const t = useTranslations("Projects");
+    const { resolvedTheme } = useTheme();
+    const isDark = resolvedTheme === "dark";
 
     return (
         <motion.div
@@ -23,9 +27,28 @@
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
         onClick={() => router.push(`/projects/${project.slug}`)}
-        className="group cursor-pointer rounded-2xl border border-border bg-card overflow-hidden flex flex-col transition-shadow hover:shadow-lg"
+        className="cursor-pointer"
         >
-        {/* Thumbnail */}
+        {isDark ? (
+            <SpotlightCard
+            className="!p-0 !rounded-2xl !bg-card !border-border group flex flex-col overflow-hidden transition-shadow hover:shadow-lg"
+            spotlightColor="rgba(255, 255, 255, 0.12)"
+            >
+            <CardContent project={project} />
+            </SpotlightCard>
+        ) : (
+            <div className="group rounded-2xl border border-border bg-card overflow-hidden flex flex-col transition-shadow hover:shadow-lg">
+            <CardContent project={project} />
+            </div>
+        )}
+        </motion.div>
+    );
+    }
+
+    function CardContent({ project }: { project: ProjectItem }) {
+    const t = useTranslations("Projects");
+    return (
+        <>
         <div className="relative w-full aspect-video overflow-hidden bg-muted">
             <Image
             src={project.thumbnail}
@@ -42,7 +65,6 @@
             )}
         </div>
 
-        {/* Content */}
         <div className="flex flex-col gap-3 p-5">
             <h3 className="font-semibold text-foreground text-lg leading-tight">
             {project.title}
@@ -51,7 +73,6 @@
             {project.description}
             </p>
 
-            {/* Tech stack icons */}
             <div className="flex items-center gap-2 flex-wrap mt-1">
             {project.techStack.map((key) => {
                 const tech = TECH_MAP[key];
@@ -69,6 +90,6 @@
             })}
             </div>
         </div>
-        </motion.div>
+        </>
     );
     }
