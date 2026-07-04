@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState, useCallback } from "react";
+import { motion } from "framer-motion";
 import { Github } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
@@ -56,63 +56,6 @@ interface TooltipData {
     count: number;
     date: string;
     formattedDate: string;
-    rect: DOMRect;
-}
-
-function ContributionTooltip({ data }: { data: TooltipData | null }) {
-    const tooltipRef = useRef<HTMLDivElement>(null);
-    const [pos, setPos] = useState({ x: 0, y: 0, above: true });
-
-    useEffect(() => {
-        if (!data || !tooltipRef.current) return;
-        const t = tooltipRef.current;
-        const tRect = t.getBoundingClientRect();
-        const cRect = data.rect;
-
-        let above = true;
-        let x = cRect.left + cRect.width / 2 - tRect.width / 2;
-        let y = cRect.top - tRect.height - 8;
-
-        if (y < 4) {
-            above = false;
-            y = cRect.bottom + 8;
-        }
-        if (x < 4) x = 4;
-        if (x + tRect.width > window.innerWidth - 4) {
-            x = window.innerWidth - tRect.width - 4;
-        }
-
-        setPos({ x, y, above });
-    }, [data]);
-
-    return (
-        <AnimatePresence>
-            {data && (
-                <motion.div
-                    ref={tooltipRef}
-                    initial={{ opacity: 0, y: pos.above ? 4 : -4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: pos.above ? 4 : -4 }}
-                    transition={{ duration: 0.2 }}
-                    className="fixed pointer-events-none z-50"
-                    style={{ left: pos.x, top: pos.y }}
-                >
-                    <div className="relative rounded-lg bg-[#2d2d2d] px-3 py-2 text-xs text-white shadow-lg whitespace-nowrap">
-                        {data.count}{" "}
-                        {data.count === 1 ? "contribution" : "contributions"} on{" "}
-                        {data.formattedDate}
-                        <div
-                            className={`absolute left-1/2 -translate-x-1/2 ${
-                                pos.above
-                                    ? "bottom-[-4px] border-t-[#2d2d2d] border-l-4 border-r-4 border-t-4 border-transparent"
-                                    : "top-[-4px] border-b-[#2d2d2d] border-b-4 border-l-4 border-r-4 border-transparent"
-                            }`}
-                        />
-                    </div>
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
 }
 
 export default function GithubContributions() {
@@ -141,15 +84,13 @@ export default function GithubContributions() {
     }, []);
 
     const [tooltip, setTooltip] = useState<TooltipData | null>(null);
-    const gridRef = useRef<HTMLDivElement>(null);
 
-    const showTooltip = useCallback((day: GithubContributionDay, rect: DOMRect) => {
+    const showTooltip = useCallback((day: GithubContributionDay) => {
         if (!day.date) return;
         setTooltip({
             count: day.count,
             date: day.date,
             formattedDate: formatDate(day.date),
-            rect,
         });
     }, []);
 
@@ -262,7 +203,7 @@ export default function GithubContributions() {
                                 </div>
 
                                 {/* Grid */}
-                                <div className="flex gap-1" ref={gridRef}>
+                                <div className="flex gap-1">
                                     {weeks.map((week, wi) => (
                                         <div key={wi} className="flex flex-col gap-1">
                                             {week.map((day, di) => (
@@ -278,9 +219,9 @@ export default function GithubContributions() {
                                                             ? `${day.count} ${day.count === 1 ? "contribution" : "contributions"} on ${formatDate(day.date)}`
                                                             : undefined
                                                     }
-                                                    onMouseEnter={(e) => showTooltip(day, e.currentTarget.getBoundingClientRect())}
+                                                    onMouseEnter={() => showTooltip(day)}
                                                     onMouseLeave={hideTooltip}
-                                                    onFocus={(e) => showTooltip(day, e.currentTarget.getBoundingClientRect())}
+                                                    onFocus={() => showTooltip(day)}
                                                     onBlur={hideTooltip}
                                                     className="outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-sm"
                                                 >
@@ -298,15 +239,22 @@ export default function GithubContributions() {
                         )}
                     </div>
 
-                    <ContributionTooltip data={tooltip} />
-
                     {/* Legend */}
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <span>{t("less")}</span>
-                        {LEVEL_COLORS.map((color, i) => (
-                            <HeartCell key={i} color={color} />
-                        ))}
-                        <span>{t("more")}</span>
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                        <div className="flex items-center gap-1.5">
+                            <span>{t("less")}</span>
+                            {LEVEL_COLORS.map((color, i) => (
+                                <HeartCell key={i} color={color} />
+                            ))}
+                            <span>{t("more")}</span>
+                        </div>
+                        {tooltip && (
+                            <span className="text-foreground transition-opacity duration-200">
+                                {tooltip.count}{" "}
+                                {tooltip.count === 1 ? "contribution" : "contributions"} on{" "}
+                                {tooltip.formattedDate}
+                            </span>
+                        )}
                     </div>
                 </>
             )}
