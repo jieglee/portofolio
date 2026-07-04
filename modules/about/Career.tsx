@@ -14,7 +14,7 @@ const careerList = [
         organization: "SMK Taruna Bhakti",
         location: "Depok, Indonesia",
         period: "2024 – 2025",
-        type: "Student Organization"
+        type: "Student Organization",
         responsibilities: [
             "Managed the Student Council's budget and financial records.",
             "Recorded and monitored income and expenses accurately.",
