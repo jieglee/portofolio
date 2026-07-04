@@ -1,4 +1,4 @@
-﻿{
+{
   "Navigation": {
     "Home": "Beranda",
     "About": "Tentang",
@@ -64,8 +64,8 @@
       "3": "Bendahara OSIS Periode 2024/2025",
       "4": "Uji Level X Rekayasa Perangkat Lunak",
       "5": "Kunjungan Industri PT INTI & ITB",
-        "6": "Belajar Dasar Pemrograman Web"
-      }
+      "6": "Belajar Dasar Pemrograman Web"
+    }
   },
   "Creations": {
     "title": "Kreasi",
