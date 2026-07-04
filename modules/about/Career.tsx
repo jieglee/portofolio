@@ -13,7 +13,6 @@ const careerList = [
         location: "Depok, Indonesia",
         period: "2024 – 2025",
         type: "Student Organization",
-        mode: "On Campus",
         responsibilities: [
             "Managed the Student Council's budget and financial records.",
             "Recorded and monitored income and expenses accurately.",
@@ -92,8 +91,6 @@ export default function Career() {
                                     {item.period}
                                     <span className="mx-1.5">•</span>
                                     {item.type}
-                                    <span className="mx-1.5">•</span>
-                                    {item.mode}
                                 </p>
                             </div>
                         </div>
