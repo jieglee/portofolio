@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -17,7 +18,7 @@ const educationList = [
     },
     {
         id: 2,
-        school: "SMP ...",
+        school: "SMPN 3 DEPOK",
         level: "Junior High School",
         major: null,
         year: "2020 — 2024",
@@ -60,51 +61,47 @@ const levelKeys: Record<string, string> = {
     "Elementary School": "level_elementary",
 };
 
-function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
+function SchoolLogo({ edu }: { edu: (typeof educationList)[0] }) {
+    const [failed, setFailed] = useState(false);
+
+    return (
+        <motion.div
+            className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg border bg-muted p-1.5 ${
+                edu.current ? "border-foreground/30" : "border-border"
+            }`}
+            whileHover={{ scale: 1.06, rotate: -3 }}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+        >
+            {failed ? (
+                <span className="text-xs font-medium text-muted-foreground">
+                    {edu.school.charAt(0)}
+                </span>
+            ) : (
+                <img
+                    src={edu.logo}
+                    alt={edu.school}
+                    className="h-full w-full object-contain"
+                    onError={() => setFailed(true)}
+                />
+            )}
+        </motion.div>
+    );
+}
+
+function EduCardInner({ edu }: { edu: (typeof educationList)[0] }) {
     const t = useTranslations("About");
     return (
         <>
             <div
-                className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-xl transition-all duration-300 ${
+                className={`absolute left-0 right-0 top-0 h-[3px] rounded-t-xl transition-all duration-300 ${
                     edu.current ? "bg-foreground" : "bg-border"
                 }`}
             />
 
-            <motion.div
-                className="pointer-events-none absolute inset-0 rounded-xl"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                style={{
-                    background:
-                        "radial-gradient(circle at 50% 0%, hsl(var(--foreground) / 0.04) 0%, transparent 70%)",
-                }}
-            />
-
-            <div className="flex items-start justify-between gap-2 mt-1">
-                <motion.div
-                    className="h-9 w-9 flex-shrink-0 rounded-lg border border-border bg-muted flex items-center justify-center overflow-hidden text-xs font-medium text-muted-foreground"
-                    whileHover={{ scale: 1.08, rotate: -4 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                >
-                    <img
-                        src={edu.logo}
-                        alt={edu.school}
-                        className="h-full w-full object-cover"
-                        onError={(e) => {
-                            const t = e.currentTarget;
-                            t.style.display = "none";
-                            const p = t.parentElement;
-                            if (p && !p.querySelector("span")) {
-                                const s = document.createElement("span");
-                                s.textContent = edu.school.charAt(0);
-                                p.appendChild(s);
-                            }
-                        }}
-                    />
-                </motion.div>
+            <div className="mt-1 flex items-start justify-between gap-2">
+                <SchoolLogo edu={edu} />
                 <span
-                    className={`rounded-full px-2 py-0.5 text-[10px] font-medium whitespace-nowrap flex-shrink-0 ${
+                    className={`flex-shrink-0 whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${
                         edu.current
                             ? "bg-foreground text-background"
                             : "border border-border bg-muted text-muted-foreground"
@@ -114,17 +111,19 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
                 </span>
             </div>
 
-            <div className="flex flex-col gap-0.5">
-                <p className="text-sm font-medium text-foreground leading-tight">
+            <div className="mt-3 flex flex-col gap-0.5">
+                <p className="text-sm font-medium leading-tight text-foreground">
                     {edu.school}
                 </p>
-                <p className="text-[11px] text-muted-foreground">{t(levelKeys[edu.level] ?? edu.level)}</p>
+                <p className="text-[11px] text-muted-foreground">
+                    {t(levelKeys[edu.level] ?? edu.level)}
+                </p>
                 {edu.major && (
                     <p className="text-[11px] text-foreground">{edu.major}</p>
                 )}
             </div>
 
-            <div className="mt-auto flex items-center justify-between">
+            <div className="mt-auto flex items-center justify-between pt-3">
                 <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +142,7 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
                 {edu.current && (
                     <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
                         <span className="relative flex h-1.5 w-1.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-50" />
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground opacity-50" />
                             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground" />
                         </span>
                         {t("now")}
@@ -155,7 +154,6 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
 }
 
 export default function Education() {
-    const t = useTranslations("About");
     const { resolvedTheme } = useTheme();
     const isDark = resolvedTheme === "dark";
 
@@ -180,7 +178,7 @@ export default function Education() {
                     >
                         {isDark ? (
                             <SpotlightCard
-                                className={`!p-4 !rounded-xl relative flex flex-col gap-2.5 overflow-hidden cursor-default h-full ${
+                                className={`!rounded-xl !p-4 relative flex h-full cursor-default flex-col gap-0 overflow-hidden ${
                                     edu.current
                                         ? "!border-foreground/30"
                                         : "!border-neutral-800"
@@ -191,7 +189,7 @@ export default function Education() {
                             </SpotlightCard>
                         ) : (
                             <div
-                                className={`relative flex flex-col gap-2.5 overflow-hidden rounded-xl border bg-card p-4 cursor-default h-full ${
+                                className={`relative flex h-full cursor-default flex-col overflow-hidden rounded-xl border bg-card p-4 ${
                                     edu.current ? "border-foreground/30" : "border-border"
                                 }`}
                             >
