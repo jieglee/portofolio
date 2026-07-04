@@ -10,7 +10,7 @@ import { Briefcase } from "lucide-react";
 const careerList = [
     {
         logo: "/images/logo-smk.png",
-        title: "Treasurer of Student Council (OSIS)",
+        title: "Treasurer of Student Council (OSIS),
         organization: "SMK Taruna Bhakti",
         location: "Depok, Indonesia",
         period: "2024 – 2025",
