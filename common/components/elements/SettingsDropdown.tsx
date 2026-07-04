@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTheme } from "next-themes";
 import { FiChevronDown } from "react-icons/fi";
@@ -13,14 +13,14 @@ import SpotlightButton from "@/common/components/elements/SpotlightButton";
 import { cn } from "@/lib/utils";
 
 const locales = [
-    { value: "en", label: "English", Flag: US },
-    { value: "id", label: "Indonesia", Flag: ID },
+    { value: "en", labelKey: "lang_en", Flag: US },
+    { value: "id", labelKey: "lang_id", Flag: ID },
 ];
 
 const themes = [
-    { value: "light", icon: <MdLightMode size={18} />, label: "Light" },
-    { value: "dark", icon: <MdDarkMode size={18} />, label: "Dark" },
-    { value: "pink", icon: <PiHeartFill size={16} />, label: "Pink" },
+    { value: "light", icon: <MdLightMode size={18} />, labelKey: "theme_light" },
+    { value: "dark", icon: <MdDarkMode size={18} />, labelKey: "theme_dark" },
+    { value: "pink", icon: <PiHeartFill size={16} />, labelKey: "theme_pink" },
 ];
 
 function Select<T extends string>({
@@ -32,8 +32,9 @@ function Select<T extends string>({
     renderIcon,
     hideTriggerLabel,
     iconGap,
+    t,
 }: {
-    options: { value: T; label: string }[];
+    options: { value: T; labelKey: string }[];
     selected: T;
     isOpen: boolean;
     onToggle: () => void;
@@ -41,6 +42,7 @@ function Select<T extends string>({
     renderIcon: (value: T) => React.ReactNode;
     hideTriggerLabel?: boolean;
     iconGap?: string;
+    t: (key: string) => string;
 }) {
     return (
         <div>
@@ -54,7 +56,7 @@ function Select<T extends string>({
                 >
                     <span className="flex items-center">{renderIcon(selected)}</span>
                     {!hideTriggerLabel && (
-                        <span className="flex-1 text-left">{options.find((o) => o.value === selected)?.label}</span>
+                        <span className="flex-1 text-left">{t(options.find((o) => o.value === selected)?.labelKey ?? "")}</span>
                     )}
                     <motion.span
                         animate={{ rotate: isOpen ? 180 : 0 }}
@@ -89,7 +91,7 @@ function Select<T extends string>({
                                         )}
                                     >
                                         <span className="flex items-center">{renderIcon(option.value)}</span>
-                                        <span className="flex-1 text-left">{option.label}</span>
+                                        <span className="flex-1 text-left">{t(option.labelKey)}</span>
                                         {active && (
                                             <motion.span
                                                 initial={{ scale: 0 }}
@@ -111,6 +113,7 @@ function Select<T extends string>({
 }
 
 const SettingsDropdown = () => {
+    const t = useTranslations("Settings");
     const [openSelect, setOpenSelect] = useState<"theme" | "language" | null>(null);
     const [mounted, setMounted] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -149,9 +152,10 @@ const SettingsDropdown = () => {
                     setOpenSelect(null);
                 }}
                 renderIcon={(v) => {
-                    const t = themes.find((x) => x.value === v);
-                    return t ? t.icon : "🌙";
+                    const th = themes.find((x) => x.value === v);
+                    return th ? th.icon : "🌙";
                 }}
+                t={t}
             />
 
             <Select
@@ -170,6 +174,7 @@ const SettingsDropdown = () => {
                     return l ? <l.Flag style={{ width: 22, height: 16 }} /> : <US style={{ width: 22, height: 16 }} />;
                 }}
                 iconGap="gap-3"
+                t={t}
             />
         </div>
     );

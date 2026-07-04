@@ -54,6 +54,12 @@ const cardVariant: Variants = {
     },
 };
 
+const levelKeys: Record<string, string> = {
+    "Senior High School": "level_seniorHigh",
+    "Junior High School": "level_juniorHigh",
+    "Elementary School": "level_elementary",
+};
+
 function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
     const t = useTranslations("About");
     return (
@@ -112,7 +118,7 @@ function EduCardInner({ edu }: { edu: typeof educationList[0] }) {
                 <p className="text-sm font-medium text-foreground leading-tight">
                     {edu.school}
                 </p>
-                <p className="text-[11px] text-muted-foreground">{edu.level}</p>
+                <p className="text-[11px] text-muted-foreground">{t(levelKeys[edu.level] ?? edu.level)}</p>
                 {edu.major && (
                     <p className="text-[11px] text-foreground">{edu.major}</p>
                 )}

@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { Home, Inbox, Calendar, Search, Settings } from "lucide-react"
 
 import {
@@ -45,17 +46,18 @@ const items = [
 ]
 
 export function AppSidebar() {
+    const t = useTranslations("Common");
     return (
         <Sidebar>
             {/* HEADER */}
             <SidebarHeader className="p-4 text-lg font-semibold">
-                My App
+                {t("brand")}
             </SidebarHeader>
 
             {/* CONTENT */}
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupLabel>{t("appLabel")}</SidebarGroupLabel>
 
                     <SidebarGroupContent>
                         <SidebarMenu>
@@ -77,7 +79,7 @@ export function AppSidebar() {
 
             {/* FOOTER */}
             <SidebarFooter className="p-4 text-sm text-muted-foreground">
-                © 2026 My App
+                © 2026 {t("brand")}
             </SidebarFooter>
         </Sidebar>
     )

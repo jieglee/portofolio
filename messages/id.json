@@ -9,7 +9,8 @@
     "Contents": "Konten",
     "Creations": "Kreasi",
     "Chat Room": "Ruang Obrolan",
-    "Smart Talk": "Smart Talk"
+    "Smart Talk": "Smart Talk",
+    "Menu": "Menu"
   },
   "Footer": {
     "copyright": "HAK CIPTA © 2026",
@@ -38,7 +39,13 @@
     "career_subtitle": "Perjalanan profesional dan pengalaman organisasi saya.",
     "downloadCV": "Unduh CV",
 
-    "now": "Sekarang"
+    "now": "Sekarang",
+    "showResponsibilities": "Tampilkan Tanggung Jawab",
+    "hideResponsibilities": "Sembunyikan Tanggung Jawab",
+    "level_seniorHigh": "SMA",
+    "level_juniorHigh": "SMP",
+    "level_elementary": "SD",
+    "cv": "CV"
   },
   "Achievements": {
     "title": "Pencapaian",
@@ -110,7 +117,8 @@
     "verified": "Terverifikasi",
     "switchTopbar": "Ganti ke topbar",
     "switchTopbarLabel": "Ganti ke tata letak topbar",
-    "brand": "Jeffrey Studios"
+    "brand": "Jeffrey Studios",
+    "appLabel": "Aplikasi"
   },
   "Dashboard": {
     "Github": {
@@ -140,5 +148,12 @@
         "dec": "Des"
       }
     }
+  },
+  "Settings": {
+    "lang_en": "English",
+    "lang_id": "Indonesia",
+    "theme_light": "Terang",
+    "theme_dark": "Gelap",
+    "theme_pink": "Merah Muda"
   }
 }

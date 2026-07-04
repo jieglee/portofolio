@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { type ProjectItem } from "@/common/constants/projects";
 import { TECH_MAP } from "@/common/constants/tech-icons";
 
@@ -31,7 +32,7 @@ function CopyLine({ command }: { command: string }) {
             <button
                 onClick={handleCopy}
                 className="shrink-0 text-muted-foreground hover:text-foreground transition-colors"
-                title="Copy"
+                title="Copy command"
             >
                 <AnimatePresence mode="wait">
                     {copied ? (
@@ -124,6 +125,7 @@ function TechIcon({ techKey }: { techKey: string }) {
 
 // ── Main page ─────────────────────────────────────────────────────
 export default function ProjectDetailPage({ project, content }: ProjectDetailPageProps) {
+    const t = useTranslations("ProjectDetail");
     return (
         <div className="w-full flex flex-col gap-4 py-6 px-4 sm:px-6 max-w-3xl mx-auto">
 
@@ -135,7 +137,7 @@ export default function ProjectDetailPage({ project, content }: ProjectDetailPag
                 <div className="w-7 h-7 rounded-full border border-border flex items-center justify-center bg-muted/40 hover:bg-muted transition-colors">
                     <ChevronLeft className="w-4 h-4" />
                 </div>
-                Back
+                {t("back")}
             </Link>
 
             {/* Title */}
@@ -155,7 +157,7 @@ export default function ProjectDetailPage({ project, content }: ProjectDetailPag
             <div className="flex items-center justify-between gap-4 flex-wrap">
                 <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-sm text-muted-foreground font-medium">
-                        Technology Stack :
+                        {t("techStack")}
                     </span>
                     {project.techStack.map((key) => (
                         <TechIcon key={key} techKey={key} />
@@ -171,7 +173,7 @@ export default function ProjectDetailPage({ project, content }: ProjectDetailPag
                             className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
                         >
                             <Github className="w-4 h-4" />
-                            Source Code
+                            {t("sourceCode")}
                         </a>
                     )}
                     {project.sourceUrl && project.demoUrl && (
@@ -185,7 +187,7 @@ export default function ProjectDetailPage({ project, content }: ProjectDetailPag
                             className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
                         >
                             <ExternalLink className="w-4 h-4" />
-                            Live Demo
+                            {t("liveDemo")}
                         </a>
                     )}
                 </div>

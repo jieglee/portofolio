@@ -1,5 +1,5 @@
 {
-"Navigation": {
+  "Navigation": {
     "Home": "Home",
     "About": "About",
     "Projects": "Projects",
@@ -9,8 +9,9 @@
     "Contents": "Contents",
     "Creations": "Creations",
     "Chat Room": "Chat Room",
-    "Smart Talk": "Smart Talk"
-},
+    "Smart Talk": "Smart Talk",
+    "Menu": "Menu"
+  },
   "Footer": {
     "copyright": "COPYRIGHT © 2026",
     "name": "Anindita Amantaruna",
@@ -38,7 +39,13 @@
     "career_subtitle": "My professional journey and organizational experience.",
     "downloadCV": "Download CV",
 
-    "now": "Now"
+    "now": "Now",
+    "showResponsibilities": "Show Responsibilities",
+    "hideResponsibilities": "Hide Responsibilities",
+    "level_seniorHigh": "Senior High School",
+    "level_juniorHigh": "Junior High School",
+    "level_elementary": "Elementary School",
+    "cv": "CV"
   },
   "Achievements": {
     "title": "Achievements",
@@ -110,7 +117,8 @@
     "verified": "Verified",
     "switchTopbar": "Switch to topbar",
     "switchTopbarLabel": "Switch to topbar layout",
-    "brand": "Jeffrey Studios"
+    "brand": "Jeffrey Studios",
+    "appLabel": "Application"
   },
   "Dashboard": {
     "Github": {
@@ -140,5 +148,12 @@
         "dec": "Dec"
       }
     }
+  },
+  "Settings": {
+    "lang_en": "English",
+    "lang_id": "Indonesia",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+    "theme_pink": "Pink"
   }
 }

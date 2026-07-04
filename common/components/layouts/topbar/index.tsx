@@ -67,7 +67,7 @@ export default function Topbar() {
                         )}
                     >
                         <MenuIcon size={18} />
-                        <span className="text-sm">Menu</span>
+                        <span className="text-sm">{t("Menu")}</span>
                     </motion.button>
 
                     <AnimatePresence>

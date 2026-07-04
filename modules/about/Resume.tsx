@@ -30,7 +30,7 @@ export default function Resume() {
                     <iframe
                         src="/documents/cv.pdf"
                         className="w-full h-[600px] lg:h-[800px]"
-                        title="CV"
+                        title={t("cv")}
                     />
                 </div>
             </div>

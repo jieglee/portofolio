@@ -50,6 +50,7 @@ function CareerCardInner({
     expandedIndex: number | null;
     setExpandedIndex: (v: number | null) => void;
 }) {
+    const t = useTranslations("About");
     return (
         <>
             <div className="flex items-start gap-4">
@@ -100,7 +101,7 @@ function CareerCardInner({
                         >
                             <path d="m9 18 6-6-6-6" />
                         </motion.svg>
-                        {expandedIndex === index ? "Hide Responsibilities" : "Show Responsibilities"}
+                        {expandedIndex === index ? t("hideResponsibilities") : t("showResponsibilities")}
                     </button>
 
                     <AnimatePresence initial={false}>
