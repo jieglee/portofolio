@@ -36,7 +36,7 @@ const Layouts = ({ children }: LayoutsProps) => {
         <div className="mx-auto max-w-[90rem] lg:px-12">
             <div className="mx-auto flex flex-col lg:flex-row lg:gap-5 lg:py-4">
                 <Sidebar />
-                <main className="max-w-[80rem] transition-all duration-300 lg:w-4/5">
+                <main className="max-w-[80rem] pt-16 transition-all duration-300 lg:w-4/5 lg:pt-0">
                     {children}
                 </main>
             </div>

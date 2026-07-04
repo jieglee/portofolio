@@ -44,7 +44,7 @@ export default function StatsCard({ platform, stats }: StatsCardProps) {
             className="rounded-2xl border border-border bg-card p-5 flex flex-col gap-5"
         >
             {/* Profile row */}
-            <div className="flex items-start gap-4">
+            <div className="flex flex-wrap items-start gap-4">
                 <div className="relative shrink-0 w-16 h-16">
                     {stats.avatar ? (
                         <Image
@@ -78,7 +78,7 @@ export default function StatsCard({ platform, stats }: StatsCardProps) {
                     href={stats.profileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-opacity hover:opacity-90"
+                    className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-opacity hover:opacity-90"
                     style={{
                         background: config.bg,
                         color: config.color,

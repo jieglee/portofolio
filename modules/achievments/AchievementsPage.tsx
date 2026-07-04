@@ -92,7 +92,7 @@ export default function AchievementsPage() {
 
                 <motion.div variants={pageItem} className="my-6 border-t border-dashed border-border" />
 
-                <motion.div variants={pageItem} className="relative w-64">
+                <motion.div variants={pageItem} className="relative w-full max-w-64">
                     <svg
                         className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                         xmlns="http://www.w3.org/2000/svg"

@@ -20,12 +20,12 @@ const tabs: { id: AboutTab; labelKey: string }[] = [
 export default function AboutTabs({ active, onChange }: AboutTabsProps) {
     const t = useTranslations("About");
     return (
-        <div className="relative flex rounded-xl border border-border bg-muted/30 p-1 gap-1">
+        <div className="relative flex rounded-xl border border-border bg-muted/30 p-1 gap-1 overflow-x-auto">
             {tabs.map((tab) => (
                 <button
                     key={tab.id}
                     onClick={() => onChange(tab.id)}
-                    className="relative flex-1 flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 z-10"
+                    className="relative flex-1 flex items-center justify-center gap-2 px-2 sm:px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 z-10"
                     style={{
                         color: active === tab.id ? "var(--foreground)" : "var(--muted-foreground)",
                     }}

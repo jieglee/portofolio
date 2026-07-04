@@ -51,7 +51,7 @@ export default function ContentGrid({ items, platform, loading = false }: Conten
                     )}
                 </p>
 
-                <div className="flex items-center gap-1 rounded-lg border border-border bg-muted/30 p-0.5">
+                <div className="flex items-center gap-1 rounded-lg border border-border bg-muted/30 p-0.5 overflow-x-auto">
                     {([
                         { key: "views" as const, label: t("sort_views") },
                         { key: "likes" as const, label: t("sort_likes") },

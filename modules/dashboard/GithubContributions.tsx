@@ -240,7 +240,7 @@ export default function GithubContributions() {
                     </div>
 
                     {/* Legend */}
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-muted-foreground">
                         <div className="flex items-center gap-1.5">
                             <span>{t("less")}</span>
                             {LEVEL_COLORS.map((color, i) => (

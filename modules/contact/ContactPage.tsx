@@ -176,7 +176,7 @@ export default function ContactPage() {
                 <p className="mb-4 text-sm font-medium text-foreground">{t("messageLabel")}</p>
 
                 <div className="flex flex-col gap-3">
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <input
                             name="name"
                             type="text"
