@@ -5,6 +5,7 @@
     import { motion } from "framer-motion";
     import { useTheme } from "next-themes";
     import SpotlightCard from "@/common/components/elements/SpotlightCard";
+    import GridPattern from "@/common/components/elements/GridPattern";
     import { Pin } from "lucide-react";
     import { useRouter } from "@/i18n/navigation";
     import { type ProjectItem } from "@/common/constants/projects";
@@ -34,6 +35,16 @@
             className="!p-0 !rounded-2xl !bg-card !border-border group flex flex-col overflow-hidden transition-shadow hover:shadow-lg"
             spotlightColor="rgba(255, 255, 255, 0.12)"
             >
+            <GridPattern
+                size={64}
+                offsetX={0}
+                offsetY={0}
+                className="pointer-events-none absolute -top-1/2 right-0 h-[200%] w-2/3 skew-y-12 stroke-white/10 stroke-[2] [mask-image:linear-gradient(-85deg,black,transparent)]"
+            >
+                {[[2,5],[3,1],[4,3]].map(([row, col], i) => (
+                <GridPattern.Block key={i} row={row} column={col} className="fill-white/5 transition duration-500 hover:fill-white/10" />
+                ))}
+            </GridPattern>
             <CardContent project={project} />
             </SpotlightCard>
         ) : (

@@ -9,6 +9,7 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { PiHeartFill } from "react-icons/pi";
 import US from "country-flag-icons/react/3x2/US";
 import ID from "country-flag-icons/react/3x2/ID";
+import SpotlightButton from "@/common/components/elements/SpotlightButton";
 import { cn } from "@/lib/utils";
 
 const locales = [
@@ -44,7 +45,7 @@ function Select<T extends string>({
     return (
         <div>
             <div className="relative">
-                <button
+                <SpotlightButton
                     onClick={onToggle}
                     className={cn(
                         "flex w-full items-center border px-4 py-3 text-sm transition-all duration-200 rounded-xl bg-background text-foreground border-border hover:bg-accent/50",
@@ -62,7 +63,7 @@ function Select<T extends string>({
                     >
                         <FiChevronDown size={16} />
                     </motion.span>
-                </button>
+                </SpotlightButton>
 
                 <AnimatePresence>
                     {isOpen && (
