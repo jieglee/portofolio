@@ -12,18 +12,18 @@ const MobileMenu = () => {
     const filteredMenu = MENU_ITEMS?.filter((item) => item?.isShow);
     return (
         <motion.div
-            className="my-3 flex h-[calc(100vh-4rem)] flex-col"
-            initial={{ y: -100 }}
+            className="fixed inset-x-0 top-[4.5rem] z-30 flex h-[calc(100vh-4.5rem)] flex-col bg-background"
+            initial={{ y: -20, opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
         >
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto px-4 pb-4">
                 <Breakline />
                 <Menu list={filteredMenu} />
             </div>
-            <div className="shrink-0">
-                <Breakline />
-                <div className="flex items-center justify-between px-1">
+            <div className="shrink-0 border-t border-border px-4 py-3">
+                <div className="flex items-center justify-between">
                     <SettingsDropdown />
                     <LayoutToggleButton />
                 </div>

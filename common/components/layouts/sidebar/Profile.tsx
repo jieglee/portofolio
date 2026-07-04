@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 
 import { useMenu } from "@/common/stores/menu";
 
+import IntlToggle from "./IntToogle";
 import MobileMenu from "./MobileMenu";
 import MobileMenuButton from "./MobileMenuButton";
 import ProfileHeader from "./ProfileHeader";
+import ThemeToggle from "./ThemeToogle";
 
 const Profile = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -52,13 +54,9 @@ const Profile = () => {
             <div className="flex items-center justify-between md:px-2 lg:flex-col lg:space-y-4">
                 <ProfileHeader expandMenu={isOpen} imageSize={imageSize} />
                 {isMobile && (
-                    <div
-                        className={clsx(
-                            "mt-1 flex items-center gap-5 lg:hidden",
-                            isOpen &&
-                            "h-32.5 flex-col-reverse items-end! justify-between pb-1",
-                        )}
-                    >
+                    <div className="mt-1 flex items-center gap-2 lg:hidden">
+                        <ThemeToggle />
+                        <IntlToggle />
                         <MobileMenuButton expandMenu={isOpen} setExpandMenu={toggleMenu} />
                     </div>
                 )}
