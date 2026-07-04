@@ -1,6 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 const container: Variants = {
     hidden: {},
@@ -24,29 +25,41 @@ export default function Introduction() {
             </div>
 
             <motion.div
-                className="flex flex-col gap-6 md:flex-row md:items-start md:gap-10"
+                className="flex flex-col gap-6"
                 variants={container}
                 initial="hidden"
                 animate="visible"
             >
                 <div className="flex flex-col gap-4">
-                    <motion.div variants={item}>
-                        <h2 className="text-xl font-bold text-foreground">
-                            Anindita Amantaruna Putri Roswanto
-                        </h2>
-                        <p className="mt-0.5 text-sm text-muted-foreground">
-                            {t("role")}
-                        </p>
-                    </motion.div>
-
-                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
-                        {t("bio1")}
-                    </motion.p>
-
+                    <motion.p
+                        variants={item}
+                        className="text-sm leading-relaxed text-muted-foreground max-w-xl"
+                        dangerouslySetInnerHTML={{ __html: t("bio1") }}
+                    />
                     <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
                         {t("bio2")}
                     </motion.p>
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                        {t("bio3")}
+                    </motion.p>
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                        {t("bio4")}
+                    </motion.p>
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                        {t("bio5")}
+                    </motion.p>
                 </div>
+
+                <motion.div variants={item} className="flex flex-col gap-3">
+                    <p className="text-sm text-muted-foreground">{t("warmRegards")}</p>
+                    <Image
+                        src="/images/signature.png"
+                        alt="Signature"
+                        width={120}
+                        height={50}
+                        className="opacity-80"
+                    />
+                </motion.div>
             </motion.div>
         </section>
     );
