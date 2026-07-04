@@ -16,7 +16,7 @@ const careerList = [
         period: "2024 – 2025",
         type: "Student Organization",
         responsibilities: [
-            "Managed the Student Council's budget and financial records.",
+            "Managed the Student Council's budget and financial records."
             "Recorded and monitored income and expenses accurately.",
             "Prepared financial reports for organizational programs and school events.",
             "Coordinated with committee members to ensure efficient budget allocation.",
