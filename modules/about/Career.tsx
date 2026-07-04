@@ -64,7 +64,7 @@ export default function Career() {
                         {/* Logo + info row */}
                         <div className="flex items-start gap-4">
                             {/* Logo */}
-                            <div className="relative w-14 h-14 shrink-0 rounded-lg overflow-hidden border border-border bg-muted flex items-center justify-center">
+                            <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-border bg-muted flex items-center justify-center">
                                 {item.logo ? (
                                     <Image
                                         src={item.logo}
@@ -92,56 +92,56 @@ export default function Career() {
                                     <span className="mx-1.5">•</span>
                                     {item.type}
                                 </p>
+
+                                {/* Show responsibilities toggle — sejajar di dalam info col */}
+                                <button
+                                    onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                                    className="mt-2 flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                                >
+                                    <motion.svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        animate={{ rotate: expandedIndex === index ? 90 : 0 }}
+                                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                                    >
+                                        <path d="m9 18 6-6-6-6" />
+                                    </motion.svg>
+                                    {expandedIndex === index ? "Hide Responsibilities" : "Show Responsibilities"}
+                                </button>
+
+                                {/* Responsibilities list */}
+                                <AnimatePresence initial={false}>
+                                    {expandedIndex === index && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                            className="overflow-hidden"
+                                        >
+                                            <ul className="mt-3 space-y-1.5 pl-1">
+                                                {item.responsibilities.map((resp, i) => (
+                                                    <li
+                                                        key={i}
+                                                        className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
+                                                    >
+                                                        <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground/40" />
+                                                        {resp}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         </div>
-
-                        {/* Show responsibilities toggle */}
-                        <button
-                            onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                            className="mt-3 flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
-                        >
-                            <motion.svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="12"
-                                height="12"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                animate={{ rotate: expandedIndex === index ? 90 : 0 }}
-                                transition={{ duration: 0.25, ease: "easeInOut" }}
-                            >
-                                <path d="m9 18 6-6-6-6" />
-                            </motion.svg>
-                            {expandedIndex === index ? "Hide Responsibilities" : "Show Responsibilities"}
-                        </button>
-
-                        {/* Responsibilities list */}
-                        <AnimatePresence initial={false}>
-                            {expandedIndex === index && (
-                                <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className="overflow-hidden"
-                                >
-                                    <ul className="mt-3 space-y-1.5 pl-1">
-                                        {item.responsibilities.map((resp, i) => (
-                                            <li
-                                                key={i}
-                                                className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
-                                            >
-                                                <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground/40" />
-                                                {resp}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
                     </motion.div>
                 ))}
             </motion.div>
