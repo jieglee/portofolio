@@ -31,21 +31,19 @@ export default function Introduction() {
                 animate="visible"
             >
                 <div className="flex flex-col gap-4">
-                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
-                        {t.rich("bio1", {
-                            strong: (chunks) => <strong>{chunks}</strong>,
-                        })}
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground text-justify">
+                        {t("bio1")}
                     </motion.p>
-                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground text-justify">
                         {t("bio2")}
                     </motion.p>
-                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground text-justify">
                         {t("bio3")}
                     </motion.p>
-                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground text-justify">
                         {t("bio4")}
                     </motion.p>
-                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground max-w-xl">
+                    <motion.p variants={item} className="text-sm leading-relaxed text-muted-foreground text-justify">
                         {t("bio5")}
                     </motion.p>
                 </div>
@@ -53,11 +51,11 @@ export default function Introduction() {
                 <motion.div variants={item} className="flex flex-col gap-3">
                     <p className="text-sm text-muted-foreground">{t("warmRegards")}</p>
                     <Image
-                        src="/images/signature.png"
+                        src="/images/sign-runa.png"
                         alt="Signature"
                         width={120}
-                        height={50}
-                        className="opacity-80"
+                        height={48}
+                        className="opacity-90"
                     />
                 </motion.div>
             </motion.div>
