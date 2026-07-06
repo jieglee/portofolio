@@ -2,10 +2,13 @@
 import dynamic from "next/dynamic";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useLayout } from "@/common/stores/layout";
+import { useMenu } from "@/common/stores/menu";
 import Sidebar from "./sidebar";
 import Topbar from "./topbar";
+import MobileMenu from "./sidebar/MobileMenu";
 
 const Notif = dynamic(() => import("../elements/Notif"), { ssr: false });
 
@@ -15,6 +18,15 @@ interface LayoutsProps {
 
 const Layouts = ({ children }: LayoutsProps) => {
     const { mode } = useLayout();
+    const { isOpen } = useMenu();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 769);
+        const handleResize = () => setIsMobile(window.innerWidth < 769);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     useEffect(() => {
         AOS.init({ duration: 800, delay: 50 });
@@ -41,6 +53,9 @@ const Layouts = ({ children }: LayoutsProps) => {
                 </main>
             </div>
             <Notif />
+            {isMobile && (
+                <AnimatePresence>{isOpen && <MobileMenu />}</AnimatePresence>
+            )}
         </div>
     );
 };

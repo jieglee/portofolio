@@ -1,10 +1,8 @@
 import clsx from "clsx";
-import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import { useMenu } from "@/common/stores/menu";
 
-import MobileMenu from "./MobileMenu";
 import MobileMenuButton from "./MobileMenuButton";
 import ProfileHeader from "./ProfileHeader";
 
@@ -58,9 +56,7 @@ const Profile = () => {
                 )}
             </div>
 
-            {isMobile && (
-                <AnimatePresence>{isOpen && <MobileMenu />}</AnimatePresence>
-            )}
+
         </div>
     );
 };

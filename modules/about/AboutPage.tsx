@@ -38,9 +38,11 @@ export default function AboutPage() {
 
             <motion.div variants={item} className="my-6 border-t border-dashed border-border" />
 
-            <motion.div variants={item} className="mb-8">
-                <AboutTabs active={activeTab} onChange={setActiveTab} />
-            </motion.div>
+            <div className="sticky top-16 z-10 bg-background -mx-6 px-6 pb-1 lg:top-0 lg:-mx-12 lg:px-12">
+                <motion.div variants={item} className="mb-8">
+                    <AboutTabs active={activeTab} onChange={setActiveTab} />
+                </motion.div>
+            </div>
 
             <motion.div variants={item} key={activeTab}>
                 {activeTab === "introduction" && <Introduction />}

@@ -10,7 +10,7 @@ const MobileMenu = () => {
     const filteredMenu = MENU_ITEMS?.filter((item) => item?.isShow);
     return (
         <motion.div
-            className="fixed inset-x-0 top-[4.5rem] z-30 flex h-[calc(100vh-4.5rem)] flex-col bg-background"
+            className="fixed inset-x-0 top-[4.5rem] z-50 flex h-[calc(100vh-4.5rem)] flex-col bg-background lg:hidden"
             initial={{ y: -20, opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
