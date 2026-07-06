@@ -5,6 +5,8 @@ import { useMenu } from "@/common/stores/menu";
 
 import MobileMenuButton from "./MobileMenuButton";
 import ProfileHeader from "./ProfileHeader";
+import ThemeToggle from "./ThemeToogle";
+import IntlToggle from "./IntToogle";
 
 const Profile = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -51,6 +53,8 @@ const Profile = () => {
                 <ProfileHeader expandMenu={isOpen} imageSize={imageSize} />
                 {isMobile && (
                     <div className="mt-1 flex items-center gap-2 lg:hidden">
+                        <ThemeToggle />
+                        <IntlToggle />
                         <MobileMenuButton expandMenu={isOpen} setExpandMenu={toggleMenu} />
                     </div>
                 )}
