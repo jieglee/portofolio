@@ -4,11 +4,11 @@ import { useRef, useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { Smartphone, ChevronRight, Play, Eye, Heart, ArrowRight } from "lucide-react";
+import { Smartphone, ChevronRight, ChevronLeft, Play, Eye, Heart, ArrowRight } from "lucide-react";
 import { type ContentItem } from "@/common/constants/creations";
 
 const MAX_VIDEOS = 10;
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 2;
 
 const FALLBACK_VIDEOS: ContentItem[] = [
   {
@@ -150,6 +150,7 @@ export default function CreationsSection() {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, scrollLeft: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [videos, setVideos] = useState<ContentItem[] | null>(null);
 
@@ -182,6 +183,7 @@ export default function CreationsSection() {
       const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
       const idx = Math.round(progress * (totalCards - 1));
       setActiveIndex(Math.min(idx, totalCards - 1));
+      setCanScrollLeft(scrollLeft > 16);
       setCanScrollRight(scrollLeft < maxScroll - 16);
     };
 
@@ -211,6 +213,13 @@ export default function CreationsSection() {
     if (!el) return;
     const cardWidth = 130 + 16;
     el.scrollBy({ left: cardWidth * PAGE_SIZE, behavior: "smooth" });
+  };
+
+  const scrollLeft = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = 130 + 16;
+    el.scrollBy({ left: -(cardWidth * PAGE_SIZE), behavior: "smooth" });
   };
 
   const activePage = Math.floor(activeIndex / PAGE_SIZE);
@@ -267,6 +276,15 @@ export default function CreationsSection() {
           className="mt-6 flex items-center justify-between px-6 lg:px-12"
         >
           <div className="flex items-center gap-2">
+            {canScrollLeft && (
+              <button
+                onClick={scrollLeft}
+                className="w-9 h-9 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center text-foreground shadow-lg transition-all duration-300 hover:bg-muted"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-4.5 h-4.5" />
+              </button>
+            )}
             {Array.from({ length: totalPages }).map((_, p) => (
               <button
                 key={p}
