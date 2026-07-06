@@ -276,15 +276,6 @@ export default function CreationsSection() {
           className="mt-6 flex items-center justify-between px-6 lg:px-12"
         >
           <div className="flex items-center gap-2">
-            {canScrollLeft && (
-              <button
-                onClick={scrollLeft}
-                className="w-9 h-9 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center text-foreground shadow-lg transition-all duration-300 hover:bg-muted"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-4.5 h-4.5" />
-              </button>
-            )}
             {Array.from({ length: totalPages }).map((_, p) => (
               <button
                 key={p}
@@ -304,15 +295,26 @@ export default function CreationsSection() {
             ))}
           </div>
 
-          <button
-            onClick={scrollRight}
-            className={`w-9 h-9 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center text-foreground shadow-lg transition-all duration-300 hover:bg-muted ${
-              !canScrollRight ? "opacity-30 cursor-not-allowed" : ""
-            }`}
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="w-4.5 h-4.5" />
-          </button>
+          <div className="flex items-center gap-2">
+            {canScrollLeft && (
+              <button
+                onClick={scrollLeft}
+                className="w-9 h-9 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center text-foreground shadow-lg transition-all duration-300 hover:bg-muted"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-4.5 h-4.5" />
+              </button>
+            )}
+            <button
+              onClick={scrollRight}
+              className={`w-9 h-9 rounded-full bg-background/80 backdrop-blur-md border border-border/50 flex items-center justify-center text-foreground shadow-lg transition-all duration-300 hover:bg-muted ${
+                !canScrollRight ? "opacity-30 cursor-not-allowed" : ""
+              }`}
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-4.5 h-4.5" />
+            </button>
+          </div>
         </motion.div>
       </motion.section>
     </>
