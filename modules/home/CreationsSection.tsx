@@ -52,7 +52,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0 snap-start"
+      className="w-[140px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0 snap-start"
     >
       <a
         href={video.url}
@@ -66,7 +66,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
           alt={video.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 640px) 62px, (max-width: 768px) 100px, (max-width: 1024px) 130px, 160px"
+          sizes="(max-width: 640px) 140px, (max-width: 768px) 100px, (max-width: 1024px) 130px, 160px"
         />
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -101,7 +101,7 @@ function CTACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0 snap-start"
+      className="w-[140px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0 snap-start"
     >
       <Link href="/creations" className="group/cta block h-full">
         <div className="relative h-full rounded-[24px] overflow-hidden border-2 border-dashed border-border/60 bg-card/60 backdrop-blur-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:border-border">
