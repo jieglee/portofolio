@@ -5,6 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Smartphone, ChevronRight, ChevronLeft, Play, Eye, Heart, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { type ContentItem } from "@/common/constants/creations";
 
 const MAX_VIDEOS = 10;
@@ -44,6 +45,7 @@ const fadeUp: Variants = {
 };
 
 function VideoCard({ video, index }: { video: ContentItem; index: number }) {
+  const t = useTranslations("Creations");
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -89,7 +91,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
             className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-medium hover:bg-white/25 transition-colors"
           >
             <Play className="w-2.5 h-2.5 fill-white" />
-            Watch
+            {t("watch")}
           </motion.a>
           <motion.a
             href={video.url}
@@ -99,7 +101,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-medium hover:bg-white/25 transition-colors"
           >
-            View Post
+            {t("view_post")}
             <ArrowRight className="w-2.5 h-2.5" />
           </motion.a>
         </div>
@@ -109,6 +111,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
 }
 
 function CTACard() {
+  const t = useTranslations("Creations");
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -124,10 +127,10 @@ function CTACard() {
               <Smartphone className="w-4 h-4 text-blue-400" />
             </div>
             <h3 className="text-xs font-semibold text-foreground mb-1">
-              See All
+              {t("see_all")}
             </h3>
             <p className="text-[10px] text-muted-foreground leading-relaxed mb-3 max-w-[120px]">
-              Explore all my tutorials and coding tips.
+              {t("see_all_desc")}
             </p>
             <motion.span
               initial={{ x: 0 }}
@@ -135,7 +138,7 @@ function CTACard() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="inline-flex items-center gap-1.5 text-[11px] font-medium text-blue-400"
             >
-              Explore
+              {t("explore")}
               <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover/cta:translate-x-1" />
             </motion.span>
           </div>
@@ -146,6 +149,7 @@ function CTACard() {
 }
 
 export default function CreationsSection() {
+  const t = useTranslations("Creations");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, scrollLeft: 0 });
@@ -236,13 +240,13 @@ export default function CreationsSection() {
         viewport={{ once: true, margin: "-80px" }}
         className="py-[120px]"
       >
-        <motion.div variants={fadeUp} className="mb-6 px-6 lg:px-12">
+        <motion.div variants={fadeUp} className="mb-6">
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
             <Smartphone className="w-4 h-4" />
-            Creations
+            {t("title")}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            My latest TikTok videos &amp; Instagram posts.
+            {t("home_subtitle")}
           </p>
         </motion.div>
 
@@ -273,7 +277,7 @@ export default function CreationsSection() {
 
         <motion.div
           variants={fadeUp}
-          className="mt-6 flex items-center justify-between px-6 lg:px-12"
+          className="mt-6 flex items-center justify-between"
         >
           <div className="flex items-center gap-2">
             {Array.from({ length: totalPages }).map((_, p) => (

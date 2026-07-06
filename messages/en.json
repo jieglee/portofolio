@@ -90,7 +90,13 @@
     "btn_tiktok": "Open TikTok",
     "btn_instagram": "Open Instagram",
     "tab_tiktok": "TikTok",
-    "tab_instagram": "Instagram"
+    "tab_instagram": "Instagram",
+    "home_subtitle": "My latest TikTok videos & Instagram posts.",
+    "see_all": "See All",
+    "see_all_desc": "Explore all my tutorials and coding tips.",
+    "explore": "Explore",
+    "watch": "Watch",
+    "view_post": "View Post"
   },
   "Projects": {
     "title": "Projects",
