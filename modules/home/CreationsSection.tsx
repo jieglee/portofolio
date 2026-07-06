@@ -46,8 +46,6 @@ const fadeUp: Variants = {
 };
 
 function VideoCard({ video, index }: { video: ContentItem; index: number }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -55,8 +53,6 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
       className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0 snap-start"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <a
         href={video.url}
@@ -79,11 +75,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
           </div>
         </div>
 
-        <motion.div
-          animate={{ opacity: hovered ? 1 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-3 gap-1.5"
-        >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-3 gap-1.5">
           <p className="text-white text-[11px] font-medium leading-snug line-clamp-2">{video.title}</p>
           <div className="flex items-center gap-2.5">
             <span className="flex items-center gap-1 text-white/80 text-[10px]">
@@ -95,7 +87,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
               {video.likes}
             </span>
           </div>
-        </motion.div>
+        </div>
       </a>
     </motion.div>
   );
