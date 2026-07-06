@@ -3,10 +3,8 @@ import { motion } from "framer-motion";
 import { MENU_ITEMS } from "@/common/constants/menu";
 
 import Breakline from "../../elements/Breakline";
-import SettingsDropdown from "../../elements/SettingsDropdown";
 
 import Menu from "./Menu";
-import LayoutToggleButton from "../LayoutToogleButton";
 
 const MobileMenu = () => {
     const filteredMenu = MENU_ITEMS?.filter((item) => item?.isShow);
@@ -22,12 +20,7 @@ const MobileMenu = () => {
                 <Breakline />
                 <Menu list={filteredMenu} />
             </div>
-            <div className="shrink-0 border-t border-border px-4 py-3">
-                <div className="flex items-center justify-between">
-                    <SettingsDropdown />
-                    <LayoutToggleButton />
-                </div>
-            </div>
+
         </motion.div>
     );
 };
