@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useMenu } from "@/common/stores/menu";
 
@@ -10,8 +10,9 @@ import IntlToggle from "./IntToogle";
 
 const Profile = () => {
     const [isMobile, setIsMobile] = useState(false);
+    const profileRef = useRef<HTMLDivElement>(null);
 
-    const { isOpen, toggleMenu } = useMenu();
+    const { isOpen, toggleMenu, setProfileHeight } = useMenu();
 
     const imageSize = isMobile ? 40 : 100;
 
@@ -42,8 +43,15 @@ const Profile = () => {
         };
     }, [isOpen]);
 
+    useEffect(() => {
+        if (profileRef.current) {
+            setProfileHeight(profileRef.current.offsetHeight);
+        }
+    }, [isOpen, setProfileHeight]);
+
     return (
         <div
+            ref={profileRef}
             className={clsx(
                 "fixed w-full bg-background px-4 py-3 border-b border-border lg:relative lg:border-none lg:bg-transparent! lg:p-0 xl:shadow-none",
                 isOpen ? "z-[60]" : "z-20",
