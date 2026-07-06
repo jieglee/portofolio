@@ -7,6 +7,9 @@ import { Link } from "@/i18n/navigation";
 import { Smartphone, ChevronRight, Play, Eye, Heart, ArrowRight } from "lucide-react";
 import { type ContentItem } from "@/common/constants/creations";
 
+const MAX_VIDEOS = 10;
+const PAGE_SIZE = 6;
+
 const FALLBACK_VIDEOS: ContentItem[] = [
   {
     id: "fb1",
@@ -58,10 +61,6 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
             className="object-cover transition-transform duration-500 group-hover/card:scale-105"
             sizes="(max-width: 768px) 130px, (max-width: 1024px) 145px, 160px"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <span className="absolute top-2 left-2 inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] font-semibold text-white bg-black">
-            ♫ TikTok
-          </span>
         </div>
 
         <div className="p-2.5 space-y-1">
@@ -169,8 +168,9 @@ export default function CreationsSection() {
     fetchTikTok();
   }, []);
 
-  const items = videos ?? FALLBACK_VIDEOS;
+  const items = (videos ?? FALLBACK_VIDEOS).slice(0, MAX_VIDEOS);
   const totalCards = items.length + 1;
+  const totalPages = Math.ceil(totalCards / PAGE_SIZE);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -210,8 +210,10 @@ export default function CreationsSection() {
     const el = scrollRef.current;
     if (!el) return;
     const cardWidth = 130 + 16;
-    el.scrollBy({ left: cardWidth, behavior: "smooth" });
+    el.scrollBy({ left: cardWidth * PAGE_SIZE, behavior: "smooth" });
   };
+
+  const activePage = Math.floor(activeIndex / PAGE_SIZE);
 
   return (
     <>
@@ -265,21 +267,21 @@ export default function CreationsSection() {
           className="mt-6 flex items-center justify-between px-6 lg:px-12"
         >
           <div className="flex items-center gap-2">
-            {Array.from({ length: totalCards }).map((_, i) => (
+            {Array.from({ length: totalPages }).map((_, p) => (
               <button
-                key={i}
+                key={p}
                 onClick={() => {
                   const el = scrollRef.current;
                   if (!el) return;
                   const cardWidth = 130 + 16;
-                  el.scrollTo({ left: cardWidth * i, behavior: "smooth" });
+                  el.scrollTo({ left: cardWidth * p * PAGE_SIZE, behavior: "smooth" });
                 }}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === activeIndex
+                  p === activePage
                     ? "w-6 bg-foreground"
                     : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                 }`}
-                aria-label={`Go to slide ${i + 1}`}
+                aria-label={`Go to page ${p + 1}`}
               />
             ))}
           </div>
