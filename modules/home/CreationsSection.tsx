@@ -45,67 +45,57 @@ const fadeUp: Variants = {
 };
 
 function VideoCard({ video, index }: { video: ContentItem; index: number }) {
-  const t = useTranslations("Creations");
+  const [hovered, setHovered] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-      className="group/card w-[130px] md:w-[145px] lg:w-[160px] flex-shrink-0 snap-start"
+      className="w-[115px] md:w-[130px] lg:w-[145px] flex-shrink-0 snap-start"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative rounded-[24px] overflow-hidden border border-border/50 bg-card/60 backdrop-blur-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:border-border/80">
-        <div className="relative aspect-[3/4] overflow-hidden">
-          <Image
-            src={video.thumbnail}
-            alt={video.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover/card:scale-105"
-            sizes="(max-width: 768px) 130px, (max-width: 1024px) 145px, 160px"
-          />
-        </div>
+      <a
+        href={video.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block rounded-[24px] overflow-hidden border border-border/50 bg-muted/20 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-border/80"
+        style={{ aspectRatio: "9/16" }}
+      >
+        <Image
+          src={video.thumbnail}
+          alt={video.title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 130px, (max-width: 1024px) 145px, 160px"
+        />
 
-        <div className="p-2.5 space-y-1">
-          <h3 className="text-[11px] font-semibold text-foreground leading-snug line-clamp-1">
-            {video.title}
-          </h3>
-          <div className="flex items-center gap-1.5">
-            <span className="flex items-center gap-0.5 text-[9px] text-muted-foreground">
-              <Eye className="w-2 h-2" />
-              {video.views}
-            </span>
-            <span className="flex items-center gap-0.5 text-[9px] text-muted-foreground">
-              <Heart className="w-2 h-2" />
-              {video.likes}
-            </span>
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+            <Play className="w-4 h-4 text-white fill-white ml-0.5" />
           </div>
         </div>
 
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1.5 rounded-[24px]">
-          <motion.a
-            href={video.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-medium hover:bg-white/25 transition-colors"
-          >
-            <Play className="w-2.5 h-2.5 fill-white" />
-            {t("watch")}
-          </motion.a>
-          <motion.a
-            href={video.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] font-medium hover:bg-white/25 transition-colors"
-          >
-            {t("view_post")}
-            <ArrowRight className="w-2.5 h-2.5" />
-          </motion.a>
-        </div>
-      </div>
+        <motion.div
+          animate={{ opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-3 gap-1.5"
+        >
+          <p className="text-white text-[11px] font-medium leading-snug line-clamp-2">{video.title}</p>
+          <div className="flex items-center gap-2.5">
+            <span className="flex items-center gap-1 text-white/80 text-[10px]">
+              <Eye className="w-2.5 h-2.5" />
+              {video.views}
+            </span>
+            <span className="flex items-center gap-1 text-white/80 text-[10px]">
+              <Heart className="w-2.5 h-2.5" />
+              {video.likes}
+            </span>
+          </div>
+        </motion.div>
+      </a>
     </motion.div>
   );
 }
@@ -118,7 +108,7 @@ function CTACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="w-[130px] md:w-[145px] lg:w-[160px] flex-shrink-0 snap-start"
+      className="w-[115px] md:w-[130px] lg:w-[145px] flex-shrink-0 snap-start"
     >
       <Link href="/creations" className="group/cta block h-full">
         <div className="relative h-full rounded-[24px] overflow-hidden border border-border/50 bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl shadow-lg transition-all duration-300 group-hover/cta:scale-[1.03] group-hover/cta:border-blue-500/30 group-hover/cta:shadow-blue-500/5">
@@ -151,8 +141,6 @@ function CTACard() {
 export default function CreationsSection() {
   const t = useTranslations("Creations");
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, scrollLeft: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -196,21 +184,13 @@ export default function CreationsSection() {
     return () => el.removeEventListener("scroll", handleScroll);
   }, [totalCards]);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    setIsDragging(true);
-    setDragStart({ x: e.pageX, scrollLeft: scrollRef.current?.scrollLeft ?? 0 });
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
+  useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const dx = e.pageX - dragStart.x;
-    el.scrollLeft = dragStart.scrollLeft - dx;
-  };
-
-  const handlePointerUp = () => setIsDragging(false);
+    const preventWheel = (e: WheelEvent) => e.preventDefault();
+    el.addEventListener("wheel", preventWheel, { passive: false });
+    return () => el.removeEventListener("wheel", preventWheel);
+  }, []);
 
   const scrollRight = () => {
     const el = scrollRef.current;
@@ -242,7 +222,7 @@ export default function CreationsSection() {
       >
         <motion.div variants={fadeUp} className="mb-6">
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Smartphone className="w-4 h-4" />
+            <Smartphone className="w-5 h-5" />
             {t("title")}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -260,13 +240,7 @@ export default function CreationsSection() {
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
-              cursor: isDragging ? "grabbing" : "grab",
-              WebkitOverflowScrolling: "touch",
             }}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerLeave={handlePointerUp}
           >
             {items.map((video, i) => (
               <VideoCard key={video.id} video={video} index={i} />
