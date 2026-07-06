@@ -112,7 +112,9 @@ export default function CreationsPage() {
             <div className="h-px w-full border-t border-dashed border-border" />
 
             {/* Platform Tabs */}
-            <PlatformTabs active={platform} onChange={setPlatform} />
+            <div className="sticky top-16 z-10 bg-background -mx-4 px-4 pb-1 sm:-mx-6 sm:px-6 lg:top-0">
+                <PlatformTabs active={platform} onChange={setPlatform} />
+            </div>
 
 
             {/* Stats Card */}
