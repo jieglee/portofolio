@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
+import { GraduationCap } from "lucide-react";
 
 const educationList = [
     {
@@ -154,11 +155,18 @@ function EduCardInner({ edu }: { edu: (typeof educationList)[0] }) {
 }
 
 export default function Education() {
+    const t = useTranslations("About");
     const { resolvedTheme } = useTheme();
     const isDark = resolvedTheme === "dark";
 
     return (
         <section>
+            <div className="mb-6 flex items-center gap-3">
+                <GraduationCap className="w-5 h-5 text-foreground" />
+                <h2 className="text-lg font-bold text-foreground">{t("education")}</h2>
+            </div>
+            <p className="text-sm text-muted-foreground -mt-4 mb-6">{t("education_subtitle")}</p>
+
             <motion.div
                 className="grid grid-cols-1 gap-2.5 sm:grid-cols-3"
                 variants={container}
