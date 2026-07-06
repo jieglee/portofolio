@@ -30,9 +30,10 @@ export default async function Home({
       <div className="my-6 h-px w-full bg-border" />
 
       {/* Bio */}
-      <div className="flex max-w-2xl flex-col gap-4 text-foreground/80 leading-relaxed">
+      <div className="flex max-w-2xl flex-col gap-4 text-foreground/80 leading-relaxed text-justify">
         <p>{t("bio1")}</p>
         <p>{t("bio2")}</p>
+        <p>{t("bio3")}</p>
       </div>
 
       {/* Divider */}
