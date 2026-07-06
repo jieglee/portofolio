@@ -54,7 +54,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0"
+      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0 snap-start"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -70,7 +70,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
           alt={video.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="62px"
+          sizes="(max-width: 640px) 62px, (max-width: 768px) 100px, (max-width: 1024px) 130px, 160px"
         />
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -109,7 +109,7 @@ function CTACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0"
+      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0 snap-start"
     >
       <Link href="/creations" className="group/cta block h-full">
         <div className="relative h-full rounded-[24px] overflow-hidden border-2 border-dashed border-border/60 bg-card/60 backdrop-blur-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:border-border">
@@ -153,7 +153,7 @@ export default function CreationsSection() {
 
   const items = (videos ?? FALLBACK_VIDEOS).slice(0, MAX_VIDEOS);
   const totalCards = items.length + 1;
-  const totalPages = Math.ceil(totalCards / PAGE_SIZE);
+  const totalPages = Math.min(6, Math.ceil(totalCards / PAGE_SIZE));
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -200,7 +200,7 @@ export default function CreationsSection() {
     el.scrollBy({ left: -(cardWidth * PAGE_SIZE), behavior: "smooth" });
   };
 
-  const activePage = Math.floor(activeIndex / PAGE_SIZE);
+  const activePage = Math.min(Math.floor(activeIndex / PAGE_SIZE), totalPages - 1);
 
   return (
     <>
@@ -228,7 +228,7 @@ export default function CreationsSection() {
 
           <div
             ref={scrollRef}
-            className="scrollbar-hide-custom flex gap-2 overflow-x-auto px-6 lg:px-12 scroll-smooth"
+            className="scrollbar-hide-custom flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
