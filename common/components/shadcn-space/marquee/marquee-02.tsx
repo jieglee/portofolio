@@ -34,17 +34,17 @@ const skillsRow2: SkillItem[] = [
 ];
 
 const skillsRow3: SkillItem[] = [
-    { icon: "https://cdn.simpleicons.org/visualstudiocode", name: "VS Code" },
+    { icon: "https://cdn.simpleicons.org/visualstudiocode", name: "Visual Studio Code" },
     { icon: "https://cdn.simpleicons.org/postman", name: "Postman" },
     { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M10.5 1.5L3 14h7l-1 8.5L18 11h-6l2-9.5z'/%3E%3C/svg%3E", name: "Thunder Client" },
-    { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Crect x='3' y='3' width='18' height='18' rx='3'/%3E%3Ctext x='12' y='16' text-anchor='middle' font-size='10' fill='%23666'%3EDB%3C/text%3E%3C/svg%3E", name: "DBngin" },
-    { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E", name: "Laragon" },
-    { icon: "https://cdn.simpleicons.org/windows", name: "WSL" },
+    { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cellipse cx='12' cy='6' rx='9' ry='3' fill='%2333A0FF'/%3E%3Cpath d='M3 6v12c0 1.66 4.03 3 9 3s9-1.34 9-3V6' fill='%2333A0FF'/%3E%3Cpath d='M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3' fill='%232280D0'/%3E%3Ctext x='12' y='14' text-anchor='middle' font-size='8' font-weight='bold' fill='white'%3EDB%3C/text%3E%3C/svg%3E", name: "DBngin" },
+    { icon: "https://cdn.simpleicons.org/laragon", name: "Laragon" },
+    { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%230078D4'/%3E%3Ctext x='12' y='17' text-anchor='middle' font-size='11' font-weight='bold' fill='white'%3EWSL%3C/text%3E%3C/svg%3E", name: "WSL" },
     { icon: "https://cdn.simpleicons.org/gnubash", name: "Git Bash" },
     { icon: "https://cdn.simpleicons.org/npm", name: "npm" },
     { icon: "https://cdn.simpleicons.org/figma", name: "Figma" },
     { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg", name: "Adobe Illustrator" },
-    { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E", name: "CapCut" },
+    { icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%23FF6B00'/%3E%3Cpath d='M9 6v12l9-6z' fill='white'/%3E%3C/svg%3E", name: "CapCut" },
 ];
 
 const SkillCard = ({ icon, name }: SkillItem) => (
