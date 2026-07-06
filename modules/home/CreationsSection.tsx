@@ -53,7 +53,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-      className="w-[115px] md:w-[130px] lg:w-[145px] flex-shrink-0 snap-start"
+      className="w-[100px] md:w-[115px] lg:w-[130px] flex-shrink-0 snap-start"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -69,7 +69,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
           alt={video.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 130px, (max-width: 1024px) 145px, 160px"
+          sizes="(max-width: 768px) 100px, (max-width: 1024px) 115px, 130px"
         />
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -108,7 +108,7 @@ function CTACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="w-[115px] md:w-[130px] lg:w-[145px] flex-shrink-0 snap-start"
+      className="w-[100px] md:w-[115px] lg:w-[130px] flex-shrink-0 snap-start"
     >
       <Link href="/creations" className="group/cta block h-full">
         <div className="relative h-full rounded-[24px] overflow-hidden border border-border/50 bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl shadow-lg transition-all duration-300 group-hover/cta:scale-[1.03] group-hover/cta:border-blue-500/30 group-hover/cta:shadow-blue-500/5">
