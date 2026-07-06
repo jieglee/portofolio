@@ -10,6 +10,7 @@ import { type ContentItem } from "@/common/constants/creations";
 
 const MAX_VIDEOS = 10;
 const PAGE_SIZE = 1;
+const GAP = 8;
 
 const FALLBACK_VIDEOS: ContentItem[] = [
   {
@@ -53,7 +54,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-      className="w-[120px] md:w-[140px] lg:w-[160px] flex-shrink-0 snap-start"
+      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -69,7 +70,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
           alt={video.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 120px, (max-width: 1024px) 140px, 160px"
+          sizes="62px"
         />
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -108,7 +109,7 @@ function CTACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="w-[120px] md:w-[140px] lg:w-[160px] flex-shrink-0 snap-start"
+      className="w-[62px] sm:w-[100px] md:w-[130px] lg:w-[160px] flex-shrink-0"
     >
       <Link href="/creations" className="group/cta block h-full">
         <div className="relative h-full rounded-[24px] overflow-hidden border-2 border-dashed border-border/60 bg-card/60 backdrop-blur-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:border-border">
@@ -227,7 +228,7 @@ export default function CreationsSection() {
 
           <div
             ref={scrollRef}
-            className="scrollbar-hide-custom flex gap-4 overflow-x-auto px-6 lg:px-12 snap-x snap-proximity scroll-smooth"
+            className="scrollbar-hide-custom flex gap-2 overflow-x-auto px-6 lg:px-12 scroll-smooth"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
