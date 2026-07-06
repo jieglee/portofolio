@@ -50,7 +50,12 @@
     "level_seniorHigh": "SMA",
     "level_juniorHigh": "SMP",
     "level_elementary": "SD",
-    "cv": "CV"
+    "cv": "CV",
+    "resp_osis_1": "Mengelola penganggaran dan administrasi keuangan untuk kegiatan OSIS.",
+    "resp_osis_2": "Mencatat dan memantau pemasukan serta pengeluaran keuangan secara akurat.",
+    "resp_osis_3": "Menyusun laporan keuangan dan laporan anggaran untuk program organisasi.",
+    "resp_osis_4": "Mengoordinasikan perencanaan anggaran dengan anggota komite untuk acara sekolah.",
+    "resp_osis_5": "Memastikan transparansi keuangan dan kepatuhan di seluruh kegiatan."
   },
   "Achievements": {
     "title": "Pencapaian",

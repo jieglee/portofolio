@@ -50,7 +50,12 @@
     "level_seniorHigh": "Senior High School",
     "level_juniorHigh": "Junior High School",
     "level_elementary": "Elementary School",
-    "cv": "CV"
+    "cv": "CV",
+    "resp_osis_1": "Managed budgeting and financial administration for Student Council activities.",
+    "resp_osis_2": "Maintained accurate financial records, including income and expenditure tracking.",
+    "resp_osis_3": "Prepared financial statements and budget reports for organizational programs.",
+    "resp_osis_4": "Coordinated budget planning with committee members for school events.",
+    "resp_osis_5": "Ensured financial transparency and compliance throughout all activities."
   },
   "Achievements": {
     "title": "Achievements",
