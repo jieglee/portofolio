@@ -184,14 +184,18 @@ export default function CreationsSection() {
   const scrollRight = () => {
     const el = scrollRef.current;
     if (!el) return;
-    const cardWidth = 130 + 16;
+    const first = el.children[0] as HTMLElement | undefined;
+    if (!first) return;
+    const cardWidth = first.offsetWidth + 16;
     el.scrollBy({ left: cardWidth * PAGE_SIZE, behavior: "smooth" });
   };
 
   const scrollLeft = () => {
     const el = scrollRef.current;
     if (!el) return;
-    const cardWidth = 130 + 16;
+    const first = el.children[0] as HTMLElement | undefined;
+    if (!first) return;
+    const cardWidth = first.offsetWidth + 16;
     el.scrollBy({ left: -(cardWidth * PAGE_SIZE), behavior: "smooth" });
   };
 
@@ -247,7 +251,9 @@ export default function CreationsSection() {
                 onClick={() => {
                   const el = scrollRef.current;
                   if (!el) return;
-                  const cardWidth = 130 + 16;
+                  const first = el.children[0] as HTMLElement | undefined;
+                  if (!first) return;
+                  const cardWidth = first.offsetWidth + 16;
                   el.scrollTo({ left: cardWidth * p * PAGE_SIZE, behavior: "smooth" });
                 }}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
