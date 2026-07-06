@@ -223,7 +223,7 @@ export default function CreationsSection() {
 
           <div
             ref={scrollRef}
-            className="scrollbar-hide-custom flex gap-4 overflow-x-auto px-6 lg:px-12 snap-x snap-mandatory scroll-smooth"
+            className="scrollbar-hide-custom flex gap-4 overflow-x-auto px-6 lg:px-12 snap-x snap-proximity scroll-smooth"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
