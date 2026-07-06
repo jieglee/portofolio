@@ -45,7 +45,8 @@ const Profile = () => {
     return (
         <div
             className={clsx(
-                "fixed z-20 w-full bg-background px-4 py-3 border-b border-border lg:relative lg:border-none lg:bg-transparent! lg:p-0 xl:shadow-none",
+                "fixed w-full bg-background px-4 py-3 border-b border-border lg:relative lg:border-none lg:bg-transparent! lg:p-0 xl:shadow-none",
+                isOpen ? "z-[60]" : "z-20",
                 isOpen && "pb-0",
             )}
         >
