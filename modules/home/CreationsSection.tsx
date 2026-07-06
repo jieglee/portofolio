@@ -224,6 +224,7 @@ export default function CreationsSection() {
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
+              touchAction: "pan-x",
             }}
           >
             {items.map((video, i) => (
