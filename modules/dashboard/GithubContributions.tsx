@@ -101,12 +101,16 @@ export default function GithubContributions() {
     // Determine which weeks should show a month label
     const monthLabels: { label: string; weekIndex: number }[] = [];
     let lastMonth = -1;
+    let lastLabelWeek = -10;
     weeks.forEach((week, wi) => {
         const firstValidDay = week.find((d) => d.date);
         if (!firstValidDay) return;
         const month = new Date(firstValidDay.date).getMonth();
         if (month !== lastMonth) {
-            monthLabels.push({ label: t(`months.${MONTH_KEYS[month]}`), weekIndex: wi });
+            if (wi - lastLabelWeek >= 2) {
+                monthLabels.push({ label: t(`months.${MONTH_KEYS[month]}`), weekIndex: wi });
+                lastLabelWeek = wi;
+            }
             lastMonth = month;
         }
     });
@@ -195,7 +199,7 @@ export default function GithubContributions() {
                                         <span
                                             key={`${m.label}-${m.weekIndex}`}
                                             className="absolute text-xs text-muted-foreground"
-                                            style={{ left: `${m.weekIndex * 13}px` }}
+                                            style={{ left: `${m.weekIndex * 14}px` }}
                                         >
                                             {m.label}
                                         </span>

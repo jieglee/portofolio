@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import MarqueeBrandsDemo from "@/common/components/shadcn-space/marquee/marquee-02";
+import CreationsSection from "@/modules/home/CreationsSection";
 
 export default async function Home({
   params,
@@ -49,6 +50,9 @@ export default async function Home({
           <MarqueeBrandsDemo />
         </div>
       </div>
+
+      {/* Creations Section */}
+      <CreationsSection />
     </div>
   );
 }
