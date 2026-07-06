@@ -33,7 +33,7 @@ export default function AboutTabs({ active, onChange }: AboutTabsProps) {
                     {active === tab.id && (
                         <motion.div
                             layoutId="about-tab-bg"
-                            className="absolute inset-0 rounded-lg bg-background shadow-sm border border-border/50"
+                            className="absolute inset-0 rounded-lg bg-muted"
                             transition={{ type: "spring", stiffness: 400, damping: 35 }}
                         />
                     )}
