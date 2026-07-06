@@ -47,7 +47,7 @@ export default function HomeContent({ greeting, location, bio1, bio2, bio3, skil
             <motion.div variants={item} className="my-6 h-px w-full bg-border" />
 
             {/* Bio */}
-            <motion.div variants={item} className="flex max-w-2xl flex-col gap-4 text-foreground/80 leading-relaxed text-justify">
+            <motion.div variants={item} className="flex max-w-2xl flex-col gap-4 text-foreground/80 leading-relaxed [text-align:justify] [text-justify:inter-word]">
                 <p>{bio1}</p>
                 <p>{bio2}</p>
                 <p>{bio3}</p>
