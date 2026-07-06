@@ -17,11 +17,12 @@ interface HomeContentProps {
     location: string;
     bio1: string;
     bio2: string;
+    bio3: string;
     skillsTitle: string;
     skillsSubtitle: string;
 }
 
-export default function HomeContent({ greeting, location, bio1, bio2, skillsTitle, skillsSubtitle }: HomeContentProps) {
+export default function HomeContent({ greeting, location, bio1, bio2, bio3, skillsTitle, skillsSubtitle }: HomeContentProps) {
     return (
         <motion.div
             className="px-6 py-10 lg:px-12"
@@ -46,9 +47,10 @@ export default function HomeContent({ greeting, location, bio1, bio2, skillsTitl
             <motion.div variants={item} className="my-6 h-px w-full bg-border" />
 
             {/* Bio */}
-            <motion.div variants={item} className="flex max-w-2xl flex-col gap-4 text-foreground/80 leading-relaxed">
+            <motion.div variants={item} className="flex max-w-2xl flex-col gap-4 text-foreground/80 leading-relaxed text-justify">
                 <p>{bio1}</p>
                 <p>{bio2}</p>
+                <p>{bio3}</p>
             </motion.div>
 
             {/* Divider */}
