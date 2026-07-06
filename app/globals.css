@@ -7,6 +7,10 @@
   @import "tailwindcss";
   @plugin "@tailwindcss/typography";
 
+  @keyframes spin-slow {
+    to { rotate: 360deg; }
+  }
+
   @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -48,6 +52,7 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    --animate-spin-slow: spin-slow 8s linear infinite;
   }
 
   :root {
