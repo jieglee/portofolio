@@ -33,6 +33,7 @@ export default function HomeContent({ greeting, location, bio1, bio2, bio3, skil
             {/* Greeting */}
             <motion.h1 variants={item} className="text-3xl font-bold text-foreground lg:text-4xl">
                 {greeting}
+                <span className="inline-block animate-[wave_1.5s_ease-in-out_infinite] origin-[70%_80%]">👋</span>
             </motion.h1>
 
             {/* Meta info */}
