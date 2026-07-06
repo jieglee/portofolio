@@ -119,7 +119,7 @@ function CareerCardInner({
                                             className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
                                         >
                                             <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground/40" />
-                                            {resp}
+                                            {t(resp)}
                                         </li>
                                     ))}
                                 </ul>
