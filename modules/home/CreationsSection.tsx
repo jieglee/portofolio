@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 import { type ContentItem } from "@/common/constants/creations";
 
 const MAX_VIDEOS = 10;
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 1;
 
 const FALLBACK_VIDEOS: ContentItem[] = [
   {
@@ -53,7 +53,7 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
-      className="w-[100px] md:w-[115px] lg:w-[130px] flex-shrink-0 snap-start"
+      className="w-[120px] md:w-[140px] lg:w-[160px] flex-shrink-0 snap-start"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -62,14 +62,14 @@ function VideoCard({ video, index }: { video: ContentItem; index: number }) {
         target="_blank"
         rel="noopener noreferrer"
         className="group relative block rounded-[24px] overflow-hidden border border-border/50 bg-muted/20 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-border/80"
-        style={{ aspectRatio: "9/16" }}
+        style={{ aspectRatio: "2/3" }}
       >
         <Image
           src={video.thumbnail}
           alt={video.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100px, (max-width: 1024px) 115px, 130px"
+          sizes="(max-width: 768px) 120px, (max-width: 1024px) 140px, 160px"
         />
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -108,29 +108,18 @@ function CTACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="w-[100px] md:w-[115px] lg:w-[130px] flex-shrink-0 snap-start"
+      className="w-[120px] md:w-[140px] lg:w-[160px] flex-shrink-0 snap-start"
     >
       <Link href="/creations" className="group/cta block h-full">
-        <div className="relative h-full rounded-[24px] overflow-hidden border border-border/50 bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl shadow-lg transition-all duration-300 group-hover/cta:scale-[1.03] group-hover/cta:border-blue-500/30 group-hover/cta:shadow-blue-500/5">
-          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-            <div className="mb-2.5 w-9 h-9 rounded-full bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 border border-white/10 flex items-center justify-center">
-              <Smartphone className="w-4 h-4 text-blue-400" />
+        <div className="relative h-full rounded-[24px] overflow-hidden border-2 border-dashed border-border/60 bg-card/60 backdrop-blur-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:border-border">
+          <div className="flex flex-col items-center justify-center h-full p-4 text-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-muted/80 flex items-center justify-center">
+              <Smartphone className="w-4 h-4 text-foreground" />
             </div>
-            <h3 className="text-xs font-semibold text-foreground mb-1">
-              {t("see_all")}
+            <h3 className="text-[11px] font-semibold text-foreground">
+              {t("see_all_creations")}
             </h3>
-            <p className="text-[10px] text-muted-foreground leading-relaxed mb-3 max-w-[120px]">
-              {t("see_all_desc")}
-            </p>
-            <motion.span
-              initial={{ x: 0 }}
-              whileHover={{ x: 4 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="inline-flex items-center gap-1.5 text-[11px] font-medium text-blue-400"
-            >
-              {t("explore")}
-              <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover/cta:translate-x-1" />
-            </motion.span>
+            <ArrowRight className="w-4 h-4 text-muted-foreground transition-transform duration-300 group-hover/cta:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -231,8 +220,6 @@ export default function CreationsSection() {
         </motion.div>
 
         <motion.div variants={fadeUp} className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
 
           <div
             ref={scrollRef}
