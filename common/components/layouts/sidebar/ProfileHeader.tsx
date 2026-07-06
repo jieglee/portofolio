@@ -21,8 +21,16 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 expandMenu && "flex-col items-start!",
             )}
         >
-            {/* Avatar + status dot */}
+            {/* Avatar + spinning decorative ring */}
             <div className="relative">
+                <div
+                    className="absolute inset-0 rounded-full animate-spin-slow"
+                    style={{
+                        background: "conic-gradient(from 0deg, transparent, #f472b6, transparent, #a78bfa, transparent, #f472b6)",
+                        WebkitMask: "radial-gradient(circle, transparent 48%, black 49%, black 51%, transparent 52%)",
+                        mask: "radial-gradient(circle, transparent 48%, black 49%, black 51%, transparent 52%)",
+                    }}
+                />
                 <motion.div
                     whileHover={{ scale: 1.08 }}
                     transition={{ duration: 0.2 }}
@@ -30,7 +38,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                         width: expandMenu ? 60 : imageSize,
                         height: expandMenu ? 60 : imageSize,
                     }}
-                    className="rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"
+                    className="relative rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"
                 >
                     <Image
                         src="/images/runa gemoy.jpeg"
