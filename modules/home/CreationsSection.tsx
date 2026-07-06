@@ -212,7 +212,7 @@ export default function CreationsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
-        className="py-[120px]"
+        className="py-0 pb-10"
       >
         <motion.div variants={fadeUp} className="mb-6">
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">

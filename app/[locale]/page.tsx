@@ -51,6 +51,9 @@ export default async function Home({
         </div>
       </div>
 
+      {/* Divider */}
+      <div className="my-10 h-px w-full bg-border" />
+
       {/* Creations Section */}
       <CreationsSection />
     </div>
