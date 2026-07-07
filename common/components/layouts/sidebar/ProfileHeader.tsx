@@ -80,6 +80,7 @@ function BowCanvas({ size, theme }: { size: number; theme: string }) {
         }
 
         function tick() {
+            if (!ctx) return;
             angleRef.current += 0.016;
             const a = angleRef.current;
             const bx = cx + Math.cos(a) * R;
