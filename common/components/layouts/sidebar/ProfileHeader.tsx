@@ -178,13 +178,15 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
             )}
         >
             {/* Avatar + ribbon bow canvas */}
-            <div
+            <motion.div
+                whileHover={{ scale: 1.06 }}
+                transition={{ duration: 0.2 }}
                 className="relative"
                 style={{ width: canvasSize, height: canvasSize }}
             >
-                <motion.div
-                    whileHover={{ scale: 1.06 }}
-                    transition={{ duration: 0.2 }}
+                <BowCanvas size={canvasSize} theme={themeKey} />
+
+                <div
                     className="absolute rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"
                     style={{
                         inset:  8,
@@ -194,7 +196,6 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                         bottom: 8,
                     }}
                 >
-                    <BowCanvas size={canvasSize} theme={themeKey} />
                     <Image
                         src="/images/runa gemoy.jpeg"
                         fill
@@ -202,8 +203,8 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                         className="object-cover"
                         rounded="rounded-full"
                     />
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
 
             {/* Name + handle */}
             <div className="flex flex-col items-center gap-0.5 lg:mt-4">
