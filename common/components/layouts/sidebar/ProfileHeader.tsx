@@ -182,8 +182,6 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 className="relative"
                 style={{ width: canvasSize, height: canvasSize }}
             >
-                <BowCanvas size={canvasSize} theme={themeKey} />
-
                 <motion.div
                     whileHover={{ scale: 1.06 }}
                     transition={{ duration: 0.2 }}
@@ -196,6 +194,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                         bottom: 8,
                     }}
                 >
+                    <BowCanvas size={canvasSize} theme={themeKey} />
                     <Image
                         src="/images/runa gemoy.jpeg"
                         fill
