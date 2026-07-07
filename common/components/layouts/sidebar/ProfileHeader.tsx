@@ -15,23 +15,81 @@ interface ProfileHeaderProps {
 }
 
 const THEME_COLORS = {
-    light: { bow: "#ec4899", knot: "#be185d", trail: "#f472b6" },
-    dark:  { bow: "#818cf8", knot: "#4f46e5", trail: "#a5b4fc" },
-    pink:  { bow: "#f472b6", knot: "#db2777", trail: "#fda4af" },
+    light: { fill: "#f9a8d4", stroke: "#db2777", trail: "#f472b6", knot: "#ec4899" },
+    dark:  { fill: "#a5b4fc", stroke: "#4f46e5", trail: "#818cf8", knot: "#6366f1" },
+    pink:  { fill: "#fda4af", stroke: "#be185d", trail: "#f472b6", knot: "#ec4899" },
 };
 
 function hexToRgb(hex: string) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return { r, g, b };
+    return {
+        r: parseInt(hex.slice(1, 3), 16),
+        g: parseInt(hex.slice(3, 5), 16),
+        b: parseInt(hex.slice(5, 7), 16),
+    };
+}
+
+function drawRibbonBow(
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    bowAngle: number,
+    T: typeof THEME_COLORS.light,
+    sc: number
+) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(bowAngle + Math.PI / 2);
+
+    // Left wing
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(-3*sc, -4*sc, -14*sc, -11*sc, -11*sc, -2*sc);
+    ctx.bezierCurveTo(-14*sc,  4*sc,  -3*sc,   5*sc,   0,      0);
+    ctx.fillStyle = T.fill; ctx.strokeStyle = T.stroke;
+    ctx.lineWidth = 0.8 * sc; ctx.globalAlpha = 0.95;
+    ctx.fill(); ctx.stroke();
+
+    // Right wing
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo( 3*sc, -4*sc,  14*sc, -11*sc,  11*sc, -2*sc);
+    ctx.bezierCurveTo(14*sc,  4*sc,   3*sc,   5*sc,   0,      0);
+    ctx.fillStyle = T.fill; ctx.strokeStyle = T.stroke;
+    ctx.fill(); ctx.stroke();
+
+    // Left tail
+    ctx.beginPath();
+    ctx.moveTo(-1.5*sc, 1*sc);
+    ctx.bezierCurveTo(-4*sc,  5*sc, -7*sc,  9*sc, -5*sc, 12*sc);
+    ctx.lineTo(-2*sc, 12*sc);
+    ctx.bezierCurveTo(-3*sc, 9*sc, 0, 5*sc, 1.5*sc, 1*sc);
+    ctx.fillStyle = T.fill; ctx.strokeStyle = T.stroke;
+    ctx.fill(); ctx.stroke();
+
+    // Right tail
+    ctx.beginPath();
+    ctx.moveTo(1.5*sc, 1*sc);
+    ctx.bezierCurveTo( 4*sc,  5*sc,  7*sc,  9*sc,  5*sc, 12*sc);
+    ctx.lineTo(2*sc, 12*sc);
+    ctx.bezierCurveTo(3*sc, 9*sc, 0, 5*sc, -1.5*sc, 1*sc);
+    ctx.fillStyle = T.fill; ctx.strokeStyle = T.stroke;
+    ctx.fill(); ctx.stroke();
+
+    // Center knot
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 2.8*sc, 2.8*sc, 0, 0, Math.PI * 2);
+    ctx.fillStyle = T.knot; ctx.globalAlpha = 1;
+    ctx.fill();
+    ctx.strokeStyle = T.stroke; ctx.lineWidth = 0.6 * sc; ctx.stroke();
+
+    ctx.restore();
 }
 
 function BowCanvas({ size, theme }: { size: number; theme: string }) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const rafRef = useRef<number>(0);
-    const angleRef = useRef<number>(0);
-    const trailRef = useRef<{ x: number; y: number; a: number }[]>([]);
+    const rafRef    = useRef<number>(0);
+    const angleRef  = useRef<number>(0);
+    const trailRef  = useRef<{ x: number; y: number }[]>([]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -39,73 +97,44 @@ function BowCanvas({ size, theme }: { size: number; theme: string }) {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        const S = size;
-        const cx = S / 2;
-        const cy = S / 2;
-        const R = S / 2 - 5;
-        const TRAIL_DEG = 210;
-        const MAX_PTS = Math.round(TRAIL_DEG / (0.016 * 180 / Math.PI));
-
-        // clear trail on theme/size change
         trailRef.current = [];
 
-        const colors =
-            THEME_COLORS[theme as keyof typeof THEME_COLORS] ?? THEME_COLORS.light;
+        const S   = size;
+        const cx  = S / 2;
+        const cy  = S / 2;
+        const R   = S / 2 - 8;
+        const sc  = S / 110;
+        const MAX = Math.round(200 / (0.016 * 180 / Math.PI));
 
-        function drawBow(x: number, y: number, angle: number) {
-            if (!ctx) return;
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate(angle + Math.PI / 2);
-            const sc = S / 110;
-
-            ctx.beginPath();
-            ctx.ellipse(-6 * sc, 0, 7 * sc, 4.5 * sc, -0.4, 0, Math.PI * 2);
-            ctx.fillStyle = colors.bow;
-            ctx.globalAlpha = 0.95;
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.ellipse(6 * sc, 0, 7 * sc, 4.5 * sc, 0.4, 0, Math.PI * 2);
-            ctx.fillStyle = colors.bow;
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(0, 0, 2.8 * sc, 0, Math.PI * 2);
-            ctx.fillStyle = colors.knot;
-            ctx.globalAlpha = 1;
-            ctx.fill();
-
-            ctx.restore();
-        }
+        const T = THEME_COLORS[theme as keyof typeof THEME_COLORS] ?? THEME_COLORS.light;
 
         function tick() {
             if (!ctx) return;
             angleRef.current += 0.016;
-            const a = angleRef.current;
+            const a  = angleRef.current;
             const bx = cx + Math.cos(a) * R;
             const by = cy + Math.sin(a) * R;
 
-            trailRef.current.push({ x: bx, y: by, a });
-            if (trailRef.current.length > MAX_PTS) trailRef.current.shift();
+            trailRef.current.push({ x: bx, y: by });
+            if (trailRef.current.length > MAX) trailRef.current.shift();
 
             ctx.clearRect(0, 0, S, S);
 
             // solid fade trail
-            const rgb = hexToRgb(colors.trail);
+            const rgb   = hexToRgb(T.trail);
             const trail = trailRef.current;
             for (let i = 1; i < trail.length; i++) {
-                const progress = i / trail.length;
+                const p = i / trail.length;
                 ctx.beginPath();
                 ctx.moveTo(trail[i - 1].x, trail[i - 1].y);
-                ctx.lineTo(trail[i].x, trail[i].y);
-                ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${progress * 0.78})`;
-                ctx.lineWidth = 1.4 + progress * 2;
-                ctx.lineCap = "round";
+                ctx.lineTo(trail[i].x,     trail[i].y);
+                ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${p * 0.75})`;
+                ctx.lineWidth   = 1.2 + p * 2.2;
+                ctx.lineCap     = "round";
                 ctx.stroke();
             }
 
-            drawBow(bx, by, a);
+            drawRibbonBow(ctx, bx, by, a, T, sc);
             rafRef.current = requestAnimationFrame(tick);
         }
 
@@ -119,12 +148,12 @@ function BowCanvas({ size, theme }: { size: number; theme: string }) {
             width={size}
             height={size}
             style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
+                position:      "absolute",
+                inset:         0,
+                width:         "100%",
+                height:        "100%",
                 pointerEvents: "none",
-                zIndex: 10,
+                zIndex:        10,
             }}
         />
     );
@@ -134,9 +163,8 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
     const t = useTranslations("Common");
     const { resolvedTheme } = useTheme();
 
-    const canvasSize = expandMenu ? 60 : imageSize;
+    const canvasSize = expandMenu ? 68 : imageSize + 16;
 
-    // map resolvedTheme → THEME_COLORS key
     const themeKey =
         resolvedTheme === "dark" ? "dark"
         : resolvedTheme === "pink" ? "pink"
@@ -149,7 +177,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 expandMenu && "flex-col items-start!",
             )}
         >
-            {/* Avatar + bow canvas */}
+            {/* Avatar + ribbon bow canvas */}
             <div
                 className="relative"
                 style={{ width: canvasSize, height: canvasSize }}
@@ -157,10 +185,16 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 <BowCanvas size={canvasSize} theme={themeKey} />
 
                 <motion.div
-                    whileHover={{ scale: 1.08 }}
+                    whileHover={{ scale: 1.06 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute inset-0 rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"
-                    style={{ margin: 5 }}
+                    className="absolute rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"
+                    style={{
+                        inset:  8,
+                        top:    8,
+                        left:   8,
+                        right:  8,
+                        bottom: 8,
+                    }}
                 >
                     <Image
                         src="/images/runa gemoy.jpeg"
