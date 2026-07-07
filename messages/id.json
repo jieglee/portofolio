@@ -135,9 +135,12 @@
     "cardTiktokTitle": "Ikuti Keseruan",
     "cardTiktokDesc": "Tonton konten yang seru dan menarik.",
     "cardTiktokBtn": "Buka TikTok",
-    "cardGithubTitle": "Jelajahi Kode",
-    "cardGithubDesc": "Jelajahi karya open-source saya.",
-    "cardGithubBtn": "Buka GitHub"
+    "cardTelegramTitle": "Kirim Pesan Telegram",
+    "cardTelegramDesc": "Hubungi saya langsung lewat Telegram.",
+    "cardTelegramBtn": "Buka Telegram",
+    "cardDiscordTitle": "Gabung di Discord",
+    "cardDiscordDesc": "Terhubung dengan saya di Discord.",
+    "cardDiscordBtn": "Buka Discord"
   },
   "Common": {
     "verified": "Terverifikasi",

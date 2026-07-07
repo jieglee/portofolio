@@ -135,9 +135,12 @@
     "cardTiktokTitle": "Join the Fun",
     "cardTiktokDesc": "Watch engaging and fun content.",
     "cardTiktokBtn": "Go to Tiktok",
-    "cardGithubTitle": "Explore the Code",
-    "cardGithubDesc": "Explore my open-source work.",
-    "cardGithubBtn": "Go to Github"
+    "cardTelegramTitle": "Message on Telegram",
+    "cardTelegramDesc": "Reach me directly via Telegram.",
+    "cardTelegramBtn": "Go to Telegram",
+    "cardDiscordTitle": "Join on Discord",
+    "cardDiscordDesc": "Connect with me on Discord.",
+    "cardDiscordBtn": "Go to Discord"
   },
   "Common": {
     "verified": "Verified",
