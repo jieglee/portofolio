@@ -13,7 +13,10 @@ export default function Sidebar() {
     return (
         <header className="lg:w-40 xl:w-44">
             <div className="sticky top-0 z-10 flex flex-col transition-all duration-300 lg:py-3">
-                <Profile />
+                <div className="flex items-center justify-between">
+                    <Profile />
+                    <LayoutToggleButton />
+                </div>
                 <div className="hidden md:block">
                     <Breakline />
                     <div className="hidden lg:block">
@@ -22,7 +25,6 @@ export default function Sidebar() {
                     <Breakline />
                     <div className="flex items-center justify-between">
                         <SettingsDropdown />
-                        <LayoutToggleButton />
                     </div>
                 </div>
             </div>
