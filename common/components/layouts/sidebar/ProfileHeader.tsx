@@ -187,7 +187,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 <BowCanvas size={canvasSize} theme={themeKey} />
 
                 <div
-                    className="absolute rounded-full overflow-hidden ring-2 ring-border lg:hover:ring-primary"
+                    className="absolute rounded-full overflow-hidden"
                     style={{
                         inset:  8,
                         top:    8,
