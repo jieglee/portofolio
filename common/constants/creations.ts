@@ -65,7 +65,7 @@ export const CONTENT_ITEMS: ContentItem[] = [
     {
         id: "tt1",
         platform: "tiktok",
-        thumbnail: "https://placehold.co/300x400/1a1a2e/ffffff?text=TikTok",
+        thumbnail: "https://placehold.co/300x400/1a1a2e/ffffff.png?text=TikTok",
         title: "Loading TikTok videos...",
         views: "—",
         likes: "—",
@@ -76,7 +76,7 @@ export const CONTENT_ITEMS: ContentItem[] = [
     {
         id: "ig1",
         platform: "instagram",
-        thumbnail: "https://placehold.co/400x400/1a1a2e/ffffff?text=Instagram",
+        thumbnail: "https://placehold.co/400x400/1a1a2e/ffffff.png?text=Instagram",
         title: "Loading Instagram posts...",
         views: "—",
         likes: "—",
