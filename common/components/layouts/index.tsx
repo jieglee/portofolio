@@ -17,22 +17,34 @@ interface LayoutsProps {
 }
 
 const Layouts = ({ children }: LayoutsProps) => {
-    const { mode } = useLayout();
+    const { mode, setMode } = useLayout();
     const { isOpen } = useMenu();
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        setIsMobile(window.innerWidth < 769);
-        const handleResize = () => setIsMobile(window.innerWidth < 769);
+        const mobile = window.innerWidth < 769;
+        setIsMobile(mobile);
+        if (mobile && mode === "topbar") {
+            setMode("sidebar");
+        }
+        const handleResize = () => {
+            const mobile = window.innerWidth < 769;
+            setIsMobile(mobile);
+            if (mobile && mode === "topbar") {
+                setMode("sidebar");
+            }
+        };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    }, [mode, setMode]);
 
     useEffect(() => {
         AOS.init({ duration: 800, delay: 50 });
     }, []);
 
-    if (mode === "topbar") {
+    const effectiveMode = isMobile ? "sidebar" : mode;
+
+    if (effectiveMode === "topbar") {
         return (
             <div className="min-h-screen">
                 <Topbar />
