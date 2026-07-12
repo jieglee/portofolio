@@ -15,7 +15,7 @@ const Image = (props: ImageProps) => {
     return (
         <div
             className={clsx(
-                "overflow-hidden",
+                "relative w-full h-full overflow-hidden",
                 isLoading ? "animate-pulse" : "",
                 rounded,
             )}
