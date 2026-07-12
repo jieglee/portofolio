@@ -16,7 +16,7 @@ const FALLBACK_VIDEOS: ContentItem[] = [
   {
     id: "fb1",
     platform: "tiktok",
-    thumbnail: "https://placehold.co/360x480/1a1a2e/ffffff?text=TikTok+1",
+    thumbnail: "https://placehold.co/360x480/1a1a2e/ffffff.png?text=TikTok+1",
     title: "Loading TikTok videos...",
     views: "—",
     likes: "—",
@@ -26,7 +26,7 @@ const FALLBACK_VIDEOS: ContentItem[] = [
   {
     id: "fb2",
     platform: "tiktok",
-    thumbnail: "https://placehold.co/360x480/16213e/ffffff?text=TikTok+2",
+    thumbnail: "https://placehold.co/360x480/16213e/ffffff.png?text=TikTok+2",
     title: "Loading TikTok videos...",
     views: "—",
     likes: "—",
