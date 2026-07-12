@@ -1,3 +1,5 @@
+// common/constants/achievements.ts
+
 export type Achievement = {
     id: number;
     title: string;
@@ -13,6 +15,28 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
     {
+        id: 7,
+        title: "Juara 1 Lomba Paduan Suara — Hari Sumpah Pemuda & Bulan Bahasa",
+        issuer: "SMK Taruna Bhakti",
+        date: "Oktober 2025",
+        credential: "",
+        type: "Certificate",
+        category: "Competition",
+        image: "/images/achievments/sertifikat-paduan-suara.jpeg",
+        tags: ["Competition", "Choir"],
+    },
+    {
+        id: 8,
+        title: "Bachelor of Science Nursing — CNA Simulator",
+        issuer: "Roblox University",
+        date: "Juli 2025",
+        credential: "",
+        type: "Certificate",
+        category: "Gaming",
+        image: "/images/achievments/sertifikat-roblox-nursing.jpeg",
+        tags: ["Roblox", "Gaming"],
+    },
+    {
         id: 1,
         title: "Software Engineering Level Test XI",
         issuer: "SMK Taruna Bhakti",
@@ -25,17 +49,6 @@ export const achievements: Achievement[] = [
     },
     {
         id: 2,
-        title: "Juara 1 Lomba Paduan Suara — Hari Sumpah Pemuda & Bulan Bahasa",
-        issuer: "SMK Taruna Bhakti",
-        date: "Oktober 2025",
-        credential: "",
-        type: "Certificate",
-        category: "Competition",
-        image: "/images/achievments/paduan-suara.jpeg",
-        tags: ["Competition", "Choir", "OSIS"],
-    },
-    {
-        id: 3,
         title: "Online Class Professional Model Makeup & Offline Portfolio Batch 5",
         issuer: "Million Model Agency",
         date: "Januari 2026",
@@ -46,7 +59,7 @@ export const achievements: Achievement[] = [
         tags: ["Modeling", "Makeup"],
     },
     {
-        id: 4,
+        id: 3,
         title: "Bendahara OSIS Periode 2024/2025",
         issuer: "SMK Taruna Bhakti",
         date: "2024-2025",
@@ -57,7 +70,7 @@ export const achievements: Achievement[] = [
         tags: ["OSIS", "Leadership", "Organization"],
     },
     {
-        id: 5,
+        id: 4,
         title: "Software Engineering Level Test X",
         issuer: "SMK Taruna Bhakti",
         date: "Juni 2025",
@@ -68,18 +81,7 @@ export const achievements: Achievement[] = [
         tags: ["RPL", "FullStack"],
     },
     {
-        id: 6,
-        title: "Bachelor of Science Nursing — CNA Simulator",
-        issuer: "Robellox University",
-        date: "Juli 2025",
-        credential: "",
-        type: "Certificate",
-        category: "Gaming",
-        image: "/images/achievments/roblox-university.jpeg",
-        tags: ["Roblox", "Gaming"],
-    },
-    {
-        id: 7,
+        id: 5,
         title: "Kunjungan Industri PT INTI & ITB",
         issuer: "SMK Taruna Bhakti",
         date: "Januari 2025",
@@ -90,7 +92,7 @@ export const achievements: Achievement[] = [
         tags: ["Industry", "Networking"],
     },
     {
-        id: 8,
+        id: 6,
         title: "Belajar Dasar Pemrograman Web",
         issuer: "Dicoding",
         date: "November 2024",
