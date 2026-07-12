@@ -1,3 +1,16 @@
+export type Achievement = {
+    id: number;
+    title: string;
+    issuer: string;
+    date: string;
+    credential: string;
+    link?: string;
+    type: string;
+    category: string;
+    image: string;
+    tags: string[];
+};
+
 export const achievements: Achievement[] = [
     {
         id: 1,

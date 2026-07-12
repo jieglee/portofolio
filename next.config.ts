@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
         hostname: "*.fbcdn.net",
       },
     ],
+    localPatterns: [
+      {
+        pathname: "/api/images/proxy",
+      },
+    ],
   },
 };
 

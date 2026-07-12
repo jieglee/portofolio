@@ -62,7 +62,7 @@ export default function AchievementsPage() {
         (a) =>
             a.title.toLowerCase().includes(search.toLowerCase()) ||
             a.issuer.toLowerCase().includes(search.toLowerCase()) ||
-            a.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
+            a.tags.some((tag) => tag.toLowerCase().includes(search.toLowerCase())) ||
             t(`items.${a.id}`).toLowerCase().includes(search.toLowerCase())
     );
 
