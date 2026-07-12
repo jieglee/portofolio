@@ -80,10 +80,15 @@ export async function GET() {
         const totalComments = rawVideos.reduce((s: number, v: RawVideo) => s + v.comment_count, 0);
         const totalShares = rawVideos.reduce((s: number, v: RawVideo) => s + v.share_count, 0);
 
-        const videos = videoList.map((v: TikTokVideo) => ({
+        const videos = videoList.map((v: TikTokVideo) => {
+            const rawCover = v.origin_cover ?? v.cover ?? "";
+            const thumbnail = rawCover
+                ? `/api/images/proxy?url=${encodeURIComponent(rawCover)}`
+                : "";
+            return {
             id: v.video_id ?? v.id ?? String(Math.random()),
             platform: "tiktok" as const,
-            thumbnail: v.origin_cover ?? v.cover ?? "",
+            thumbnail,
             title: v.title ?? v.desc ?? "TikTok video",
             views: formatNumber(v.play_count ?? v.statistics?.play_count ?? 0),
             likes: formatNumber(v.digg_count ?? v.statistics?.digg_count ?? 0),
