@@ -16,7 +16,7 @@ interface ProfileHeaderProps {
 
 const THEME_COLORS = {
     light: { fill: "#f9a8d4", stroke: "#db2777", trail: "#f472b6", knot: "#ec4899" },
-    dark:  { fill: "#a5b4fc", stroke: "#4f46e5", trail: "#818cf8", knot: "#6366f1" },
+    dark:  { fill: "#f9a8d4", stroke: "#db2777", trail: "#f472b6", knot: "#ec4899" },
     pink:  { fill: "#fda4af", stroke: "#be185d", trail: "#f472b6", knot: "#ec4899" },
 };
 
