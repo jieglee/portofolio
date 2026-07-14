@@ -19,10 +19,11 @@ export default function Resume() {
                     {t("downloadCV")}
                 </a>
 
-                <div className="w-full rounded-xl border border-border overflow-hidden">
+                <div className="w-full rounded-xl border border-border overflow-x-hidden">
                     <iframe
                         src="/documents/cv.pdf"
                         className="w-full h-[600px] lg:h-[800px]"
+                        style={{ touchAction: "pan-y pinch-zoom" }}
                         title={t("cv")}
                     />
                 </div>
