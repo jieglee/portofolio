@@ -86,7 +86,7 @@ export default function ContentGrid({ items, platform, loading = false }: Conten
                     className={`grid gap-3 ${
                         isVertical
                             ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
-                            : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-3"
+                            : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
                     }`}
                 >
                     {loading
