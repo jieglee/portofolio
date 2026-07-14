@@ -67,7 +67,7 @@ export const achievements: Achievement[] = [
         type: "Certificate",
         category: "Organization",
         image: "/images/achievments/sertifikat-osis.jpeg",
-        tags: ["OSIS", "Leadership", "Organization"],
+        tags: ["OSIS", "Leadership"],
     },
     {
         id: 4,
