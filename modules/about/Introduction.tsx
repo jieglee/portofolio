@@ -43,13 +43,16 @@ export default function Introduction() {
 
                 <motion.div variants={item} className="flex flex-col gap-3">
                     <p className="text-sm text-muted-foreground">{t("warmRegards")}</p>
-                    <Image
-                        src="/images/sign-runa.png"
-                        alt="Signature"
-                        width={120}
-                        height={48}
-                        className="opacity-90"
-                    />
+                    <div className="w-[120px] sm:w-[150px]">
+                        <Image
+                            src="/images/sign-runa.png"
+                            alt="Signature"
+                            width={150}
+                            height={60}
+                            className="opacity-90 w-full h-auto"
+                            priority
+                        />
+                    </div>
                 </motion.div>
             </motion.div>
         </section>
