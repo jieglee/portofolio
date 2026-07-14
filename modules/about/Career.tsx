@@ -59,7 +59,9 @@ function CareerCardInner({
                             src={item.logo}
                             alt={item.organization}
                             fill
+                            sizes="64px"
                             className="object-contain p-1"
+                            priority
                         />
                     ) : (
                         <Briefcase className="w-6 h-6 text-muted-foreground" />
