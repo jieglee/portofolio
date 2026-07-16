@@ -185,7 +185,9 @@
       "followers": "Followers",
       "following": "Following",
       "repos": "Repos",
-      "topRepos": "Top Repos",
+      "stars": "Stars",
+      "repositories": "Repositories",
+      "viewAll": "View All Repositories",
       "noDescription": "No description"
     },
     "Spotify": {

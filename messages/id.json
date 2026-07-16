@@ -185,7 +185,9 @@
       "followers": "Pengikut",
       "following": "Mengikuti",
       "repos": "Repo",
-      "topRepos": "Repo Teratas",
+      "stars": "Bintang",
+      "repositories": "Repositori",
+      "viewAll": "Lihat Semua Repositori",
       "noDescription": "Tidak ada deskripsi"
     },
     "Spotify": {

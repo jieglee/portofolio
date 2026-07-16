@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { TrendingUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -24,10 +24,17 @@ const MOCK = {
   ],
 };
 
+function useIsClient() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+}
+
 export default function AnalyticsWidget() {
   const t = useTranslations("Dashboard.Analytics");
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useIsClient();
   if (!mounted) return null;
 
   const d = MOCK;
