@@ -178,6 +178,29 @@
         "nov": "Nov",
         "dec": "Des"
       }
+    },
+    "GithubProfile": {
+      "title": "Profil GitHub",
+      "error": "Gagal memuat data profil.",
+      "followers": "Pengikut",
+      "following": "Mengikuti",
+      "repos": "Repo",
+      "topRepos": "Repo Teratas",
+      "noDescription": "Tidak ada deskripsi"
+    },
+    "Spotify": {
+      "title": "Sedang Diputar",
+      "playing": "Memutar",
+      "notPlaying": "Tidak sedang diputar"
+    },
+    "Analytics": {
+      "title": "Analitik Website",
+      "visitors": "Pengunjung",
+      "pageViews": "Tayangan",
+      "bounceRate": "Tingkat Pentalan",
+      "avgVisit": "Rata-rata Kunjungan",
+      "topPages": "Halaman Teratas",
+      "topCountries": "Negara Teratas"
     }
   },
   "Settings": {

@@ -178,6 +178,29 @@
         "nov": "Nov",
         "dec": "Dec"
       }
+    },
+    "GithubProfile": {
+      "title": "GitHub Profile",
+      "error": "Couldn't load profile data.",
+      "followers": "Followers",
+      "following": "Following",
+      "repos": "Repos",
+      "topRepos": "Top Repos",
+      "noDescription": "No description"
+    },
+    "Spotify": {
+      "title": "Now Playing",
+      "playing": "Playing",
+      "notPlaying": "Not playing right now"
+    },
+    "Analytics": {
+      "title": "Website Analytics",
+      "visitors": "Visitors",
+      "pageViews": "Page Views",
+      "bounceRate": "Bounce Rate",
+      "avgVisit": "Avg. Visit",
+      "topPages": "Top Pages",
+      "topCountries": "Top Countries"
     }
   },
   "Settings": {
