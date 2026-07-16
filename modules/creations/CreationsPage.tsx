@@ -10,6 +10,7 @@ import {
     SOCIAL_STATS,
     CONTENT_ITEMS,
 } from "@/common/constants/creations";
+import { useCreationsStore } from "@/common/stores/creations";
 import PlatformTabs from "./PlatformTabs";
 import StatsCard from "./StatsCard";
 import ContentGrid from "./ContentGrid";
@@ -18,71 +19,22 @@ export default function CreationsPage() {
     const t = useTranslations("Creations");
     const [platform, setPlatform] = useState<Platform>("tiktok");
 
-    // TikTok live data state
-    const [tiktokVideos, setTiktokVideos] = useState<ContentItem[] | null>(null);
-    const [tiktokStats, setTiktokStats] = useState<SocialStats | null>(null);
-    const [tiktokLoading, setTiktokLoading] = useState(false);
-
-    // Instagram live data state
-    const [igPosts, setIgPosts] = useState<ContentItem[] | null>(null);
-    const [igStats, setIgStats] = useState<SocialStats | null>(null);
-    const [igLoading, setIgLoading] = useState(false);
-
+    const {
+        tiktokVideos,
+        tiktokStats,
+        igPosts,
+        igStats,
+        tiktokLoading,
+        igLoading,
+        fetchTikTok,
+        fetchInstagram,
+    } = useCreationsStore();
 
     useEffect(() => {
-        const fetchTikTok = async () => {
-            setTiktokLoading(true);
-            try {
-                const res = await fetch("/api/tiktok");
-                if (!res.ok) throw new Error("Gagal fetch TikTok data");
-                const data = await res.json();
-
-                if (data.videos?.length) setTiktokVideos(data.videos);
-                if (data.stats) {
-                    setTiktokStats({
-                        ...SOCIAL_STATS.tiktok,
-                        ...Object.fromEntries(
-                            Object.entries(data.stats).filter(([, v]) => v !== "" && v !== null && v !== undefined)
-                        ),
-                    });
-                }
-            } catch (e: unknown) {
-                const msg = e instanceof Error ? e.message : "Unknown error";
-                console.warn("[CreationsPage] TikTok fetch failed, using static data:", msg);
-            } finally {
-                setTiktokLoading(false);
-            }
-        };
-
-        const fetchInstagram = async () => {
-            setIgLoading(true);
-            try {
-                const res = await fetch("/api/instagram");
-                if (!res.ok) throw new Error("Gagal fetch Instagram data");
-                const data = await res.json();
-
-                if (data.posts?.length) setIgPosts(data.posts);
-                if (data.stats) {
-                    setIgStats({
-                        ...SOCIAL_STATS.instagram,
-                        ...Object.fromEntries(
-                            Object.entries(data.stats).filter(([, v]) => v !== "" && v !== null && v !== undefined)
-                        ),
-                    });
-                }
-            } catch (e: unknown) {
-                const msg = e instanceof Error ? e.message : "Unknown error";
-                console.warn("[CreationsPage] Instagram fetch failed, using static data:", msg);
-            } finally {
-                setIgLoading(false);
-            }
-        };
-
         fetchTikTok();
         fetchInstagram();
-    }, []);
+    }, [fetchTikTok, fetchInstagram]);
 
-    // Resolve data berdasarkan platform
     const stats: SocialStats =
         platform === "tiktok" && tiktokStats
             ? tiktokStats

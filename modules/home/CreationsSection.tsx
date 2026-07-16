@@ -6,7 +6,8 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Smartphone, ChevronRight, ChevronLeft, Play, Eye, Heart, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { type ContentItem } from "@/common/constants/creations";
+import { type ContentItem, type SocialStats } from "@/common/constants/creations";
+import { useCreationsStore } from "@/common/stores/creations";
 
 const MAX_VIDEOS = 10;
 const PAGE_SIZE = 1;
@@ -120,30 +121,37 @@ function CTACard() {
   );
 }
 
-export default function CreationsSection() {
+interface CreationsSectionProps {
+  initialVideos: ContentItem[] | null;
+  initialStats: SocialStats | null;
+}
+
+export default function CreationsSection({ initialVideos, initialStats }: CreationsSectionProps) {
   const t = useTranslations("Creations");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [videos, setVideos] = useState<ContentItem[] | null>(null);
+
+  const { tiktokVideos, fetchTikTok, setTiktokVideos, setTiktokStats } = useCreationsStore();
 
   useEffect(() => {
-    const fetchTikTok = async () => {
-      try {
-        const res = await fetch("/api/tiktok");
-        if (!res.ok) throw new Error("Failed");
-        const data = await res.json();
-        if (data.videos?.length) setVideos(data.videos);
-      } catch (e: unknown) {
-        const msg = e instanceof Error ? e.message : "Unknown error";
-        console.warn("[CreationsSection] TikTok fetch failed:", msg);
-      }
-    };
-    fetchTikTok();
-  }, []);
+    if (initialVideos) {
+      setTiktokVideos(initialVideos);
+    }
+    if (initialStats) {
+      setTiktokStats(initialStats);
+    }
+  }, [initialVideos, initialStats, setTiktokVideos, setTiktokStats]);
 
-  const items = (videos ?? FALLBACK_VIDEOS).slice(0, MAX_VIDEOS);
+  useEffect(() => {
+    if (!tiktokVideos) {
+      fetchTikTok();
+    }
+  }, [tiktokVideos, fetchTikTok]);
+
+  const resolvedVideos = tiktokVideos ?? initialVideos;
+  const items = (resolvedVideos ?? FALLBACK_VIDEOS).slice(0, MAX_VIDEOS);
   const totalCards = items.length + 1;
   const totalPages = Math.min(6, Math.ceil(totalCards / PAGE_SIZE));
 
