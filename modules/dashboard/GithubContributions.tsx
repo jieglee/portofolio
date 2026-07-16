@@ -116,28 +116,13 @@ export default function GithubContributions() {
     });
 
     return (
-        <div className="rounded-2xl border border-border bg-card p-5 flex flex-col gap-5">
+        <div className="rounded-2xl border border-border bg-card p-4 flex flex-col gap-3">
             {/* Header */}
-            <div className="flex items-start justify-between flex-wrap gap-2">
-                <div className="flex flex-col gap-1">
-                    <div className="flex items-center gap-2">
-                        <Github className="w-5 h-5 text-foreground" />
-                        <h3 className="font-semibold text-foreground text-base">
-                            {t("title")}
-                        </h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                        {t("subtitle")}
-                    </p>
-                </div>
-                <a
-                    href={`https://github.com/${GITHUB_USERNAME}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                    @{GITHUB_USERNAME}
-                </a>
+            <div className="flex items-center gap-2">
+                <Github className="w-4 h-4 text-foreground" />
+                <h3 className="text-sm font-semibold text-foreground">
+                    {t("title")}
+                </h3>
             </div>
 
             {error ? (
@@ -147,7 +132,7 @@ export default function GithubContributions() {
             ) : (
                 <>
                     {/* Stat cards */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div className="grid grid-cols-2 gap-2">
                         {[
                             { label: t("total"), value: stats?.total },
                             { label: t("thisWeek"), value: stats?.thisWeek },
@@ -156,16 +141,16 @@ export default function GithubContributions() {
                         ].map((item) => (
                             <div
                                 key={item.label}
-                                className="rounded-xl border border-border bg-muted/30 px-4 py-3 flex flex-col items-center justify-center gap-1"
+                                className="rounded-lg border border-border bg-muted/30 px-3 py-2 flex flex-col items-center justify-center gap-0.5"
                             >
-                                <span className="text-xs text-muted-foreground">{item.label}</span>
+                                <span className="text-[10px] text-muted-foreground">{item.label}</span>
                                 {loading ? (
-                                    <div className="h-6 w-10 rounded bg-muted animate-pulse" />
+                                    <div className="h-5 w-8 rounded bg-muted animate-pulse" />
                                 ) : (
-                                    <span className="text-xl font-bold" style={{ color: "var(--gh-level-4)" }}>
+                                    <span className="text-sm font-bold" style={{ color: "var(--gh-level-4)" }}>
                                         {item.value ?? 0}
                                         {item.suffix && (
-                                            <span className="text-xs text-muted-foreground font-normal">
+                                            <span className="text-[10px] text-muted-foreground font-normal">
                                                 {item.suffix}
                                             </span>
                                         )}
