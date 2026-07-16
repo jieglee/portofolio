@@ -194,15 +194,6 @@
       "title": "Sedang Diputar",
       "playing": "Memutar",
       "notPlaying": "Tidak sedang diputar"
-    },
-    "Analytics": {
-      "title": "Analitik Website",
-      "visitors": "Pengunjung",
-      "pageViews": "Tayangan",
-      "bounceRate": "Tingkat Pentalan",
-      "avgVisit": "Rata-rata Kunjungan",
-      "topPages": "Halaman Teratas",
-      "topCountries": "Negara Teratas"
     }
   },
   "Settings": {

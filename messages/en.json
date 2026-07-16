@@ -194,15 +194,6 @@
       "title": "Now Playing",
       "playing": "Playing",
       "notPlaying": "Not playing right now"
-    },
-    "Analytics": {
-      "title": "Website Analytics",
-      "visitors": "Visitors",
-      "pageViews": "Page Views",
-      "bounceRate": "Bounce Rate",
-      "avgVisit": "Avg. Visit",
-      "topPages": "Top Pages",
-      "topCountries": "Top Countries"
     }
   },
   "Settings": {

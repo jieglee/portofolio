@@ -1,8 +1,7 @@
 import GithubContributions from "@/modules/dashboard/GithubContributions";
 import GithubProfileCard from "@/modules/dashboard/GithubProfileCard";
 import GithubReposCard from "@/modules/dashboard/GithubReposCard";
-import SpotifyWidget from "@/modules/dashboard/SpotifyWidget";
-import AnalyticsWidget from "@/modules/dashboard/AnalyticsWidget";
+
 
 export default function DashboardPage() {
   return (
@@ -28,12 +27,6 @@ export default function DashboardPage() {
 
         {/* Kanan — Contributions full height */}
         <GithubContributions />
-      </div>
-
-      {/* Row 2: Spotify + Analytics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <SpotifyWidget />
-        <AnalyticsWidget />
       </div>
 
     </div>
