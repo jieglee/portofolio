@@ -20,7 +20,7 @@ const MONTH_KEYS = [
 
 function HeartCell({
     color,
-    size = 10,
+    size = 8,
     className = "",
 }: {
     color: string;
@@ -163,13 +163,14 @@ export default function GithubContributions() {
                     {/* Heatmap */}
                     <div className="overflow-x-auto">
                         {loading ? (
-                            <div className="flex gap-1">
+                            <div className="flex gap-0.5">
                                 {Array.from({ length: 52 }).map((_, i) => (
-                                    <div key={i} className="flex flex-col gap-1">
+                                    <div key={i} className="flex flex-col gap-0.5">
                                         {Array.from({ length: 7 }).map((_, j) => (
                                             <HeartCell
                                                 key={j}
                                                 color="var(--muted)"
+                                                size={8}
                                                 className="animate-pulse"
                                             />
                                         ))}
@@ -177,14 +178,14 @@ export default function GithubContributions() {
                                 ))}
                             </div>
                         ) : (
-                            <div className="min-w-[640px]">
+                            <div className="min-w-0">
                                 {/* Month labels */}
-                                <div className="flex gap-1 mb-1 relative h-4">
+                                <div className="flex gap-0.5 mb-0.5 relative h-3">
                                     {monthLabels.map((m) => (
                                         <span
                                             key={`${m.label}-${m.weekIndex}`}
-                                            className="absolute text-xs text-muted-foreground"
-                                            style={{ left: `${m.weekIndex * 14}px` }}
+                                            className="absolute text-[9px] text-muted-foreground"
+                                            style={{ left: `${m.weekIndex * 11}px` }}
                                         >
                                             {m.label}
                                         </span>
@@ -192,9 +193,9 @@ export default function GithubContributions() {
                                 </div>
 
                                 {/* Grid */}
-                                <div className="flex gap-1">
+                                <div className="flex gap-0.5">
                                     {weeks.map((week, wi) => (
-                                        <div key={wi} className="flex flex-col gap-1">
+                                        <div key={wi} className="flex flex-col gap-0.5">
                                             {week.map((day, di) => (
                                                 <motion.div
                                                     key={`${wi}-${di}`}
@@ -215,6 +216,7 @@ export default function GithubContributions() {
                                                     className="outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-sm"
                                                 >
                                                     <HeartCell
+                                                        size={8}
                                                         color={
                                                             day.count < 0 ? "transparent" : LEVEL_COLORS[day.level]
                                                         }
@@ -229,11 +231,11 @@ export default function GithubContributions() {
                     </div>
 
                     {/* Legend */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-muted-foreground">
-                        <div className="flex items-center gap-1.5">
+                    <div className="flex items-center justify-between gap-2 text-[10px] text-muted-foreground">
+                        <div className="flex items-center gap-1">
                             <span>{t("less")}</span>
                             {LEVEL_COLORS.map((color, i) => (
-                                <HeartCell key={i} color={color} />
+                                <HeartCell key={i} color={color} size={7} />
                             ))}
                             <span>{t("more")}</span>
                         </div>
