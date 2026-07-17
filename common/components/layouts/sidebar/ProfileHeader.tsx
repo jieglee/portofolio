@@ -287,7 +287,6 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                         </button>
                                     ))}
                                     <motion.div
-                                        layoutId="lang-pill"
                                         className={cn(
                                             "absolute top-0 h-full w-6 rounded-full transition-colors duration-300",
                                             themeValue === "pink" ? "bg-pink-200" : "bg-white"
@@ -329,7 +328,6 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                         </button>
                                     ))}
                                     <motion.div
-                                        layoutId="theme-pill"
                                         className={cn(
                                             "absolute top-0 h-full w-6 rounded-full transition-colors duration-300",
                                             themeValue === "pink" ? "bg-pink-200" : "bg-white"
