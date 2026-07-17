@@ -2,11 +2,9 @@ import React from "react";
 
 import { MENU_ITEMS } from "@/common/constants/menu";
 
-import SettingsDropdown from "../../elements/SettingsDropdown";
 import Breakline from "../../elements/Breakline";
 import Profile from "./Profile";
 import Menu from "./Menu";
-import LayoutToggleButton from "../LayoutToogleButton";
 
 export default function Sidebar() {
     const filteredMenu = MENU_ITEMS?.filter((item) => item?.isShow);
@@ -18,11 +16,6 @@ export default function Sidebar() {
                     <Breakline />
                     <div className="hidden lg:block">
                         <Menu list={filteredMenu} />
-                    </div>
-                    <Breakline />
-                    <div className="flex items-center justify-between">
-                        <SettingsDropdown />
-                        <LayoutToggleButton />
                     </div>
                 </div>
             </div>
