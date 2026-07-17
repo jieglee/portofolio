@@ -1,13 +1,20 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTheme } from "next-themes";
-import { MdVerified as VerifiedIcon } from "react-icons/md";
+import { MdVerified as VerifiedIcon, MdDarkMode, MdLightMode } from "react-icons/md";
+import { PiHeartFill as HeartIcon } from "react-icons/pi";
+import { TbLayoutNavbar as TopbarIcon } from "react-icons/tb";
 import { motion } from "framer-motion";
+import US from "country-flag-icons/react/3x2/US";
+import ID from "country-flag-icons/react/3x2/ID";
 import Tooltip from "../../elements/Tooltip";
 import Image from "../../elements/Image";
 import { cn } from "@/lib/utils";
+import { useLayout } from "@/common/stores/layout";
 
 interface ProfileHeaderProps {
     expandMenu: boolean;
@@ -161,7 +168,16 @@ function BowCanvas({ size, theme }: { size: number; theme: string }) {
 
 const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
     const t = useTranslations("Common");
-    const { resolvedTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+    const currentLocale = useLocale();
+    const router = useRouter();
+    const pathname = usePathname();
+    const { toggleMode } = useLayout();
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const canvasSize = expandMenu ? 68 : imageSize + 16;
 
@@ -169,6 +185,25 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
         resolvedTheme === "dark" ? "dark"
         : resolvedTheme === "pink" ? "pink"
         : "light";
+
+    const themeValue = (mounted ? resolvedTheme : "dark") as "light" | "dark" | "pink";
+
+    const handleLocaleChange = (locale: string) => {
+        if (locale !== currentLocale) {
+            router.replace(pathname, { locale, scroll: false });
+        }
+    };
+
+    const themes = [
+        { value: "light" as const, icon: <MdLightMode size={14} /> },
+        { value: "dark" as const, icon: <MdDarkMode size={14} /> },
+        { value: "pink" as const, icon: <HeartIcon size={13} /> },
+    ];
+
+    const locales = [
+        { value: "en", Flag: US },
+        { value: "id", Flag: ID },
+    ];
 
     return (
         <div
@@ -222,6 +257,57 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 <span className="hidden text-xs text-muted-foreground lg:block">
                     @whoszie._
                 </span>
+
+                {/* Inline toggles below @whoszie._ */}
+                {mounted && (
+                    <div className="hidden items-center gap-1 lg:flex">
+                        {/* Language toggle */}
+                        {locales.map((locale) => (
+                            <button
+                                key={locale.value}
+                                onClick={() => handleLocaleChange(locale.value)}
+                                className={cn(
+                                    "flex h-6 w-7 items-center justify-center rounded-md transition-all duration-200",
+                                    currentLocale === locale.value
+                                        ? "bg-primary text-primary-foreground"
+                                        : "text-muted-foreground hover:bg-accent/50"
+                                )}
+                            >
+                                <locale.Flag style={{ width: 16, height: 12 }} />
+                            </button>
+                        ))}
+
+                        <div className="mx-0.5 h-3 w-px bg-border" />
+
+                        {/* Theme toggle */}
+                        {themes.map((theme) => (
+                            <button
+                                key={theme.value}
+                                onClick={() => setTheme(theme.value)}
+                                className={cn(
+                                    "flex h-6 w-6 items-center justify-center rounded-md transition-all duration-200",
+                                    themeValue === theme.value
+                                        ? "bg-primary text-primary-foreground"
+                                        : "text-muted-foreground hover:bg-accent/50"
+                                )}
+                            >
+                                {theme.icon}
+                            </button>
+                        ))}
+
+                        <div className="mx-0.5 h-3 w-px bg-border" />
+
+                        {/* Layout toggle */}
+                        <Tooltip title={t("switchTopbar")}>
+                            <button
+                                onClick={toggleMode}
+                                className="flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground transition-all hover:bg-accent/50"
+                            >
+                                <TopbarIcon size={14} />
+                            </button>
+                        </Tooltip>
+                    </div>
+                )}
             </div>
         </div>
     );
