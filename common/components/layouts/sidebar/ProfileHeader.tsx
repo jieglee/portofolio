@@ -256,54 +256,84 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                     @whoszie._
                 </span>
 
-                {/* Inline toggles below @whoszie._ */}
+                {/* Floating settings toolbar */}
                 {mounted && (
-                    <div className="hidden items-center gap-1 lg:flex">
-                        {/* Language toggle */}
-                        {locales.map((locale) => (
-                            <button
-                                key={locale.value}
-                                onClick={() => handleLocaleChange(locale.value)}
-                                className={cn(
-                                    "flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold transition-all duration-200",
-                                    currentLocale === locale.value
-                                        ? "bg-primary text-primary-foreground"
-                                        : "text-muted-foreground hover:bg-accent/50"
-                                )}
-                            >
-                                {locale.label}
-                            </button>
-                        ))}
+                    <div className="hidden lg:flex mt-3">
+                        <div className="flex items-center gap-0.5 rounded-full border border-white/10 bg-neutral-800/90 px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl">
+                            {/* Language — segmented */}
+                            <div className="relative flex items-center">
+                                <div className="relative flex">
+                                    {locales.map((locale) => (
+                                        <button
+                                            key={locale.value}
+                                            onClick={() => handleLocaleChange(locale.value)}
+                                            className={cn(
+                                                "relative z-10 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-semibold transition-colors duration-200",
+                                                currentLocale === locale.value
+                                                    ? "text-neutral-900"
+                                                    : "text-neutral-500 hover:text-neutral-300"
+                                            )}
+                                        >
+                                            {locale.label}
+                                        </button>
+                                    ))}
+                                    <motion.div
+                                        layoutId="lang-pill"
+                                        className={cn(
+                                            "absolute top-0 h-full w-6 rounded-full bg-white",
+                                        )}
+                                        animate={{
+                                            x: currentLocale === "en" ? 0 : 24,
+                                        }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                                    />
+                                </div>
+                            </div>
 
-                        <div className="mx-0.5 h-3 w-px bg-border" />
+                            <div className="h-4 w-px bg-white/10" />
 
-                        {/* Theme toggle */}
-                        {themes.map((theme) => (
-                            <button
-                                key={theme.value}
-                                onClick={() => setTheme(theme.value)}
-                                className={cn(
-                                    "flex h-6 w-6 items-center justify-center rounded-md transition-all duration-200",
-                                    themeValue === theme.value
-                                        ? "bg-primary text-primary-foreground"
-                                        : "text-muted-foreground hover:bg-accent/50"
-                                )}
-                            >
-                                {theme.icon}
-                            </button>
-                        ))}
+                            {/* Theme — segmented with sliding indicator */}
+                            <div className="relative flex items-center">
+                                <div className="relative flex">
+                                    {themes.map((theme) => (
+                                        <button
+                                            key={theme.value}
+                                            onClick={() => setTheme(theme.value)}
+                                            className={cn(
+                                                "relative z-10 flex h-6 w-6 items-center justify-center rounded-full transition-colors duration-200",
+                                                themeValue === theme.value
+                                                    ? "text-neutral-900"
+                                                    : "text-neutral-500 hover:text-neutral-300"
+                                            )}
+                                        >
+                                            {theme.icon}
+                                        </button>
+                                    ))}
+                                    <motion.div
+                                        layoutId="theme-pill"
+                                        className={cn(
+                                            "absolute top-0 h-full w-6 rounded-full bg-white",
+                                        )}
+                                        animate={{
+                                            x: themeValue === "light" ? 0 : themeValue === "dark" ? 24 : 48,
+                                        }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                                    />
+                                </div>
+                            </div>
 
-                        <div className="mx-0.5 h-3 w-px bg-border" />
+                            <div className="h-4 w-px bg-white/10" />
 
-                        {/* Layout toggle */}
-                        <Tooltip title={t("switchTopbar")}>
-                            <button
-                                onClick={toggleMode}
-                                className="flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground transition-all hover:bg-accent/50"
-                            >
-                                <TopbarIcon size={14} />
-                            </button>
-                        </Tooltip>
+                            {/* Layout toggle */}
+                            <Tooltip title={t("switchTopbar")}>
+                                <button
+                                    onClick={toggleMode}
+                                    className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-500 transition-all duration-200 hover:bg-white/10 hover:text-neutral-300 active:scale-90"
+                                >
+                                    <TopbarIcon size={15} />
+                                </button>
+                            </Tooltip>
+                        </div>
                     </div>
                 )}
             </div>
