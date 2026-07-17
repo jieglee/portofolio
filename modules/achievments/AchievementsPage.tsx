@@ -18,6 +18,13 @@ function parseDate(dateStr: string): number {
         july: 6, august: 7, september2: 8, october: 9, november2: 10, december: 11,
     };
     const parts = dateStr.toLowerCase().split(" ");
+    if (parts.length === 1 && parts[0].includes("-")) {
+        const yearEnd = parseInt(parts[0].split("-")[1]) || 0;
+        return yearEnd * 100;
+    }
+    if (parts.length === 1) {
+        return (parseInt(parts[0]) || 0) * 100;
+    }
     const month = months[parts[0]] ?? 0;
     const year = parseInt(parts[1]) || 0;
     return year * 100 + month;
