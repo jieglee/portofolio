@@ -18,6 +18,7 @@ import { DiIllustrator } from "react-icons/di";
 import { SiVite } from "react-icons/si";
 import { SiSupabase } from "react-icons/si";
 import { SiExpo } from "react-icons/si";
+import { SiMysql } from "react-icons/si";
 
 
 
@@ -130,5 +131,11 @@ expo: {
     Icon: SiExpo,
     color: "#ffffff",
     bg: "#000020",
+},
+mysql: {
+    label: "MySQL",
+    Icon: SiMysql,
+    color: "#ffffff",
+    bg: "#4479A1",
 },
 };

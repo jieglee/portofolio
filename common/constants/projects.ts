@@ -4,6 +4,7 @@ export type TechKey =
   | "tailwind"
   | "framer"
   | "mongodb"
+  | "mysql"
   | "fastapi"
   | "postgresql"
   | "html5"
@@ -33,28 +34,6 @@ export interface ProjectItem {
 
 export const PROJECTS: ProjectItem[]  = [
   {
-    slug: "jiepaws-petshop",
-    title: "JiePaws — Pet Shop E-Commerce",
-    description:
-        "A fully functional pet shop e-commerce app with cart, wishlist, checkout, and order history. Built with React + Vite and Tailwind CSS as a Grade 10 school project.",
-    thumbnail: "/images/projects/jiepaws-petshop.png",
-    techStack: ["react", "vite", "tailwind", "framer"],
-    sourceUrl: "https://github.com/jieglee/jiepaws-react-vite",
-    demoUrl: "https://jiepaws.vercel.app/",
-    figmaUrl: "https://www.figma.com/design/jiCEcFsTSQ8M5sgSujRtQw/E-COMMERCE-PROJECT-2?t=L1qXjiVhbUCLMNqb-1",
-},
-  {
-    slug: "pustbaka",
-    title: "PusTBaka — Perpustakaan Sekolah",
-    description:
-        "A digital school library system with two platforms: a mobile app (Expo/React Native) for students to browse and borrow books, and a web app (Next.js) for admin to manage collections and track transactions.",
-    thumbnail: "/images/projects/pustbaka.png",
-    featured: true,
-    techStack: ["typescript", "expo", "react", "nextjs", "supabase", "tailwind"],
-    sourceUrl: "https://github.com/jieglee/pustbaka-next",
-    demoUrl: "",
-},
-  {
     slug: "pemilihan-osis-web",
     title: "Pemilihan Ketua OSIS — Web App",
     description:
@@ -62,6 +41,17 @@ export const PROJECTS: ProjectItem[]  = [
     thumbnail: "/images/projects/pemilihan-ketua-osis.jpeg",
     techStack: ["nextjs", "typescript", "tailwind", "framer"],
     sourceUrl: "https://github.com/Aghissulaiman/pemilihan-osis-web",
+    demoUrl: "",
+},
+  {
+    slug: "pustbaka",
+    title: "PusTBaka — Perpustakaan Sekolah",
+    description:
+        "A digital school library system with two platforms: a mobile app (Expo/React Native) for students to browse and borrow books, and a web app (Next.js) for admin to manage collections and track transactions.",
+    thumbnail: "/images/projects/perpustakan.jpeg",
+    featured: true,
+    techStack: ["typescript", "expo", "react", "nextjs", "mysql", "tailwind"],
+    sourceUrl: "https://github.com/jieglee/pustbaka-next",
     demoUrl: "",
 },
   {
@@ -97,7 +87,7 @@ export const PROJECTS: ProjectItem[]  = [
     sourceUrl: "https://github.com/jieglee/deploy-portofolio",
     demoUrl: "https://jieglee.github.io/deploy-portofolio/",
     figmaUrl: "https://www.figma.com/design/hHctyXWpnwMb6rMauMO0CI/DESAIN-PORTOFOLIO-UNGU?node-id=0-1&t=L1qXjiVhbUCLMNqb-1",
-  },
+},
   {
     slug: "hatsune-miku-cinnamoroll",
     title: "Hatsune Miku × Cinnamoroll",
@@ -106,17 +96,6 @@ export const PROJECTS: ProjectItem[]  = [
     thumbnail: "/images/projects/Hatsune-Miku-Cinamoroll.jpg",
     techStack: ["illustrator"],
     sourceUrl: "",
-    demoUrl: "",
-},
-  {
-    slug: "pustbaka",
-    title: "PusTBaka — Perpustakaan Sekolah",
-    description:
-        "A digital school library system with two platforms: a mobile app (Expo/React Native) for students to browse and borrow books, and a web app (Next.js) for admin to manage collections and track transactions.",
-    thumbnail: "/images/projects/pustbaka.png",
-    featured: true,
-    techStack: ["typescript", "expo", "react", "nextjs", "supabase", "tailwind"],
-    sourceUrl: "https://github.com/jieglee/pustbaka-next",
     demoUrl: "",
 },
   {
