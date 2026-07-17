@@ -27,6 +27,7 @@ export interface ProjectItem {
   techStack: TechKey[];
   sourceUrl?: string;
   demoUrl?: string;
+  figmaUrl?: string;
 }
 
 export const PROJECTS: ProjectItem[]  = [
@@ -59,6 +60,7 @@ export const PROJECTS: ProjectItem[]  = [
     techStack: ["html5", "tailwind", "javascript"],
     sourceUrl: "https://github.com/jieglee/mytix-landingpage",
     demoUrl: "https://mytix-landingpage.vercel.app/",
+    figmaUrl: "https://www.figma.com/design/zVH2IUdrA3oAhtZT4ywgXy/TICKETING?node-id=1070-741&t=zvHeDOiBJ0poBoCU-1",
 },
   {
     slug: "personal-portfolio-v1",

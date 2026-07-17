@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink, ChevronLeft, Copy, Check } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, Copy, Check, Figma } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion, AnimatePresence } from "framer-motion";
@@ -176,7 +176,21 @@ export default function ProjectDetailPage({ project, content }: ProjectDetailPag
                             {t("sourceCode")}
                         </a>
                     )}
-                    {project.sourceUrl && project.demoUrl && (
+                    {(project.sourceUrl && project.figmaUrl) && (
+                        <span className="text-border">|</span>
+                    )}
+                    {project.figmaUrl && (
+                        <a
+                            href={project.figmaUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                            <Figma className="w-4 h-4" />
+                            Figma
+                        </a>
+                    )}
+                    {((project.sourceUrl || project.figmaUrl) && project.demoUrl) && (
                         <span className="text-border">|</span>
                     )}
                     {project.demoUrl && (
