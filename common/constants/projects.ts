@@ -14,7 +14,8 @@ export type TechKey =
   | "typedjs"
   | "illustrator"
   | "vite"
-  | "supabase";
+  | "supabase"
+  | "expo";
 
   
 
@@ -50,6 +51,7 @@ export const PROJECTS: ProjectItem[]  = [
     techStack: ["react", "vite", "tailwind", "framer"],
     sourceUrl: "https://github.com/jieglee/jiepaws-react-vite",
     demoUrl: "https://jiepaws.vercel.app/",
+    figmaUrl: "https://www.figma.com/design/jiCEcFsTSQ8M5sgSujRtQw/E-COMMERCE-PROJECT-2?t=L1qXjiVhbUCLMNqb-1",
 },
   {
     slug: "mytix-landingpage",
@@ -82,6 +84,17 @@ export const PROJECTS: ProjectItem[]  = [
     thumbnail: "/images/projects/Hatsune-Miku-Cinamoroll.jpg",
     techStack: ["illustrator"],
     sourceUrl: "",
+    demoUrl: "",
+},
+  {
+    slug: "pustbaka",
+    title: "PusTBaka — Perpustakaan Sekolah",
+    description:
+        "A digital school library system with two platforms: a mobile app (Expo/React Native) for students to browse and borrow books, and a web app (Next.js) for admin to manage collections and track transactions.",
+    thumbnail: "/images/projects/pustbaka.png",
+    featured: true,
+    techStack: ["typescript", "expo", "react", "nextjs", "supabase", "tailwind"],
+    sourceUrl: "https://github.com/jieglee/pustbaka-next",
     demoUrl: "",
 },
   {

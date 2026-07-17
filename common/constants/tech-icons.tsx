@@ -17,6 +17,7 @@ import { type TechKey } from "@/common/constants/projects";
 import { DiIllustrator } from "react-icons/di";
 import { SiVite } from "react-icons/si";
 import { SiSupabase } from "react-icons/si";
+import { SiExpo } from "react-icons/si";
 
 
 
@@ -123,5 +124,11 @@ vite: {
     Icon: SiVite,
     color: "#ffffff",
     bg: "#646CFF",
+},
+expo: {
+    label: "Expo",
+    Icon: SiExpo,
+    color: "#ffffff",
+    bg: "#000020",
 },
 };
