@@ -199,8 +199,8 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
     ];
 
     const locales = [
-        { value: "en", Flag: US },
-        { value: "id", Flag: ID },
+        { value: "en", label: "US" },
+        { value: "id", label: "ID" },
     ];
 
     return (
@@ -265,13 +265,13 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                 key={locale.value}
                                 onClick={() => handleLocaleChange(locale.value)}
                                 className={cn(
-                                    "flex h-6 w-7 items-center justify-center rounded-md transition-all duration-200",
+                                    "flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold transition-all duration-200",
                                     currentLocale === locale.value
                                         ? "bg-primary text-primary-foreground"
                                         : "text-muted-foreground hover:bg-accent/50"
                                 )}
                             >
-                                <locale.Flag style={{ width: 16, height: 12 }} />
+                                {locale.label}
                             </button>
                         ))}
 
