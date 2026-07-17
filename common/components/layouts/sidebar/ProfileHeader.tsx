@@ -258,9 +258,9 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
 
                 {/* Floating settings toolbar */}
                 {mounted && (
-                    <div className="hidden lg:flex mt-3">
-                        <div className="flex items-center gap-0.5 rounded-full border border-white/10 bg-neutral-800/90 px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl">
-                            {/* Language — segmented */}
+                    <div className="hidden lg:flex mt-3 items-center gap-1.5">
+                        {/* Language — floating container */}
+                        <div className="flex items-center rounded-full border border-white/10 bg-neutral-800/90 px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl">
                             <div className="relative flex items-center">
                                 <div className="relative flex">
                                     {locales.map((locale) => (
@@ -279,9 +279,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                     ))}
                                     <motion.div
                                         layoutId="lang-pill"
-                                        className={cn(
-                                            "absolute top-0 h-full w-6 rounded-full bg-white",
-                                        )}
+                                        className="absolute top-0 h-full w-6 rounded-full bg-white"
                                         animate={{
                                             x: currentLocale === "en" ? 0 : 24,
                                         }}
@@ -289,10 +287,10 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                     />
                                 </div>
                             </div>
+                        </div>
 
-                            <div className="h-4 w-px bg-white/10" />
-
-                            {/* Theme — segmented with sliding indicator */}
+                        {/* Theme — floating container */}
+                        <div className="flex items-center rounded-full border border-white/10 bg-neutral-800/90 px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl">
                             <div className="relative flex items-center">
                                 <div className="relative flex">
                                     {themes.map((theme) => (
@@ -311,9 +309,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                     ))}
                                     <motion.div
                                         layoutId="theme-pill"
-                                        className={cn(
-                                            "absolute top-0 h-full w-6 rounded-full bg-white",
-                                        )}
+                                        className="absolute top-0 h-full w-6 rounded-full bg-white"
                                         animate={{
                                             x: themeValue === "light" ? 0 : themeValue === "dark" ? 24 : 48,
                                         }}
@@ -321,19 +317,17 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                     />
                                 </div>
                             </div>
-
-                            <div className="h-4 w-px bg-white/10" />
-
-                            {/* Layout toggle */}
-                            <Tooltip title={t("switchTopbar")}>
-                                <button
-                                    onClick={toggleMode}
-                                    className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-500 transition-all duration-200 hover:bg-white/10 hover:text-neutral-300 active:scale-90"
-                                >
-                                    <TopbarIcon size={15} />
-                                </button>
-                            </Tooltip>
                         </div>
+
+                        {/* Layout toggle */}
+                        <Tooltip title={t("switchTopbar")}>
+                            <button
+                                onClick={toggleMode}
+                                className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-500 transition-all duration-200 hover:bg-white/10 hover:text-neutral-300 active:scale-90"
+                            >
+                                <TopbarIcon size={15} />
+                            </button>
+                        </Tooltip>
                     </div>
                 )}
             </div>
