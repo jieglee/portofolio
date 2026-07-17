@@ -167,5 +167,6 @@ export const achievements: Achievement[] = [
         type: "Certificate",
         category: "Extracurricular",
         image: "/images/achievments/piagam-manasik-haji-2014.jpeg",
-        tags: ["Manasik Haji"],   }
+        tags: ["Manasik Haji"],
+    },
 ];
