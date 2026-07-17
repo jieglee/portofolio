@@ -9,8 +9,6 @@ import { MdVerified as VerifiedIcon, MdDarkMode, MdLightMode } from "react-icons
 import { PiHeartFill as HeartIcon } from "react-icons/pi";
 import { TbLayoutNavbar as TopbarIcon } from "react-icons/tb";
 import { motion } from "framer-motion";
-import US from "country-flag-icons/react/3x2/US";
-import ID from "country-flag-icons/react/3x2/ID";
 import Tooltip from "../../elements/Tooltip";
 import Image from "../../elements/Image";
 import { cn } from "@/lib/utils";
