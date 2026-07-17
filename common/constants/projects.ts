@@ -72,6 +72,7 @@ export const PROJECTS: ProjectItem[]  = [
     techStack: ["html5", "css3", "javascript", "typedjs", "fontawesome"],
     sourceUrl: "https://github.com/jieglee/deploy-portofolio",
     demoUrl: "https://jieglee.github.io/deploy-portofolio/",
+    figmaUrl: "https://www.figma.com/design/hHctyXWpnwMb6rMauMO0CI/DESAIN-PORTOFOLIO-UNGU?node-id=0-1&t=L1qXjiVhbUCLMNqb-1",
   },
   {
     slug: "hatsune-miku-cinnamoroll",
