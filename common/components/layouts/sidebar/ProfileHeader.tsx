@@ -260,7 +260,16 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                 {mounted && (
                     <div className="hidden lg:flex mt-3 items-center gap-1.5">
                         {/* Language — floating container */}
-                        <div className="flex items-center rounded-full border border-white/10 bg-neutral-800/90 px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl">
+                        <div
+                            className={cn(
+                                "flex items-center rounded-full border px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl transition-colors duration-300",
+                                themeValue === "pink"
+                                    ? "border-pink-400/30 bg-pink-900/60"
+                                    : themeValue === "dark"
+                                    ? "border-white/10 bg-neutral-800/90"
+                                    : "border-black/10 bg-white/80"
+                            )}
+                        >
                             <div className="relative flex items-center">
                                 <div className="relative flex">
                                     {locales.map((locale) => (
@@ -270,7 +279,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                             className={cn(
                                                 "relative z-10 flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-semibold transition-colors duration-200",
                                                 currentLocale === locale.value
-                                                    ? "text-neutral-900"
+                                                    ? themeValue === "pink" ? "text-pink-900" : "text-neutral-900"
                                                     : "text-neutral-500 hover:text-neutral-300"
                                             )}
                                         >
@@ -279,7 +288,10 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                     ))}
                                     <motion.div
                                         layoutId="lang-pill"
-                                        className="absolute top-0 h-full w-6 rounded-full bg-white"
+                                        className={cn(
+                                            "absolute top-0 h-full w-6 rounded-full transition-colors duration-300",
+                                            themeValue === "pink" ? "bg-pink-200" : "bg-white"
+                                        )}
                                         animate={{
                                             x: currentLocale === "en" ? 0 : 24,
                                         }}
@@ -290,7 +302,16 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                         </div>
 
                         {/* Theme — floating container */}
-                        <div className="flex items-center rounded-full border border-white/10 bg-neutral-800/90 px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl">
+                        <div
+                            className={cn(
+                                "flex items-center rounded-full border px-1.5 py-1 shadow-lg shadow-black/20 backdrop-blur-xl transition-colors duration-300",
+                                themeValue === "pink"
+                                    ? "border-pink-400/30 bg-pink-900/60"
+                                    : themeValue === "dark"
+                                    ? "border-white/10 bg-neutral-800/90"
+                                    : "border-black/10 bg-white/80"
+                            )}
+                        >
                             <div className="relative flex items-center">
                                 <div className="relative flex">
                                     {themes.map((theme) => (
@@ -300,7 +321,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                             className={cn(
                                                 "relative z-10 flex h-6 w-6 items-center justify-center rounded-full transition-colors duration-200",
                                                 themeValue === theme.value
-                                                    ? "text-neutral-900"
+                                                    ? themeValue === "pink" ? "text-pink-900" : "text-neutral-900"
                                                     : "text-neutral-500 hover:text-neutral-300"
                                             )}
                                         >
@@ -309,7 +330,10 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
                                     ))}
                                     <motion.div
                                         layoutId="theme-pill"
-                                        className="absolute top-0 h-full w-6 rounded-full bg-white"
+                                        className={cn(
+                                            "absolute top-0 h-full w-6 rounded-full transition-colors duration-300",
+                                            themeValue === "pink" ? "bg-pink-200" : "bg-white"
+                                        )}
                                         animate={{
                                             x: themeValue === "light" ? 0 : themeValue === "dark" ? 24 : 48,
                                         }}
