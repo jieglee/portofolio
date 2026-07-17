@@ -29,7 +29,7 @@ export interface ProjectItem {
   demoUrl?: string;
 }
 
-export const PROJECTS: ProjectItem[] = [
+export const PROJECTS: ProjectItem[]  = [
   {
     slug: "pemilihan-osis-web",
     title: "Pemilihan Ketua OSIS — Web App",
