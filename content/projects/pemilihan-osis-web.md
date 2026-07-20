@@ -18,23 +18,12 @@ The app provides a complete digital voting experience — from a landing page in
 
 ## ✨ Key Features
 
-**💫 Splash Screen**
-Animated splash screen on first load using Framer Motion before the landing page appears.
-
-**🏠 Landing Page**
-Public-facing page with hero section ("Suaramu Menentukan Masa Depan"), candidate information, OSIS background section, and footer.
-
-**🔐 Authentication**
-Secure login system powered by Supabase Auth — only registered students can access the voting page.
-
-**🗳️ Voting System**
-Students can cast their vote for their preferred OSIS chairman and vice chairman candidate.
-
-**📊 Live Results**
-Real-time vote count visualization using Recharts — results update instantly as votes come in.
-
-**📱 Responsive Design**
-Fully responsive across desktop, tablet, and mobile using Tailwind CSS v4.
+- **Splash Screen** — Animated splash screen on first load using Framer Motion before the landing page appears.
+- **Landing Page** — Public-facing page with hero section ("Suaramu Menentukan Masa Depan"), candidate information, OSIS background section, and footer.
+- **Authentication** — Secure login system powered by Supabase Auth — only registered students can access the voting page.
+- **Voting System** — Students can cast their vote for their preferred OSIS chairman and vice chairman candidate.
+- **Live Results** — Real-time vote count visualization using Recharts — results update instantly as votes come in.
+- **Responsive Design** — Fully responsive across desktop, tablet, and mobile using Tailwind CSS v4.
 
 ## 🛠️ Technologies Used
 

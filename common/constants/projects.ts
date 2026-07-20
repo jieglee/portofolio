@@ -34,6 +34,17 @@ export interface ProjectItem {
 }
 
 export const PROJECTS: ProjectItem[]  = [
+{
+    slug: "lapor-gas",
+    title: "LaporGas — Civic Complaint Platform",
+    description:
+        "A full-stack civic complaint platform with 3 platforms: web dashboard (Next.js), mobile app (Expo), and REST API (Express + PostgreSQL). Features AI auto-categorization via Ollama, GPS location, multi-photo upload, and real-time notifications.",
+    thumbnail: "/images/projects/laporgas-pengaduan.jpeg",
+    featured: true,
+    techStack: ["nextjs", "typescript", "tailwind", "framer", "postgresql", "expo", "express"],
+    sourceUrl: "https://github.com/jieglee/laporGas-next",
+    demoUrl: "",
+},
   {
     slug: "pemilihan-osis-web",
     title: "Pemilihan Ketua OSIS — Web App",
@@ -65,16 +76,6 @@ export const PROJECTS: ProjectItem[]  = [
     sourceUrl: "https://github.com/jieglee/jiepaws-react-vite",
     demoUrl: "https://jiepaws.vercel.app/",
     figmaUrl: "https://www.figma.com/design/jiCEcFsTSQ8M5sgSujRtQw/E-COMMERCE-PROJECT-2?t=L1qXjiVhbUCLMNqb-1",
-},
-{
-    slug: "lapor-gas",
-    title: "LaporGas — Pengaduan Masyarakat",
-    description:
-        "A community complaint reporting system with three platforms: a mobile app (Expo) for citizens to submit reports, a web app (Next.js) for admin dashboard, and a REST API backend (Express.js).",
-    thumbnail: "/images/projects/lapor-gas.png",
-    techStack: ["typescript", "nextjs", "tailwind", "framer", "expo", "express", "supabase"],
-    sourceUrl: "https://github.com/jieglee/laporGas-next",
-    demoUrl: "",
 },
 {
     slug: "mytix-landingpage",

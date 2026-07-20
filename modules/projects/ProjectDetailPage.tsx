@@ -227,7 +227,7 @@ export default function ProjectDetailPage({ project, content }: ProjectDetailPag
             <article className="prose prose-sm sm:prose-base dark:prose-invert max-w-none
                 prose-headings:font-semibold prose-headings:tracking-tight
                 prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
-                prose-p:text-muted-foreground prose-p:leading-relaxed
+                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:text-justify
                 prose-li:text-muted-foreground
                 prose-strong:text-foreground
                 prose-a:text-foreground prose-a:underline prose-a:underline-offset-2

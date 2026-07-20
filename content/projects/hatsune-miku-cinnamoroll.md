@@ -10,10 +10,10 @@ The result is a chibi Miku sitting casually — complete with her signature colo
 
 ## 🎨 Design Details
 
-- **Style:** Chibi / Kawaii illustration
-- **Color Palette:** Teal (`#39C5BB`), grey, white, with soft pastel shading
-- **Character:** Hatsune Miku in Cinnamoroll chibi proportions
-- **Details included:**
+- **Style** — Chibi / Kawaii illustration
+- **Color Palette** — Teal (`#39C5BB`), grey, white, with soft pastel shading
+- **Character** — Hatsune Miku in Cinnamoroll chibi proportions
+- **Details Included:**
   - Miku's signature teal twin-tails with red/grey headset
   - Cinnamoroll-style bow on hair
   - Classic Miku outfit — grey top, teal tie, dark skirt, black thigh-highs

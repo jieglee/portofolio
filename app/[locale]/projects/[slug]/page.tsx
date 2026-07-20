@@ -35,15 +35,14 @@ export default async function Page({ params }: PageProps) {
   let content = `# ${project.title}\n\n${project.description}`;
 
   try {
-    const filePath = path.join(
-      process.cwd(),
-      "content",
-      "projects",
-      `${slug}.md`
-    );
+    const projectsDir = path.join(process.cwd(), "content", "projects");
+    const localeFilePath = path.join(projectsDir, `${slug}.${locale}.md`);
+    const defaultFilePath = path.join(projectsDir, `${slug}.md`);
 
-    if (fs.existsSync(filePath)) {
-      content = fs.readFileSync(filePath, "utf8");
+    if (fs.existsSync(localeFilePath)) {
+      content = fs.readFileSync(localeFilePath, "utf8");
+    } else if (fs.existsSync(defaultFilePath)) {
+      content = fs.readFileSync(defaultFilePath, "utf8");
     }
   } catch (error) {
     console.error("Markdown read error:", error);

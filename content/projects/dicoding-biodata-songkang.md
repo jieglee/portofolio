@@ -10,20 +10,11 @@ The site is structured like a simple fan biography page, covering his birthplace
 
 ## ✨ Key Features
 
-**🏙️ Birthplace Section**
-Information and image of Suwon, South Korea — the birthplace of Song Kang (born April 23, 1994).
-
-**🎬 Career Section**
-A timeline of Song Kang's acting career, starting from his debut in *The Liar and His Lover* (2017) with Namoo Actors agency.
-
-**🏆 Achievements Section**
-Highlights of his notable drama roles and career milestones.
-
-**🧭 Navigation Bar**
-Anchor-based navbar linking to each section — Tempat Kelahiran, Karir Songkang, and Pencapaian Songkang.
-
-**🔤 Google Fonts**
-Uses the *Quicksand* font family for a clean, modern look.
+- **Birthplace Section** — Information and image of Suwon, South Korea — the birthplace of Song Kang (born April 23, 1994).
+- **Career Section** — A timeline of Song Kang's acting career, starting from his debut in *The Liar and His Lover* (2017) with Namoo Actors agency.
+- **Achievements Section** — Highlights of his notable drama roles and career milestones.
+- **Navigation Bar** — Anchor-based navbar linking to each section — Tempat Kelahiran, Karir Songkang, and Pencapaian Songkang.
+- **Google Fonts** — Uses the *Quicksand* font family for a clean, modern look.
 
 ## 🛠️ Technologies Used
 

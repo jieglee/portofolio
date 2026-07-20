@@ -12,26 +12,13 @@ The design uses a dark black/deep purple color scheme with yellow accents to evo
 
 ## ✨ Key Features
 
-**🎥 Hero Section**
-Full-screen background with blur effect and bold tagline — "No Antri No Ribet No Drama" with an animated hashtag highlight.
-
-**🍿 Now Showing**
-A responsive movie grid showcasing currently playing films with poster thumbnails and titles.
-
-**📢 Ads Banner Carousel**
-Auto-playing image slider built with Swiper.js, featuring promotional banners.
-
-**🏢 Partner Cinemas**
-Logo showcase of partner cinema chains: XXI, CGV, Cinepolis.
-
-**💳 Payment Methods**
-Supported payment options displayed: GoPay, OVO, DANA.
-
-**📱 Responsive Navbar**
-Desktop navbar with centered menu + hamburger menu for mobile with smooth toggle.
-
-**🎞️ Movie Categories**
-Sections for browsing movies by category — now showing, coming soon, and featured titles.
+- **Hero Section** — Full-screen background with blur effect and bold tagline — "No Antri No Ribet No Drama" with an animated hashtag highlight.
+- **Now Showing** — A responsive movie grid showcasing currently playing films with poster thumbnails and titles.
+- **Ads Banner Carousel** — Auto-playing image slider built with Swiper.js, featuring promotional banners.
+- **Partner Cinemas** — Logo showcase of partner cinema chains: XXI, CGV, Cinepolis.
+- **Payment Methods** — Supported payment options displayed: GoPay, OVO, DANA.
+- **Responsive Navbar** — Desktop navbar with centered menu + hamburger menu for mobile with smooth toggle.
+- **Movie Categories** — Sections for browsing movies by category — now showing, coming soon, and featured titles.
 
 ## 🛠️ Technologies Used
 
