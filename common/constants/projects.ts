@@ -61,7 +61,6 @@ export const PROJECTS: ProjectItem[]  = [
     description:
         "A digital school library system with two platforms: a mobile app (Expo/React Native) for students to browse and borrow books, and a web app (Next.js) for admin to manage collections and track transactions.",
     thumbnail: "/images/projects/perpustakan.jpeg",
-    featured: true,
     techStack: ["nextjs", "javascript", "tailwind", "framer", "mysql", "expo", "react"],
     sourceUrl: "https://github.com/jieglee/pustbaka-next",
     demoUrl: "",
