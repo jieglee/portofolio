@@ -8,5 +8,4 @@ export const MENU_DROPDOWN_ITEMS = [
     { title: "About", href: "/about" },
     { title: "Achievements", href: "/achievements" },
     { title: "Contact", href: "/contact" },
-    { title: "Chat Room", href: "/chat" },
 ]
