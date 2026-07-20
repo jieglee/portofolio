@@ -90,8 +90,8 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
                                     className="mt-4 bg-transparent border-none cursor-pointer transition-colors duration-300"
                                     style={{
                                         fontFamily: "'Amatic SC', cursive",
-                                        fontSize: "96px",
-                                        color: hovered ? "#E3341C" : "white",
+                                        fontSize: "72px",
+                                        color: hovered ? "#EC4899" : "white",
                                         letterSpacing: "6px",
                                         fontWeight: 400,
                                     }}
