@@ -7,6 +7,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import ThemeProviderContext from "@/common/stores/theme";
 import Layouts from "@/common/components/layouts";
 import "../globals.css";
+import ClientLoadingScreen from "@/common/components/elements/ClientLoadingScreen";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -44,7 +45,10 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProviderContext>
-            <Layouts>{children}</Layouts>
+            <Layouts>
+              <ClientLoadingScreen />
+              {children}
+            </Layouts>
           </ThemeProviderContext>
         </NextIntlClientProvider>
       </body>
