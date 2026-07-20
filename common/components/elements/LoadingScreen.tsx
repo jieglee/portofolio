@@ -13,11 +13,15 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
     const [hovered, setHovered] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
+    useEffect(() => {
+        const audio = new Audio("/sounds/Minecraft Click Sound Effect..mp3");
+        audio.preload = "auto";
+        audio.volume = 0.5;
+        audioRef.current = audio;
+    }, []);
+
     const playSound = useCallback(() => {
-        if (!audioRef.current) {
-            audioRef.current = new Audio("/sounds/click.mp3");
-            audioRef.current.volume = 0.5;
-        }
+        if (!audioRef.current) return;
         audioRef.current.currentTime = 0;
         audioRef.current.play().catch(() => {});
     }, []);

@@ -1,49 +1,41 @@
-    "use client";
+"use client";
 
-    import Image from "next/image";
-    import { useTranslations } from "next-intl";
-    import { motion } from "framer-motion";
-    import { useTheme } from "next-themes";
-    import SpotlightCard from "@/common/components/elements/SpotlightCard";
-    import { Pin } from "lucide-react";
-    import { useRouter } from "@/i18n/navigation";
-    import { type ProjectItem } from "@/common/constants/projects";
-    import { TECH_MAP } from "@/common/constants/tech-icons";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import SpotlightCard from "@/common/components/elements/SpotlightCard";
+import { Pin } from "lucide-react";
+import { useRouter } from "@/i18n/navigation";
+import { type ProjectItem } from "@/common/constants/projects";
+import { TECH_MAP } from "@/common/constants/tech-icons";
 
-    interface ProjectCardProps {
-    project: ProjectItem;
-    index: number;
-    }
+interface ProjectCardProps {
+  project: ProjectItem;
+  index: number;
+}
 
-    export default function ProjectCard({ project, index }: ProjectCardProps) {
-    const router = useRouter();
-    const t = useTranslations("Projects");
-    const { resolvedTheme } = useTheme();
-    const isDark = resolvedTheme === "dark";
+export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const router = useRouter();
+  const t = useTranslations("Projects");
 
-    return (
-        <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
-        onClick={() => router.push(`/projects/${project.slug}`)}
-        className="cursor-pointer"
-        >
-        {isDark ? (
-            <SpotlightCard
-            className="!p-0 !rounded-2xl !bg-card !border-border group flex flex-col overflow-hidden transition-shadow hover:shadow-lg"
-            spotlightColor="rgba(255, 255, 255, 0.12)"
-            >
-            <CardContent project={project} />
-            </SpotlightCard>
-        ) : (
-            <div className="group rounded-2xl border border-border bg-card overflow-hidden flex flex-col transition-shadow hover:shadow-lg">
-            <CardContent project={project} />
-            </div>
-        )}
-        </motion.div>
-    );
-    }
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
+      onClick={() => router.push(`/projects/${project.slug}`)}
+      className="cursor-pointer"
+      suppressHydrationWarning
+    >
+      <SpotlightCard
+        className="!p-0 !rounded-2xl !bg-card !border-border group flex flex-col overflow-hidden transition-shadow hover:shadow-lg dark:!bg-neutral-900 dark:!border-neutral-800"
+        spotlightColor="rgba(255, 255, 255, 0.12)"
+      >
+        <CardContent project={project} />
+      </SpotlightCard>
+    </motion.div>
+  );
+}
 
     function CardContent({ project }: { project: ProjectItem }) {
     const t = useTranslations("Projects");
