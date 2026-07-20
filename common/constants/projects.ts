@@ -16,7 +16,8 @@ export type TechKey =
   | "illustrator"
   | "vite"
   | "supabase"
-  | "expo";
+  | "expo"
+  | "express";
 
   
 
@@ -45,9 +46,9 @@ export const PROJECTS: ProjectItem[]  = [
 },
   {
     slug: "pustbaka",
-    title: "PusTBaka — Perpustakaan Sekolah",
+    title: "PusTBaka — Digital School Library System",
     description:
-        "A digital school library system with two platforms: a mobile app (Expo/React Native) for students to browse and borrow books, and a web app (Next.js) for admin to manage collections and track transactions.",
+        "A digital school library system with two platforms: a mobile app (Expo/React Native) for students and a web app (Next.js + MySQL) for admin management.",
     thumbnail: "/images/projects/perpustakan.jpeg",
     featured: true,
     techStack: ["typescript", "expo", "react", "nextjs", "mysql", "tailwind"],
@@ -65,7 +66,17 @@ export const PROJECTS: ProjectItem[]  = [
     demoUrl: "https://jiepaws.vercel.app/",
     figmaUrl: "https://www.figma.com/design/jiCEcFsTSQ8M5sgSujRtQw/E-COMMERCE-PROJECT-2?t=L1qXjiVhbUCLMNqb-1",
 },
-  {
+{
+    slug: "lapor-gas",
+    title: "LaporGas — Pengaduan Masyarakat",
+    description:
+        "A community complaint reporting system with three platforms: a mobile app (Expo) for citizens to submit reports, a web app (Next.js) for admin dashboard, and a REST API backend (Express.js).",
+    thumbnail: "/images/projects/lapor-gas.png",
+    techStack: ["typescript", "nextjs", "tailwind", "framer", "expo", "express", "supabase"],
+    sourceUrl: "https://github.com/jieglee/laporGas-next",
+    demoUrl: "",
+},
+{
     slug: "mytix-landingpage",
     title: "MyTix — Cinema Ticket Landing Page",
     description:

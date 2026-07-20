@@ -19,6 +19,7 @@ import { SiVite } from "react-icons/si";
 import { SiSupabase } from "react-icons/si";
 import { SiExpo } from "react-icons/si";
 import { SiMysql } from "react-icons/si";
+import { SiExpress } from "react-icons/si";
 
 
 
@@ -137,5 +138,11 @@ mysql: {
     Icon: SiMysql,
     color: "#ffffff",
     bg: "#4479A1",
+},
+express: {
+    label: "Express.js",
+    Icon: SiExpress,
+    color: "#ffffff",
+    bg: "#000000",
 },
 };
