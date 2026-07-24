@@ -26,7 +26,7 @@ import { SiExpress } from "react-icons/si";
 interface TechMeta {
   label: string;
   Icon: IconType;
-  color: string; // brand colo
+  color: string; // brand color
   bg: string; // background chip colo
 }
 
