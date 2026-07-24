@@ -27,7 +27,7 @@ interface TechMeta {
   label: string;
   Icon: IconType;
   color: string; // brand color
-  bg: string; // background chip colo
+  bg: string; // background chip color
 }
 
 export const TECH_MAP: Record<TechKey, TechMeta> = {
