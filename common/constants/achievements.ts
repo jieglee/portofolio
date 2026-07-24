@@ -15,6 +15,18 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
     {
+        id: 15,
+        title: "Belajar Dasar AI",
+        issuer: "Dicoding",
+        date: "Juli 2026",
+        credential: "1RXYW5V73ZVM",
+        link: "https://www.dicoding.com/certificates/1RXYW5V73ZVM",
+        type: "Certificate",
+        category: "Artificial Intelligence",
+        image: "/images/achievments/sertifikat-dicoding-ai.png",
+        tags: ["AI", "Machine Learning", "Dicoding"],
+    },
+    {
         id: 1,
         title: "Software Engineering Level Test XI",
         issuer: "SMK Taruna Bhakti",
