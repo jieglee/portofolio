@@ -15,7 +15,7 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
     {
-        id: 1,
+        id: 15,
         title: "Belajar Dasar AI",
         issuer: "Dicoding",
         date: "Juli 2026",
@@ -27,7 +27,7 @@ export const achievements: Achievement[] = [
         tags: ["AI", "Machine Learning", "Dicoding"],
     },
     {
-        id: 2,
+        id: 1,
         title: "Software Engineering Level Test XI",
         issuer: "SMK Taruna Bhakti",
         date: "Juni 2026",
@@ -38,7 +38,7 @@ export const achievements: Achievement[] = [
         tags: ["RPL", "FullStack"],
     },
     {
-        id: 3,
+        id: 2,
         title: "Online Class Professional Model Makeup & Offline Portfolio Batch 5",
         issuer: "Million Model Agency",
         date: "Januari 2026",
@@ -49,7 +49,7 @@ export const achievements: Achievement[] = [
         tags: ["Modeling", "Makeup"],
     },
     {
-        id: 4,
+        id: 3,
         title: "Juara 1 Lomba Paduan Suara — Hari Sumpah Pemuda & Bulan Bahasa",
         issuer: "SMK Taruna Bhakti",
         date: "Oktober 2025",
@@ -60,7 +60,7 @@ export const achievements: Achievement[] = [
         tags: ["Competition", "Choir"],
     },
     {
-        id: 5,
+        id: 4,
         title: "Bachelor of Science Nursing — CNA Simulator",
         issuer: "Roblox University",
         date: "Juli 2025",
@@ -71,7 +71,7 @@ export const achievements: Achievement[] = [
         tags: ["Roblox", "Gaming"],
     },
     {
-        id: 6,
+        id: 5,
         title: "Bendahara OSIS Periode 2024/2025",
         issuer: "SMK Taruna Bhakti",
         date: "2024-2025",
@@ -82,7 +82,7 @@ export const achievements: Achievement[] = [
         tags: ["OSIS", "Leadership"],
     },
     {
-        id: 7,
+        id: 6,
         title: "Software Engineering Level Test X",
         issuer: "SMK Taruna Bhakti",
         date: "Juni 2025",
@@ -93,7 +93,7 @@ export const achievements: Achievement[] = [
         tags: ["RPL", "FullStack"],
     },
     {
-        id: 8,
+        id: 7,
         title: "Kunjungan Industri PT INTI & ITB",
         issuer: "SMK Taruna Bhakti",
         date: "Januari 2025",
@@ -104,7 +104,7 @@ export const achievements: Achievement[] = [
         tags: ["Industry", "Networking"],
     },
     {
-        id: 9,
+        id: 8,
         title: "Belajar Dasar Pemrograman Web",
         issuer: "Dicoding",
         date: "November 2024",
@@ -116,7 +116,7 @@ export const achievements: Achievement[] = [
         tags: ["Web", "Programming"],
     },
     {
-        id: 10,
+        id: 9,
         title: "Elementary School Graduation Certificate",
         issuer: "SD Inklusi Al-Irsyad Al-Islamiyyah Depok",
         date: "Juni 2021",
@@ -127,7 +127,7 @@ export const achievements: Achievement[] = [
         tags: ["Elementary School", "Graduation"],
     },
     {
-        id: 11,
+        id: 10,
         title: "Ramadan Islamic Camp",
         issuer: "SD Inklusi Al-Irsyad Al-Islamiyyah Depok",
         date: "Juni 2016",
@@ -138,7 +138,7 @@ export const achievements: Achievement[] = [
         tags: ["Ramadan"],
     },
     {
-        id: 12,
+        id: 11,
         title: "Drum Band Training",
         issuer: "Persatuan Drum Band Indonesia & RA Al-Muhajirin II",
         date: "2015",
@@ -149,7 +149,7 @@ export const achievements: Achievement[] = [
         tags: ["Drum Band", "Music"],
     },
     {
-        id: 13,
+        id: 12,
         title: "Painting Extracurricular Program",
         issuer: "Sanggar Lukis Anak IDOLA & RA Al-Muhajirin II",
         date: "Juni 2015",
@@ -160,7 +160,7 @@ export const achievements: Achievement[] = [
         tags: ["Painting", "Art"],
     },
     {
-        id: 14,
+        id: 13,
         title: "English Extracurricular Program",
         issuer: "RA Al-Muhajirin II",
         date: "Juni 2015",
@@ -171,7 +171,7 @@ export const achievements: Achievement[] = [
         tags: ["English", "Language"],
     },
     {
-        id: 15,
+        id: 14,
         title: "Manasik Haji Demonstration Participant",
         issuer: "PD. IGRA Kota Depok",
         date: "November 2014",
