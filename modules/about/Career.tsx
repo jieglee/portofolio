@@ -6,8 +6,21 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
 import { Briefcase } from "lucide-react";
+import { FaTiktok } from "react-icons/fa6";
+import { type IconType } from "react-icons";
 
-const careerList = [
+type CareerItem = {
+    logo: string | null;
+    icon?: IconType;
+    titleKey: string;
+    organizationKey: string;
+    locationKey: string;
+    periodKey: string;
+    typeKey: string;
+    responsibilities: string[];
+};
+
+const careerList: CareerItem[] = [
     {
         logo: "/images/tmsc.png",
         titleKey: "career_intern_title",
@@ -25,6 +38,7 @@ const careerList = [
     },
     {
         logo: null,
+        icon: FaTiktok,
         titleKey: "career_creator_title",
         organizationKey: "career_creator_organization",
         locationKey: "career_creator_location",
@@ -73,7 +87,7 @@ function CareerCardInner({
     expandedIndex,
     setExpandedIndex,
 }: {
-    item: typeof careerList[0];
+    item: CareerItem;
     index: number;
     expandedIndex: number | null;
     setExpandedIndex: (v: number | null) => void;
@@ -91,6 +105,12 @@ function CareerCardInner({
                             sizes="64px"
                             className="object-contain p-1"
                             priority
+                        />
+                    ) : item.icon ? (
+                        <item.icon
+                            className="w-7 h-7 text-foreground"
+                            role="img"
+                            aria-label={t(item.organizationKey)}
                         />
                     ) : (
                         <Briefcase className="w-6 h-6 text-muted-foreground" />
