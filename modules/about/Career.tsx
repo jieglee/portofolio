@@ -9,7 +9,7 @@ import { Briefcase } from "lucide-react";
 
 const careerList = [
     {
-        logo: "/images/logo-tmsc.png",
+        logo: "/images/tmsc.png",
         titleKey: "career_intern_title",
         organizationKey: "career_intern_organization",
         locationKey: "career_intern_location",
