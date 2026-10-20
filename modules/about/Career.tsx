@@ -24,6 +24,20 @@ const careerList = [
         ],
     },
     {
+        logo: null,
+        titleKey: "career_creator_title",
+        organizationKey: "career_creator_organization",
+        locationKey: "career_creator_location",
+        periodKey: "career_creator_period",
+        typeKey: "career_creator_type",
+        responsibilities: [
+            "resp_creator_1",
+            "resp_creator_2",
+            "resp_creator_3",
+            "resp_creator_4",
+        ],
+    },
+    {
         logo: "/images/logo-smk.png",
         titleKey: "career_osis_title",
         organizationKey: "career_osis_organization",
