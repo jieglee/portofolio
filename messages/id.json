@@ -55,7 +55,22 @@
     "resp_osis_2": "Mencatat dan memantau pemasukan serta pengeluaran keuangan secara akurat.",
     "resp_osis_3": "Menyusun laporan keuangan dan laporan anggaran untuk program organisasi.",
     "resp_osis_4": "Mengoordinasikan perencanaan anggaran dengan anggota komite untuk acara sekolah.",
-    "resp_osis_5": "Memastikan transparansi keuangan dan kepatuhan di seluruh kegiatan."
+    "resp_osis_5": "Memastikan transparansi keuangan dan kepatuhan di seluruh kegiatan.",
+    "resp_intern_1": "Mengembangkan dan meningkatkan fitur aplikasi web menggunakan Next.js dan Fastify.",
+    "resp_intern_2": "Membangun antarmuka pengguna yang responsif untuk meningkatkan kenyamanan pengguna di berbagai perangkat.",
+    "resp_intern_3": "Mengintegrasikan fungsionalitas frontend dan backend untuk fitur-fitur aplikasi web.",
+    "resp_intern_4": "Menguji dan mendebug komponen aplikasi untuk meningkatkan keandalan aplikasi.",
+    "resp_intern_5": "Berkolaborasi dalam pengembangan aplikasi web dan mendokumentasikan progres proyek selama magang berlangsung.",
+    "career_intern_title": "Software Engineering Intern (PKL)",
+    "career_intern_organization": "PT Teknologi Mulia Sejahtera Cemerlang",
+    "career_intern_location": "Indonesia",
+    "career_intern_period": "Juli 2026 – Januari 2027",
+    "career_intern_type": "Magang",
+    "career_osis_title": "Bendahara OSIS",
+    "career_osis_organization": "SMK Taruna Bhakti",
+    "career_osis_location": "Depok, Indonesia",
+    "career_osis_period": "2024 – 2025",
+    "career_osis_type": "Organisasi Siswa"
   },
   "Achievements": {
     "title": "Pencapaian",

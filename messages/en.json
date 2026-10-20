@@ -55,7 +55,22 @@
     "resp_osis_2": "Maintained accurate financial records, including income and expenditure tracking.",
     "resp_osis_3": "Prepared financial statements and budget reports for organizational programs.",
     "resp_osis_4": "Coordinated budget planning with committee members for school events.",
-    "resp_osis_5": "Ensured financial transparency and compliance throughout all activities."
+    "resp_osis_5": "Ensured financial transparency and compliance throughout all activities.",
+    "resp_intern_1": "Developed and improved web application features using Next.js and Fastify.",
+    "resp_intern_2": "Built responsive user interfaces to improve usability across different devices.",
+    "resp_intern_3": "Integrated frontend and backend functionality for web application features.",
+    "resp_intern_4": "Tested and debugged application components to improve application reliability.",
+    "resp_intern_5": "Collaborated on web application development and documented project progress throughout the internship.",
+    "career_intern_title": "Software Engineering Intern (PKL)",
+    "career_intern_organization": "PT Teknologi Mulia Sejahtera Cemerlang",
+    "career_intern_location": "Indonesia",
+    "career_intern_period": "July 2026 – January 2027",
+    "career_intern_type": "Internship",
+    "career_osis_title": "Treasurer of Student Council (OSIS)",
+    "career_osis_organization": "SMK Taruna Bhakti",
+    "career_osis_location": "Depok, Indonesia",
+    "career_osis_period": "2024 – 2025",
+    "career_osis_type": "Student Organization"
   },
   "Achievements": {
     "title": "Achievements",

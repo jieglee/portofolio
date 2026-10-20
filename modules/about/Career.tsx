@@ -9,12 +9,27 @@ import { Briefcase } from "lucide-react";
 
 const careerList = [
     {
+        logo: "/images/logo-tmsc.png",
+        titleKey: "career_intern_title",
+        organizationKey: "career_intern_organization",
+        locationKey: "career_intern_location",
+        periodKey: "career_intern_period",
+        typeKey: "career_intern_type",
+        responsibilities: [
+            "resp_intern_1",
+            "resp_intern_2",
+            "resp_intern_3",
+            "resp_intern_4",
+            "resp_intern_5",
+        ],
+    },
+    {
         logo: "/images/logo-smk.png",
-        title: "Treasurer of Student Council (OSIS)",
-        organization: "SMK Taruna Bhakti",
-        location: "Depok, Indonesia",
-        period: "2024 – 2025",
-        type: "Student Organization",
+        titleKey: "career_osis_title",
+        organizationKey: "career_osis_organization",
+        locationKey: "career_osis_location",
+        periodKey: "career_osis_period",
+        typeKey: "career_osis_type",
         responsibilities: [
             "resp_osis_1",
             "resp_osis_2",
@@ -57,7 +72,7 @@ function CareerCardInner({
                     {item.logo ? (
                         <Image
                             src={item.logo}
-                            alt={item.organization}
+                            alt={t(item.organizationKey)}
                             fill
                             sizes="64px"
                             className="object-contain p-1"
@@ -70,17 +85,17 @@ function CareerCardInner({
 
                 <div className="flex-1 min-w-0">
                     <h3 className="text-base font-semibold text-foreground leading-snug">
-                        {item.title}
+                        {t(item.titleKey)}
                     </h3>
                     <p className="text-sm text-muted-foreground mt-0.5">
-                        {item.organization}
+                        {t(item.organizationKey)}
                         <span className="mx-1.5">•</span>
-                        {item.location}
+                        {t(item.locationKey)}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                        {item.period}
+                        {t(item.periodKey)}
                         <span className="mx-1.5">•</span>
-                        {item.type}
+                        {t(item.typeKey)}
                     </p>
 
                     <button
